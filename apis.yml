@@ -1,0 +1,59 @@
+name: Google Slides API
+description: An API for creating, reading, and editing Google Slides presentations
+image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+tags:
+- presentations
+- slides
+- productivity
+- collaboration
+- google workspace
+created: '2024'
+modified: '2024'
+url: https://developers.google.com/slides
+specificationVersion: '0.18'
+apis:
+- name: Google Slides API
+  description: Create and edit presentations programmatically
+  image: https://www.gstatic.com/images/branding/product/2x/slides_2020q4_48dp.png
+  humanURL: https://developers.google.com/slides
+  baseURL: https://slides.googleapis.com
+  tags:
+  - presentations
+  - slides
+  - REST
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/slides/api/reference/rest
+  - type: OpenAPI
+    url: https://slides.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://developers.google.com/slides/api/guides/authorizing
+  - type: Quickstart
+    url: https://developers.google.com/slides/api/quickstart/python
+  - type: Guides
+    url: https://developers.google.com/slides/api/guides/concepts
+  - type: Code Samples
+    url: https://developers.google.com/slides/api/samples
+  - type: Pricing
+    url: https://developers.google.com/slides/api/limits
+  - type: Terms of Service
+    url: https://developers.google.com/terms
+  - type: Support
+    url: https://developers.google.com/slides/api/support
+common:
+- type: Portal
+  url: https://console.cloud.google.com/
+- type: Authentication
+  url: https://developers.google.com/identity/protocols/oauth2
+- type: Getting Started
+  url: https://developers.google.com/slides/api/quickstart/python
+- type: Status
+  url: https://status.cloud.google.com/
+- type: Privacy Policy
+  url: https://policies.google.com/privacy
+- type: Terms of Service
+  url: https://policies.google.com/terms
+maintainers:
+- FN: Google
+  email: google-slides-api@google.com
+  url: https://developers.google.com/slides
