@@ -1,0 +1,2933 @@
+openapi: 3.1.0
+info:
+  title: Google Slides API
+  description: >
+    Reads and writes Google Slides presentations. The Google Slides API lets you
+    create and modify Google Slides presentations. Apps can integrate with the
+    Slides API to create presentations, add and modify slides, format text and
+    shapes, embed charts and images, and perform batch updates to presentations
+    programmatically.
+  version: v1
+  contact:
+    name: Google Workspace Developer Support
+    url: https://developers.google.com/slides/api/support
+  license:
+    name: Google APIs Terms of Service
+    url: https://developers.google.com/terms
+  x-logo:
+    url: https://www.gstatic.com/images/branding/product/2x/slides_2020q4_48dp.png
+
+servers:
+  - url: https://slides.googleapis.com
+    description: Google Slides API Production Server
+
+security:
+  - OAuth2: []
+
+tags:
+  - name: Presentations
+    description: Operations on Google Slides presentations
+  - name: Pages
+    description: Operations on pages within presentations
+
+paths:
+  /v1/presentations:
+    post:
+      summary: Create Presentation
+      description: >
+        Creates a blank presentation using the title given in the request. If a
+        presentationId is provided, it is used as the ID of the new presentation.
+        Otherwise, a new ID is generated. Other fields in the request, including
+        any provided content, are ignored.
+      operationId: createPresentation
+      tags:
+        - Presentations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Presentation'
+            examples:
+              CreateBlankPresentation:
+                summary: Create a blank presentation with a title
+                value:
+                  title: My New Presentation
+      responses:
+        '200':
+          description: Successful response containing the created presentation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Presentation'
+        '400':
+          description: Bad Request - Invalid input parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/presentations/{presentationId}:
+    get:
+      summary: Get Presentation
+      description: >
+        Gets the latest version of the specified presentation.
+      operationId: getPresentation
+      tags:
+        - Presentations
+      parameters:
+        - $ref: '#/components/parameters/PresentationId'
+      responses:
+        '200':
+          description: Successful response containing the presentation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Presentation'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found - Presentation does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/presentations/{presentationId}:batchUpdate:
+    post:
+      summary: Batch Update Presentation
+      description: >
+        Applies one or more updates to the presentation. Each request is
+        validated before being applied. If any request is not valid, then the
+        entire request will fail and nothing will be applied. Some requests have
+        replies to give you some information about how they are applied. Other
+        requests do not need to return information; these each return an empty
+        reply. The order of replies matches that of the requests.
+      operationId: batchUpdatePresentation
+      tags:
+        - Presentations
+      parameters:
+        - $ref: '#/components/parameters/PresentationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdatePresentationRequest'
+            examples:
+              InsertText:
+                summary: Insert text into a shape
+                value:
+                  requests:
+                    - insertText:
+                        objectId: MyShape_01
+                        text: Hello World
+                        insertionIndex: 0
+              CreateSlide:
+                summary: Create a new slide
+                value:
+                  requests:
+                    - createSlide:
+                        slideLayoutReference:
+                          predefinedLayout: TITLE_AND_BODY
+                        insertionIndex: 1
+      responses:
+        '200':
+          description: Successful response containing update replies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchUpdatePresentationResponse'
+        '400':
+          description: Bad Request - One or more requests are invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found - Presentation does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/presentations/{presentationId}/pages/{pageObjectId}:
+    get:
+      summary: Get Page
+      description: >
+        Gets the latest version of the specified page in the presentation.
+      operationId: getPage
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/PresentationId'
+        - $ref: '#/components/parameters/PageObjectId'
+      responses:
+        '200':
+          description: Successful response containing the page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found - Page does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail:
+    get:
+      summary: Get Page Thumbnail
+      description: >
+        Generates a thumbnail of the latest version of the specified page in
+        the presentation and returns a URL to the thumbnail image. This request
+        counts against the presentation's read quota.
+      operationId: getPageThumbnail
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/PresentationId'
+        - $ref: '#/components/parameters/PageObjectId'
+        - name: thumbnailProperties.mimeType
+          in: query
+          description: >
+            The optional mime type of the thumbnail image. If you don't specify
+            the mime type, the mime type defaults to PNG.
+          schema:
+            type: string
+            enum:
+              - PNG
+              - JPEG
+        - name: thumbnailProperties.thumbnailSize
+          in: query
+          description: >
+            The optional thumbnail image size. If you don't specify the size,
+            the server chooses a default size of the image.
+          schema:
+            type: string
+            enum:
+              - THUMBNAIL_SIZE_UNSPECIFIED
+              - LARGE
+              - MEDIUM
+              - SMALL
+      responses:
+        '200':
+          description: Successful response containing the thumbnail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thumbnail'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found - Page does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: >
+        Google OAuth 2.0 authentication. Requires one of the following scopes
+        depending on the operation.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/presentations: See, edit, create, and delete all your Google Slides presentations
+            https://www.googleapis.com/auth/presentations.readonly: See all your Google Slides presentations
+            https://www.googleapis.com/auth/drive: See, edit, create, and delete all of your Google Drive files
+            https://www.googleapis.com/auth/drive.file: See, edit, create, and delete only the specific Google Drive files you use with this app
+            https://www.googleapis.com/auth/drive.readonly: See and download all your Google Drive files
+            https://www.googleapis.com/auth/spreadsheets: See, edit, create, and delete all your Google Sheets spreadsheets
+            https://www.googleapis.com/auth/spreadsheets.readonly: See all your Google Sheets spreadsheets
+
+  parameters:
+    PresentationId:
+      name: presentationId
+      in: path
+      required: true
+      description: The ID of the presentation.
+      schema:
+        type: string
+    PageObjectId:
+      name: pageObjectId
+      in: path
+      required: true
+      description: The object ID of the page to retrieve.
+      schema:
+        type: string
+
+  schemas:
+    Presentation:
+      type: object
+      description: A Google Slides presentation.
+      properties:
+        presentationId:
+          type: string
+          description: The ID of the presentation.
+          readOnly: true
+        title:
+          type: string
+          description: The title of the presentation.
+        pageSize:
+          $ref: '#/components/schemas/Size'
+        slides:
+          type: array
+          description: >
+            The slides in the presentation. A slide inherits properties from a
+            slide layout.
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+        masters:
+          type: array
+          description: >
+            The slide masters in the presentation. A slide master contains all
+            common page elements and the common properties for a set of layouts.
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+        layouts:
+          type: array
+          description: >
+            The layouts in the presentation. A layout is a template that
+            determines how content is arranged and styled on the slides that
+            inherit from that layout.
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+        locale:
+          type: string
+          description: >
+            The locale of the presentation as an IETF BCP 47 language tag.
+        revisionId:
+          type: string
+          description: >
+            Output only. The revision ID of the presentation. Can be used in
+            update requests to assert that the presentation revision has not
+            changed since the last read operation. Only populated if the user
+            has edit access to the presentation. The revision ID is not a
+            sequential number but an opaque string. The format may change over
+            time. A returned revision ID is only guaranteed to be valid for 24
+            hours after it has been returned and cannot be shared across users.
+          readOnly: true
+        notesMaster:
+          $ref: '#/components/schemas/Page'
+          description: >
+            The notes master in the presentation. It serves as the template for
+            the notes pages of all slides.
+          readOnly: true
+
+    Page:
+      type: object
+      description: A page in a presentation.
+      properties:
+        objectId:
+          type: string
+          description: >
+            The object ID for this page. Object IDs used by Page and
+            PageElement share the same namespace.
+        pageType:
+          type: string
+          description: The type of the page.
+          enum:
+            - SLIDE
+            - MASTER
+            - LAYOUT
+            - NOTES
+            - NOTES_MASTER
+        pageElements:
+          type: array
+          description: The page elements rendered on the page.
+          items:
+            $ref: '#/components/schemas/PageElement'
+        revisionId:
+          type: string
+          description: >
+            Output only. The revision ID of the presentation containing this
+            page. Can be used in update requests to assert the presentation
+            revision has not changed since the last read operation.
+          readOnly: true
+        pageProperties:
+          $ref: '#/components/schemas/PageProperties'
+        slideProperties:
+          $ref: '#/components/schemas/SlideProperties'
+        layoutProperties:
+          $ref: '#/components/schemas/LayoutProperties'
+        notesProperties:
+          $ref: '#/components/schemas/NotesProperties'
+        masterProperties:
+          $ref: '#/components/schemas/MasterProperties'
+
+    PageElement:
+      type: object
+      description: A visual element rendered on a page.
+      properties:
+        objectId:
+          type: string
+          description: The object ID for this page element.
+        size:
+          $ref: '#/components/schemas/Size'
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        title:
+          type: string
+          description: The title of the page element for accessibility.
+        description:
+          type: string
+          description: The description of the page element for accessibility.
+        shape:
+          $ref: '#/components/schemas/Shape'
+        image:
+          $ref: '#/components/schemas/Image'
+        video:
+          $ref: '#/components/schemas/Video'
+        line:
+          $ref: '#/components/schemas/Line'
+        table:
+          $ref: '#/components/schemas/Table'
+        wordArt:
+          $ref: '#/components/schemas/WordArt'
+        sheetsChart:
+          $ref: '#/components/schemas/SheetsChart'
+        elementGroup:
+          $ref: '#/components/schemas/Group'
+        speakerSpotlight:
+          $ref: '#/components/schemas/SpeakerSpotlight'
+
+    Shape:
+      type: object
+      description: >
+        A PageElement kind representing a generic shape that does not have a
+        more specific classification.
+      properties:
+        shapeType:
+          type: string
+          description: The type of the shape.
+          enum:
+            - TYPE_UNSPECIFIED
+            - TEXT_BOX
+            - RECTANGLE
+            - ROUND_RECTANGLE
+            - ELLIPSE
+            - ARC
+            - BENT_ARROW
+            - BENT_UP_ARROW
+            - BEVEL
+            - BLOCK_ARC
+            - BRACE_PAIR
+            - BRACKET_PAIR
+            - CAN
+            - CHEVRON
+            - CHORD
+            - CLOUD
+            - CORNER
+            - CUBE
+            - CURVED_DOWN_ARROW
+            - CURVED_LEFT_ARROW
+            - CURVED_RIGHT_ARROW
+            - CURVED_UP_ARROW
+            - CUSTOM
+            - DECAGON
+            - DIAGONAL_STRIPE
+            - DIAMOND
+            - DODECAGON
+            - DONUT
+            - DOUBLE_WAVE
+            - DOWN_ARROW
+            - DOWN_ARROW_CALLOUT
+            - FLOW_CHART_ALTERNATE_PROCESS
+            - FLOW_CHART_COLLATE
+            - FLOW_CHART_CONNECTOR
+            - FLOW_CHART_DECISION
+            - FLOW_CHART_DELAY
+            - FLOW_CHART_DISPLAY
+            - FLOW_CHART_DOCUMENT
+            - FLOW_CHART_EXTRACT
+            - FLOW_CHART_INPUT_OUTPUT
+            - FLOW_CHART_INTERNAL_STORAGE
+            - FLOW_CHART_MAGNETIC_DISK
+            - FLOW_CHART_MAGNETIC_DRUM
+            - FLOW_CHART_MAGNETIC_TAPE
+            - FLOW_CHART_MANUAL_INPUT
+            - FLOW_CHART_MANUAL_OPERATION
+            - FLOW_CHART_MERGE
+            - FLOW_CHART_MULTIDOCUMENT
+            - FLOW_CHART_OFFLINE_STORAGE
+            - FLOW_CHART_OFFPAGE_CONNECTOR
+            - FLOW_CHART_ONLINE_STORAGE
+            - FLOW_CHART_OR
+            - FLOW_CHART_PREDEFINED_PROCESS
+            - FLOW_CHART_PREPARATION
+            - FLOW_CHART_PROCESS
+            - FLOW_CHART_PUNCHED_CARD
+            - FLOW_CHART_PUNCHED_TAPE
+            - FLOW_CHART_SORT
+            - FLOW_CHART_SUMMING_JUNCTION
+            - FLOW_CHART_TERMINATOR
+            - FOLDED_CORNER
+            - FRAME
+            - HALF_FRAME
+            - HEART
+            - HEPTAGON
+            - HEXAGON
+            - HOME_PLATE
+            - HORIZONTAL_SCROLL
+            - IRREGULAR_SEAL_1
+            - IRREGULAR_SEAL_2
+            - LEFT_ARROW
+            - LEFT_ARROW_CALLOUT
+            - LEFT_BRACE
+            - LEFT_BRACKET
+            - LEFT_RIGHT_ARROW
+            - LEFT_RIGHT_ARROW_CALLOUT
+            - LEFT_RIGHT_UP_ARROW
+            - LEFT_UP_ARROW
+            - LIGHTNING_BOLT
+            - MATH_DIVIDE
+            - MATH_EQUAL
+            - MATH_MINUS
+            - MATH_MULTIPLY
+            - MATH_NOT_EQUAL
+            - MATH_PLUS
+            - MOON
+            - NO_SMOKING
+            - NOTCHED_RIGHT_ARROW
+            - OCTAGON
+            - PARALLELOGRAM
+            - PENTAGON
+            - PIE
+            - PLAQUE
+            - PLUS
+            - QUAD_ARROW
+            - QUAD_ARROW_CALLOUT
+            - RIBBON
+            - RIBBON_2
+            - RIGHT_ARROW
+            - RIGHT_ARROW_CALLOUT
+            - RIGHT_BRACE
+            - RIGHT_BRACKET
+            - ROUND_1_RECTANGLE
+            - ROUND_2_DIAGONAL_RECTANGLE
+            - ROUND_2_SAME_RECTANGLE
+            - RIGHT_TRIANGLE
+            - SMILEY_FACE
+            - SNIP_1_RECTANGLE
+            - SNIP_2_DIAGONAL_RECTANGLE
+            - SNIP_2_SAME_RECTANGLE
+            - SNIP_ROUND_RECTANGLE
+            - STAR_10
+            - STAR_12
+            - STAR_16
+            - STAR_24
+            - STAR_32
+            - STAR_4
+            - STAR_5
+            - STAR_6
+            - STAR_7
+            - STAR_8
+            - STRIPED_RIGHT_ARROW
+            - SUN
+            - TRAPEZOID
+            - TRIANGLE
+            - UP_ARROW
+            - UP_ARROW_CALLOUT
+            - UP_DOWN_ARROW
+            - UTURN_ARROW
+            - VERTICAL_SCROLL
+            - WAVE
+            - WEDGE_ELLIPSE_CALLOUT
+            - WEDGE_RECTANGLE_CALLOUT
+            - WEDGE_ROUND_RECTANGLE_CALLOUT
+        text:
+          $ref: '#/components/schemas/TextContent'
+        shapeProperties:
+          $ref: '#/components/schemas/ShapeProperties'
+        placeholder:
+          $ref: '#/components/schemas/Placeholder'
+
+    Image:
+      type: object
+      description: >
+        A PageElement kind representing an image.
+      properties:
+        contentUrl:
+          type: string
+          description: >
+            An URL to an image with a default lifetime of 30 minutes. This URL
+            is tagged with the account of the requester.
+          readOnly: true
+        sourceUrl:
+          type: string
+          description: >
+            The source URL is the URL used to insert the image. The source URL
+            can be empty.
+        imageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+        placeholder:
+          $ref: '#/components/schemas/Placeholder'
+
+    Video:
+      type: object
+      description: >
+        A PageElement kind representing a video.
+      properties:
+        url:
+          type: string
+          description: >
+            An URL to a video. The URL is valid as long as the source video exists
+            and sharing settings do not change.
+        source:
+          type: string
+          description: The video source.
+          enum:
+            - SOURCE_UNSPECIFIED
+            - YOUTUBE
+            - DRIVE
+            - GOOGLE_MEET
+        id:
+          type: string
+          description: >
+            The video source's unique identifier for this video.
+        videoProperties:
+          $ref: '#/components/schemas/VideoProperties'
+
+    Line:
+      type: object
+      description: >
+        A PageElement kind representing a non-connector line, straight
+        connector, curved connector, or bent connector.
+      properties:
+        lineCategory:
+          type: string
+          description: The category of the line.
+          enum:
+            - LINE_CATEGORY_UNSPECIFIED
+            - STRAIGHT
+            - BENT
+            - CURVED
+        lineType:
+          type: string
+          description: The type of the line.
+          enum:
+            - TYPE_UNSPECIFIED
+            - STRAIGHT_CONNECTOR_1
+            - BENT_CONNECTOR_2
+            - BENT_CONNECTOR_3
+            - BENT_CONNECTOR_4
+            - BENT_CONNECTOR_5
+            - CURVED_CONNECTOR_2
+            - CURVED_CONNECTOR_3
+            - CURVED_CONNECTOR_4
+            - CURVED_CONNECTOR_5
+            - STRAIGHT_LINE
+        lineProperties:
+          $ref: '#/components/schemas/LineProperties'
+
+    Table:
+      type: object
+      description: >
+        A PageElement kind representing a table.
+      properties:
+        rows:
+          type: integer
+          description: Number of rows in the table.
+        columns:
+          type: integer
+          description: Number of columns in the table.
+        tableRows:
+          type: array
+          description: >
+            Properties and contents of each row. Cells that span multiple rows
+            are contained in only one of these rows and have a rowSpan greater
+            than 1.
+          items:
+            $ref: '#/components/schemas/TableRow'
+        tableColumns:
+          type: array
+          description: Properties of each column.
+          items:
+            $ref: '#/components/schemas/TableColumnProperties'
+        horizontalBorderRows:
+          type: array
+          description: Properties of horizontal cell borders.
+          items:
+            $ref: '#/components/schemas/TableBorderRow'
+        verticalBorderRows:
+          type: array
+          description: Properties of vertical cell borders.
+          items:
+            $ref: '#/components/schemas/TableBorderRow'
+
+    WordArt:
+      type: object
+      description: A PageElement kind representing word art.
+      properties:
+        renderedText:
+          type: string
+          description: The text rendered as word art.
+
+    SheetsChart:
+      type: object
+      description: >
+        A PageElement kind representing a linked chart embedded from Google
+        Sheets.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet that contains the source chart.
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+        contentUrl:
+          type: string
+          description: >
+            The URL of an image of the embedded chart, with a default lifetime
+            of 30 minutes.
+          readOnly: true
+        sheetsChartProperties:
+          $ref: '#/components/schemas/SheetsChartProperties'
+
+    Group:
+      type: object
+      description: >
+        A PageElement kind representing a joined collection of PageElements.
+      properties:
+        children:
+          type: array
+          description: The collection of elements in the group.
+          items:
+            $ref: '#/components/schemas/PageElement'
+
+    SpeakerSpotlight:
+      type: object
+      description: >
+        A PageElement kind representing a speaker spotlight.
+      properties:
+        speakerSpotlightProperties:
+          $ref: '#/components/schemas/SpeakerSpotlightProperties'
+
+    SpeakerSpotlightProperties:
+      type: object
+      description: The properties of a SpeakerSpotlight.
+      properties:
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+
+    TextContent:
+      type: object
+      description: >
+        The general text content. The text must reside in a compatible shape
+        (e.g., text box or rectangle) or a table cell in a page.
+      properties:
+        textElements:
+          type: array
+          description: The text contents broken down into text elements.
+          items:
+            $ref: '#/components/schemas/TextElement'
+        lists:
+          type: object
+          description: >
+            The bulleted lists contained in this text, keyed by list ID.
+          additionalProperties:
+            $ref: '#/components/schemas/List'
+
+    TextElement:
+      type: object
+      description: >
+        A TextElement describes the content of a range of indices in the text
+        content of a Shape or TableCell.
+      properties:
+        startIndex:
+          type: integer
+          description: >
+            The zero-based start index of this text element, in Unicode code
+            units of the UTF-16 encoding.
+        endIndex:
+          type: integer
+          description: >
+            The zero-based end index of this text element, exclusive, in Unicode
+            code units of the UTF-16 encoding.
+        paragraphMarker:
+          $ref: '#/components/schemas/ParagraphMarker'
+        textRun:
+          $ref: '#/components/schemas/TextRun'
+        autoText:
+          $ref: '#/components/schemas/AutoText'
+
+    TextRun:
+      type: object
+      description: >
+        A TextElement kind that represents a run of text that all has the same
+        styling.
+      properties:
+        content:
+          type: string
+          description: The text of this run.
+        style:
+          $ref: '#/components/schemas/TextStyle'
+
+    AutoText:
+      type: object
+      description: >
+        A TextElement kind that represents auto text.
+      properties:
+        type:
+          type: string
+          description: The type of this auto text.
+          enum:
+            - TYPE_UNSPECIFIED
+            - SLIDE_NUMBER
+        content:
+          type: string
+          description: >
+            The rendered content of this auto text, if available.
+        style:
+          $ref: '#/components/schemas/TextStyle'
+
+    ParagraphMarker:
+      type: object
+      description: >
+        A TextElement kind that represents the beginning of a new paragraph.
+      properties:
+        style:
+          $ref: '#/components/schemas/ParagraphStyle'
+        bullet:
+          $ref: '#/components/schemas/Bullet'
+
+    Bullet:
+      type: object
+      description: Describes the bullet of a paragraph.
+      properties:
+        listId:
+          type: string
+          description: The ID of the list this paragraph belongs to.
+        nestingLevel:
+          type: integer
+          description: The nesting level of this paragraph in the list.
+        glyph:
+          type: string
+          description: The rendered bullet glyph for this paragraph.
+        bulletStyle:
+          $ref: '#/components/schemas/TextStyle'
+
+    List:
+      type: object
+      description: A list describes the look and feel of bullets belonging to paragraphs.
+      properties:
+        listId:
+          type: string
+          description: The ID of the list.
+        nestingLevel:
+          type: object
+          description: >
+            A map of nesting levels to the properties of bullets at the
+            associated level.
+          additionalProperties:
+            $ref: '#/components/schemas/NestingLevel'
+
+    NestingLevel:
+      type: object
+      description: >
+        Contains properties describing the look and feel of a list bullet at
+        a given level of nesting.
+      properties:
+        bulletStyle:
+          $ref: '#/components/schemas/TextStyle'
+
+    TextStyle:
+      type: object
+      description: >
+        Represents the styling that can be applied to a TextRun. If this text
+        is contained in a shape with a parent placeholder, then these text styles
+        may be inherited from the parent.
+      properties:
+        backgroundColor:
+          $ref: '#/components/schemas/OptionalColor'
+        foregroundColor:
+          $ref: '#/components/schemas/OptionalColor'
+        bold:
+          type: boolean
+          description: Whether the text is bold.
+        italic:
+          type: boolean
+          description: Whether the text is italicized.
+        fontFamily:
+          type: string
+          description: The font family of the text.
+        fontSize:
+          $ref: '#/components/schemas/Dimension'
+        link:
+          $ref: '#/components/schemas/Link'
+        baselineOffset:
+          type: string
+          description: The text's vertical offset from its normal position.
+          enum:
+            - BASELINE_OFFSET_UNSPECIFIED
+            - NONE
+            - SUPERSCRIPT
+            - SUBSCRIPT
+        smallCaps:
+          type: boolean
+          description: Whether the text is in small capital letters.
+        strikethrough:
+          type: boolean
+          description: Whether the text is struck through.
+        underline:
+          type: boolean
+          description: Whether the text is underlined.
+        weightedFontFamily:
+          $ref: '#/components/schemas/WeightedFontFamily'
+
+    WeightedFontFamily:
+      type: object
+      description: Represents a font family and weight of text.
+      properties:
+        fontFamily:
+          type: string
+          description: The font family of the text.
+        weight:
+          type: integer
+          description: >
+            The weight of the font. This field can have any value that is a
+            multiple of 100 between 100 and 900, inclusive.
+
+    ParagraphStyle:
+      type: object
+      description: >
+        Styles that apply to a whole paragraph. If this text is contained in a
+        shape with a parent placeholder, then these paragraph styles may be
+        inherited from the parent.
+      properties:
+        lineSpacing:
+          type: number
+          description: >
+            The amount of space between lines, as a percentage of normal, where
+            normal is represented as 100.0.
+        alignment:
+          type: string
+          description: The text alignment for this paragraph.
+          enum:
+            - ALIGNMENT_UNSPECIFIED
+            - START
+            - CENTER
+            - END
+            - JUSTIFIED
+        indentStart:
+          $ref: '#/components/schemas/Dimension'
+        indentEnd:
+          $ref: '#/components/schemas/Dimension'
+        indentFirstLine:
+          $ref: '#/components/schemas/Dimension'
+        direction:
+          type: string
+          description: The text direction of this paragraph.
+          enum:
+            - TEXT_DIRECTION_UNSPECIFIED
+            - LEFT_TO_RIGHT
+            - RIGHT_TO_LEFT
+        spacingMode:
+          type: string
+          description: The spacing mode for the paragraph.
+          enum:
+            - SPACING_MODE_UNSPECIFIED
+            - NEVER_COLLAPSE
+            - COLLAPSE_LISTS
+        spaceAbove:
+          $ref: '#/components/schemas/Dimension'
+        spaceBelow:
+          $ref: '#/components/schemas/Dimension'
+
+    Link:
+      type: object
+      description: A hypertext link.
+      properties:
+        url:
+          type: string
+          description: If set, indicates this is a link to the external web page at this URL.
+        relativeLink:
+          type: string
+          description: >
+            If set, indicates this is a link to a slide in this presentation,
+            addressed by its position.
+          enum:
+            - RELATIVE_SLIDE_LINK_UNSPECIFIED
+            - NEXT_SLIDE
+            - PREVIOUS_SLIDE
+            - FIRST_SLIDE
+            - LAST_SLIDE
+        pageObjectId:
+          type: string
+          description: >
+            If set, indicates this is a link to the specific page in this
+            presentation with this ID.
+        slideIndex:
+          type: integer
+          description: >
+            If set, indicates this is a link to the slide at this zero-based
+            index in the presentation.
+
+    ShapeProperties:
+      type: object
+      description: >
+        The properties of a Shape. If the shape is a placeholder shape, then
+        these properties may be inherited from its parent placeholder shape.
+      properties:
+        shapeBackgroundFill:
+          $ref: '#/components/schemas/ShapeBackgroundFill'
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+        link:
+          $ref: '#/components/schemas/Link'
+        contentAlignment:
+          type: string
+          description: The alignment of the content in the shape.
+          enum:
+            - CONTENT_ALIGNMENT_UNSPECIFIED
+            - CONTENT_ALIGNMENT_UNSUPPORTED
+            - TOP
+            - MIDDLE
+            - BOTTOM
+        autofit:
+          $ref: '#/components/schemas/Autofit'
+
+    Autofit:
+      type: object
+      description: The autofit properties of a Shape.
+      properties:
+        autofitType:
+          type: string
+          description: The autofit type of the shape.
+          enum:
+            - AUTOFIT_TYPE_UNSPECIFIED
+            - NONE
+            - TEXT_AUTOFIT
+            - SHAPE_AUTOFIT
+        fontScale:
+          type: number
+          description: >
+            The font scale applied to the shape. For shapes with autofit enabled,
+            this is the font scale value applied by the auto-fit algorithm.
+
+    ShapeBackgroundFill:
+      type: object
+      description: The background fill of a shape.
+      properties:
+        propertyState:
+          type: string
+          description: >
+            The background fill property state.
+          enum:
+            - RENDERED
+            - NOT_RENDERED
+            - INHERIT
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+
+    ImageProperties:
+      type: object
+      description: The properties of an Image.
+      properties:
+        cropProperties:
+          $ref: '#/components/schemas/CropProperties'
+        transparency:
+          type: number
+          description: >
+            The transparency effect of the image. The value should be in the
+            interval [0.0, 1.0], where 0 means no effect and 1 means completely
+            transparent.
+        brightness:
+          type: number
+          description: >
+            The brightness effect of the image. The value should be in the
+            interval [-1.0, 1.0], where 0 means no effect.
+        contrast:
+          type: number
+          description: >
+            The contrast effect of the image. The value should be in the
+            interval [-1.0, 1.0], where 0 means no effect.
+        recolor:
+          $ref: '#/components/schemas/Recolor'
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+        link:
+          $ref: '#/components/schemas/Link'
+
+    CropProperties:
+      type: object
+      description: >
+        The crop properties of an object enclosed in a container.
+      properties:
+        leftOffset:
+          type: number
+          description: >
+            The offset specifies the left edge of the crop rectangle that is
+            located to the right of the original bounding rectangle left edge,
+            relative to the object's original width.
+        rightOffset:
+          type: number
+          description: >
+            The offset specifies how far inward the right edge of the crop
+            rectangle is from the right edge of the original bounding rectangle.
+        topOffset:
+          type: number
+          description: >
+            The offset specifies how far inward the top edge of the crop
+            rectangle is from the top edge of the original bounding rectangle.
+        bottomOffset:
+          type: number
+          description: >
+            The offset specifies how far inward the bottom edge of the crop
+            rectangle is from the bottom edge of the original bounding rectangle.
+        angle:
+          type: number
+          description: >
+            The rotation angle of the crop window around its center, in radians.
+
+    Recolor:
+      type: object
+      description: >
+        A recolor effect applied on an image.
+      properties:
+        recolorStops:
+          type: array
+          description: The recolor effect is represented by a gradient.
+          items:
+            $ref: '#/components/schemas/ColorStop'
+        name:
+          type: string
+          description: The name of the recolor effect.
+          enum:
+            - NONE
+            - LIGHT1
+            - LIGHT2
+            - LIGHT3
+            - LIGHT4
+            - LIGHT5
+            - LIGHT6
+            - LIGHT7
+            - LIGHT8
+            - LIGHT9
+            - LIGHT10
+            - DARK1
+            - DARK2
+            - DARK3
+            - DARK4
+            - DARK5
+            - DARK6
+            - DARK7
+            - DARK8
+            - DARK9
+            - DARK10
+            - GRAYSCALE
+            - NEGATIVE
+            - SEPIA
+            - CUSTOM
+
+    ColorStop:
+      type: object
+      description: A color and position in a gradient band.
+      properties:
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: >
+            The alpha value of this color in the gradient band. Defaults to 1.0,
+            fully opaque.
+        position:
+          type: number
+          description: >
+            The relative position of the color stop in the gradient band measured
+            in percentage.
+
+    VideoProperties:
+      type: object
+      description: The properties of a Video.
+      properties:
+        outline:
+          $ref: '#/components/schemas/Outline'
+        autoPlay:
+          type: boolean
+          description: Whether to enable video autoplay when the page is displayed.
+        start:
+          type: integer
+          description: The time at which to start playback, measured in seconds from the beginning.
+        end:
+          type: integer
+          description: The time at which to end playback, measured in seconds from the beginning.
+        mute:
+          type: boolean
+          description: Whether to mute the audio during video playback.
+
+    LineProperties:
+      type: object
+      description: The properties of a Line.
+      properties:
+        lineFill:
+          $ref: '#/components/schemas/LineFill'
+        weight:
+          $ref: '#/components/schemas/Dimension'
+        dashStyle:
+          type: string
+          description: The dash style of the line.
+          enum:
+            - DASH_STYLE_UNSPECIFIED
+            - SOLID
+            - DOT
+            - DASH
+            - DASH_DOT
+            - LONG_DASH
+            - LONG_DASH_DOT
+        startArrow:
+          type: string
+          description: The style of the arrow at the beginning of the line.
+          enum:
+            - ARROW_STYLE_UNSPECIFIED
+            - NONE
+            - STEALTH_ARROW
+            - FILL_ARROW
+            - FILL_CIRCLE
+            - FILL_SQUARE
+            - FILL_DIAMOND
+            - OPEN_ARROW
+            - OPEN_CIRCLE
+            - OPEN_SQUARE
+            - OPEN_DIAMOND
+        endArrow:
+          type: string
+          description: The style of the arrow at the end of the line.
+          enum:
+            - ARROW_STYLE_UNSPECIFIED
+            - NONE
+            - STEALTH_ARROW
+            - FILL_ARROW
+            - FILL_CIRCLE
+            - FILL_SQUARE
+            - FILL_DIAMOND
+            - OPEN_ARROW
+            - OPEN_CIRCLE
+            - OPEN_SQUARE
+            - OPEN_DIAMOND
+        startConnection:
+          $ref: '#/components/schemas/LineConnection'
+        endConnection:
+          $ref: '#/components/schemas/LineConnection'
+        link:
+          $ref: '#/components/schemas/Link'
+
+    LineConnection:
+      type: object
+      description: The properties for one end of a Line connection.
+      properties:
+        connectedObjectId:
+          type: string
+          description: The object ID of the connected page element.
+        connectionSiteIndex:
+          type: integer
+          description: >
+            The index of the connection site on the connected page element.
+
+    LineFill:
+      type: object
+      description: The fill of a line.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+
+    SheetsChartProperties:
+      type: object
+      description: The properties of a SheetsChart.
+      properties:
+        chartImageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+
+    TableRow:
+      type: object
+      description: Properties and contents of each row in a table.
+      properties:
+        rowHeight:
+          $ref: '#/components/schemas/Dimension'
+        tableCells:
+          type: array
+          description: >
+            Properties and contents of each cell. Cells that span multiple
+            columns are represented only once with a columnSpan greater than 1.
+          items:
+            $ref: '#/components/schemas/TableCell'
+        tableRowProperties:
+          $ref: '#/components/schemas/TableRowProperties'
+
+    TableCell:
+      type: object
+      description: Properties and contents of each table cell.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        rowSpan:
+          type: integer
+          description: Row span of the cell.
+        columnSpan:
+          type: integer
+          description: Column span of the cell.
+        text:
+          $ref: '#/components/schemas/TextContent'
+        tableCellProperties:
+          $ref: '#/components/schemas/TableCellProperties'
+
+    TableCellLocation:
+      type: object
+      description: A location of a single table cell within a table.
+      properties:
+        rowIndex:
+          type: integer
+          description: The 0-based row index.
+        columnIndex:
+          type: integer
+          description: The 0-based column index.
+
+    TableCellProperties:
+      type: object
+      description: The properties of a TableCell.
+      properties:
+        tableCellBackgroundFill:
+          $ref: '#/components/schemas/TableCellBackgroundFill'
+        contentAlignment:
+          type: string
+          description: The alignment of content within the table cell.
+          enum:
+            - CONTENT_ALIGNMENT_UNSPECIFIED
+            - CONTENT_ALIGNMENT_UNSUPPORTED
+            - TOP
+            - MIDDLE
+            - BOTTOM
+
+    TableCellBackgroundFill:
+      type: object
+      description: The table cell background fill.
+      properties:
+        propertyState:
+          type: string
+          description: The background fill property state.
+          enum:
+            - RENDERED
+            - NOT_RENDERED
+            - INHERIT
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+
+    TableRowProperties:
+      type: object
+      description: Properties of each row in a table.
+      properties:
+        minRowHeight:
+          $ref: '#/components/schemas/Dimension'
+
+    TableColumnProperties:
+      type: object
+      description: Properties of each column in a table.
+      properties:
+        columnWidth:
+          $ref: '#/components/schemas/Dimension'
+
+    TableBorderRow:
+      type: object
+      description: Contents of each border row in a table.
+      properties:
+        tableBorderCells:
+          type: array
+          description: Properties of each border cell.
+          items:
+            $ref: '#/components/schemas/TableBorderCell'
+
+    TableBorderCell:
+      type: object
+      description: The properties of each border cell.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        tableBorderProperties:
+          $ref: '#/components/schemas/TableBorderProperties'
+
+    TableBorderProperties:
+      type: object
+      description: The border styling properties of a TableBorderCell.
+      properties:
+        tableBorderFill:
+          $ref: '#/components/schemas/TableBorderFill'
+        weight:
+          $ref: '#/components/schemas/Dimension'
+        dashStyle:
+          type: string
+          description: The dash style of the border.
+          enum:
+            - DASH_STYLE_UNSPECIFIED
+            - SOLID
+            - DOT
+            - DASH
+            - DASH_DOT
+            - LONG_DASH
+            - LONG_DASH_DOT
+
+    TableBorderFill:
+      type: object
+      description: The fill of a table border.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+
+    Placeholder:
+      type: object
+      description: >
+        The placeholder information that uniquely identifies a placeholder shape.
+      properties:
+        type:
+          type: string
+          description: The type of the placeholder.
+          enum:
+            - NONE
+            - BODY
+            - CHART
+            - CLIP_ART
+            - CENTERED_TITLE
+            - DIAGRAM
+            - DATE_AND_TIME
+            - FOOTER
+            - HEADER
+            - MEDIA
+            - OBJECT
+            - PICTURE
+            - SLIDE_NUMBER
+            - SUBTITLE
+            - TABLE
+            - TITLE
+            - SLIDE_IMAGE
+        index:
+          type: integer
+          description: >
+            The index of the placeholder. If the same placeholder types are
+            present in the same page, they would have different index values.
+        parentObjectId:
+          type: string
+          description: >
+            The object ID of this shape's parent placeholder.
+
+    PageProperties:
+      type: object
+      description: The properties of a Page.
+      properties:
+        pageBackgroundFill:
+          $ref: '#/components/schemas/PageBackgroundFill'
+        colorScheme:
+          $ref: '#/components/schemas/ColorScheme'
+
+    PageBackgroundFill:
+      type: object
+      description: The background fill of a page.
+      properties:
+        propertyState:
+          type: string
+          description: The background fill property state.
+          enum:
+            - RENDERED
+            - NOT_RENDERED
+            - INHERIT
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+        stretchedPictureFill:
+          $ref: '#/components/schemas/StretchedPictureFill'
+
+    StretchedPictureFill:
+      type: object
+      description: The stretched picture fill of a page background.
+      properties:
+        contentUrl:
+          type: string
+          description: >
+            Reading the contentUrl returns the content of the picture. The URL
+            has a default lifetime of 30 minutes.
+          readOnly: true
+        size:
+          $ref: '#/components/schemas/Size'
+
+    ColorScheme:
+      type: object
+      description: >
+        The palette of predefined colors for a page.
+      properties:
+        colors:
+          type: array
+          description: The ThemeColorType and corresponding concrete color pairs.
+          items:
+            $ref: '#/components/schemas/ThemeColorPair'
+
+    ThemeColorPair:
+      type: object
+      description: A pair mapping a theme color type to the concrete color it represents.
+      properties:
+        type:
+          type: string
+          description: The type of the theme color.
+          enum:
+            - THEME_COLOR_TYPE_UNSPECIFIED
+            - DARK1
+            - LIGHT1
+            - DARK2
+            - LIGHT2
+            - ACCENT1
+            - ACCENT2
+            - ACCENT3
+            - ACCENT4
+            - ACCENT5
+            - ACCENT6
+            - HYPERLINK
+            - FOLLOWED_HYPERLINK
+            - TEXT1
+            - BACKGROUND1
+            - TEXT2
+            - BACKGROUND2
+        color:
+          $ref: '#/components/schemas/RgbColor'
+
+    SlideProperties:
+      type: object
+      description: >
+        The properties of a Page that are only relevant for pages with pageType
+        SLIDE.
+      properties:
+        layoutObjectId:
+          type: string
+          description: >
+            The object ID of the layout that this slide is based on.
+        masterObjectId:
+          type: string
+          description: >
+            The object ID of the master that this slide is based on.
+        notesPage:
+          $ref: '#/components/schemas/Page'
+        isSkipped:
+          type: boolean
+          description: Whether the slide is skipped in the presentation mode.
+
+    LayoutProperties:
+      type: object
+      description: >
+        The properties of a Page that are only relevant for pages with pageType
+        LAYOUT.
+      properties:
+        masterObjectId:
+          type: string
+          description: >
+            The object ID of the master that this layout is based on.
+        name:
+          type: string
+          description: The name of the layout.
+        displayName:
+          type: string
+          description: The human-readable name of the layout.
+
+    NotesProperties:
+      type: object
+      description: >
+        The properties of a Page that are only relevant for pages with pageType
+        NOTES.
+      properties:
+        speakerNotesObjectId:
+          type: string
+          description: >
+            The object ID of the shape on this notes page that contains the
+            speaker notes for the corresponding slide.
+
+    MasterProperties:
+      type: object
+      description: >
+        The properties of a Page that are only relevant for pages with pageType
+        MASTER.
+      properties:
+        displayName:
+          type: string
+          description: The human-readable name of the master.
+
+    Outline:
+      type: object
+      description: The outline of a PageElement.
+      properties:
+        outlineFill:
+          $ref: '#/components/schemas/OutlineFill'
+        weight:
+          $ref: '#/components/schemas/Dimension'
+        dashStyle:
+          type: string
+          description: The dash style of the outline.
+          enum:
+            - DASH_STYLE_UNSPECIFIED
+            - SOLID
+            - DOT
+            - DASH
+            - DASH_DOT
+            - LONG_DASH
+            - LONG_DASH_DOT
+        propertyState:
+          type: string
+          description: The outline property state.
+          enum:
+            - RENDERED
+            - NOT_RENDERED
+            - INHERIT
+
+    OutlineFill:
+      type: object
+      description: The fill of the outline.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+
+    Shadow:
+      type: object
+      description: The shadow properties of a page element.
+      properties:
+        type:
+          type: string
+          description: The type of the shadow.
+          enum:
+            - SHADOW_TYPE_UNSPECIFIED
+            - OUTER
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        alignment:
+          type: string
+          description: The alignment point of the shadow.
+          enum:
+            - RECTANGLE_POSITION_UNSPECIFIED
+            - TOP_LEFT
+            - TOP_CENTER
+            - TOP_RIGHT
+            - LEFT_CENTER
+            - CENTER
+            - RIGHT_CENTER
+            - BOTTOM_LEFT
+            - BOTTOM_CENTER
+            - BOTTOM_RIGHT
+        blurRadius:
+          $ref: '#/components/schemas/Dimension'
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: >
+            The alpha of the shadow's color, from 0.0 to 1.0.
+        rotateWithShape:
+          type: boolean
+          description: Whether the shadow should rotate with the shape.
+        propertyState:
+          type: string
+          description: The shadow property state.
+          enum:
+            - RENDERED
+            - NOT_RENDERED
+            - INHERIT
+
+    SolidFill:
+      type: object
+      description: A solid color fill.
+      properties:
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: >
+            The fraction of this color that should be applied to the pixel. The
+            final pixel color is defined by the equation pixel_color = alpha *
+            this_color + (1.0 - alpha) * pixel_color. Value is in [0.0, 1.0].
+
+    OpaqueColor:
+      type: object
+      description: A themeable solid color value.
+      properties:
+        rgbColor:
+          $ref: '#/components/schemas/RgbColor'
+        themeColor:
+          type: string
+          description: An opaque theme color.
+          enum:
+            - THEME_COLOR_TYPE_UNSPECIFIED
+            - DARK1
+            - LIGHT1
+            - DARK2
+            - LIGHT2
+            - ACCENT1
+            - ACCENT2
+            - ACCENT3
+            - ACCENT4
+            - ACCENT5
+            - ACCENT6
+            - HYPERLINK
+            - FOLLOWED_HYPERLINK
+            - TEXT1
+            - BACKGROUND1
+            - TEXT2
+            - BACKGROUND2
+
+    OptionalColor:
+      type: object
+      description: >
+        A color that can either be fully opaque or fully transparent.
+      properties:
+        opaqueColor:
+          $ref: '#/components/schemas/OpaqueColor'
+
+    RgbColor:
+      type: object
+      description: An RGB color.
+      properties:
+        red:
+          type: number
+          description: The red component of the color, from 0.0 to 1.0.
+        green:
+          type: number
+          description: The green component of the color, from 0.0 to 1.0.
+        blue:
+          type: number
+          description: The blue component of the color, from 0.0 to 1.0.
+
+    Size:
+      type: object
+      description: A width and height.
+      properties:
+        width:
+          $ref: '#/components/schemas/Dimension'
+        height:
+          $ref: '#/components/schemas/Dimension'
+
+    Dimension:
+      type: object
+      description: A magnitude in a single direction in the specified units.
+      properties:
+        magnitude:
+          type: number
+          description: The magnitude.
+        unit:
+          type: string
+          description: The units for the magnitude.
+          enum:
+            - UNIT_UNSPECIFIED
+            - EMU
+            - PT
+
+    AffineTransform:
+      type: object
+      description: >
+        A 3x3 matrix that represents an affine transformation. The matrix maps
+        a source coordinate (x, y) to a destination coordinate (x', y')
+        according to matrix multiplication.
+      properties:
+        scaleX:
+          type: number
+          description: The X coordinate scaling element.
+        scaleY:
+          type: number
+          description: The Y coordinate scaling element.
+        shearX:
+          type: number
+          description: The X coordinate shearing element.
+        shearY:
+          type: number
+          description: The Y coordinate shearing element.
+        translateX:
+          type: number
+          description: The X coordinate translation element.
+        translateY:
+          type: number
+          description: The Y coordinate translation element.
+        unit:
+          type: string
+          description: The units for translate elements.
+          enum:
+            - UNIT_UNSPECIFIED
+            - EMU
+            - PT
+
+    Thumbnail:
+      type: object
+      description: The thumbnail of a page.
+      properties:
+        contentUrl:
+          type: string
+          description: >
+            The content URL of the thumbnail image. The URL to the image has a
+            default lifetime of 30 minutes. This URL is tagged with the account
+            of the requester.
+        width:
+          type: integer
+          description: The positive width in pixels of the thumbnail image.
+        height:
+          type: integer
+          description: The positive height in pixels of the thumbnail image.
+
+    BatchUpdatePresentationRequest:
+      type: object
+      description: Request message for BatchUpdatePresentation.
+      properties:
+        requests:
+          type: array
+          description: A list of updates to apply to the presentation.
+          items:
+            $ref: '#/components/schemas/Request'
+        writeControl:
+          $ref: '#/components/schemas/WriteControl'
+
+    BatchUpdatePresentationResponse:
+      type: object
+      description: Response message from a BatchUpdatePresentation request.
+      properties:
+        presentationId:
+          type: string
+          description: The presentation the updates were applied to.
+        replies:
+          type: array
+          description: >
+            The reply of the updates. This maps 1:1 with the updates, although
+            replies to some requests may be empty.
+          items:
+            $ref: '#/components/schemas/Response'
+        writeControl:
+          $ref: '#/components/schemas/WriteControl'
+
+    WriteControl:
+      type: object
+      description: >
+        Provides control over how write requests are executed. When a write
+        request is made, the requiredRevisionId can be specified to indicate
+        that the write should only succeed if the presentation's current
+        revision matches the specified value.
+      properties:
+        requiredRevisionId:
+          type: string
+          description: >
+            The revision ID of the presentation required for the write request.
+            If specified, the write request is only processed if the current
+            revision ID of the presentation matches this value.
+
+    Request:
+      type: object
+      description: A single kind of update to apply to a presentation.
+      properties:
+        createSlide:
+          $ref: '#/components/schemas/CreateSlideRequest'
+        createShape:
+          $ref: '#/components/schemas/CreateShapeRequest'
+        createTable:
+          $ref: '#/components/schemas/CreateTableRequest'
+        createImage:
+          $ref: '#/components/schemas/CreateImageRequest'
+        createVideo:
+          $ref: '#/components/schemas/CreateVideoRequest'
+        createSheetsChart:
+          $ref: '#/components/schemas/CreateSheetsChartRequest'
+        createLine:
+          $ref: '#/components/schemas/CreateLineRequest'
+        insertText:
+          $ref: '#/components/schemas/InsertTextRequest'
+        insertTableRows:
+          $ref: '#/components/schemas/InsertTableRowsRequest'
+        insertTableColumns:
+          $ref: '#/components/schemas/InsertTableColumnsRequest'
+        deleteObject:
+          $ref: '#/components/schemas/DeleteObjectRequest'
+        deleteText:
+          $ref: '#/components/schemas/DeleteTextRequest'
+        deleteTableRow:
+          $ref: '#/components/schemas/DeleteTableRowRequest'
+        deleteTableColumn:
+          $ref: '#/components/schemas/DeleteTableColumnRequest'
+        replaceAllText:
+          $ref: '#/components/schemas/ReplaceAllTextRequest'
+        replaceAllShapesWithImage:
+          $ref: '#/components/schemas/ReplaceAllShapesWithImageRequest'
+        replaceAllShapesWithSheetsChart:
+          $ref: '#/components/schemas/ReplaceAllShapesWithSheetsChartRequest'
+        replaceImage:
+          $ref: '#/components/schemas/ReplaceImageRequest'
+        duplicateObject:
+          $ref: '#/components/schemas/DuplicateObjectRequest'
+        updateSlidesPosition:
+          $ref: '#/components/schemas/UpdateSlidesPositionRequest'
+        updatePageElementTransform:
+          $ref: '#/components/schemas/UpdatePageElementTransformRequest'
+        updateShapeProperties:
+          $ref: '#/components/schemas/UpdateShapePropertiesRequest'
+        updateImageProperties:
+          $ref: '#/components/schemas/UpdateImagePropertiesRequest'
+        updateVideoProperties:
+          $ref: '#/components/schemas/UpdateVideoPropertiesRequest'
+        updatePageProperties:
+          $ref: '#/components/schemas/UpdatePagePropertiesRequest'
+        updateTableCellProperties:
+          $ref: '#/components/schemas/UpdateTableCellPropertiesRequest'
+        updateLineProperties:
+          $ref: '#/components/schemas/UpdateLinePropertiesRequest'
+        updateTextStyle:
+          $ref: '#/components/schemas/UpdateTextStyleRequest'
+        updateParagraphStyle:
+          $ref: '#/components/schemas/UpdateParagraphStyleRequest'
+        updateTableBorderProperties:
+          $ref: '#/components/schemas/UpdateTableBorderPropertiesRequest'
+        updateTableColumnProperties:
+          $ref: '#/components/schemas/UpdateTableColumnPropertiesRequest'
+        updateTableRowProperties:
+          $ref: '#/components/schemas/UpdateTableRowPropertiesRequest'
+        updateSlideProperties:
+          $ref: '#/components/schemas/UpdateSlidePropertiesRequest'
+        updatePageElementAltText:
+          $ref: '#/components/schemas/UpdatePageElementAltTextRequest'
+        updatePageElementsZOrder:
+          $ref: '#/components/schemas/UpdatePageElementsZOrderRequest'
+        updateLineCategoryRequest:
+          $ref: '#/components/schemas/UpdateLineCategoryRequest'
+        rerouteLine:
+          $ref: '#/components/schemas/RerouteLineRequest'
+        createParagraphBullets:
+          $ref: '#/components/schemas/CreateParagraphBulletsRequest'
+        deleteParagraphBullets:
+          $ref: '#/components/schemas/DeleteParagraphBulletsRequest'
+        groupObjects:
+          $ref: '#/components/schemas/GroupObjectsRequest'
+        ungroupObjects:
+          $ref: '#/components/schemas/UngroupObjectsRequest'
+        mergeTableCells:
+          $ref: '#/components/schemas/MergeTableCellsRequest'
+        unmergeTableCells:
+          $ref: '#/components/schemas/UnmergeTableCellsRequest'
+        refreshSheetsChart:
+          $ref: '#/components/schemas/RefreshSheetsChartRequest'
+
+    Response:
+      type: object
+      description: A single response from an update.
+      properties:
+        createSlide:
+          $ref: '#/components/schemas/CreateSlideResponse'
+        createShape:
+          $ref: '#/components/schemas/CreateShapeResponse'
+        createTable:
+          $ref: '#/components/schemas/CreateTableResponse'
+        createImage:
+          $ref: '#/components/schemas/CreateImageResponse'
+        createVideo:
+          $ref: '#/components/schemas/CreateVideoResponse'
+        createSheetsChart:
+          $ref: '#/components/schemas/CreateSheetsChartResponse'
+        createLine:
+          $ref: '#/components/schemas/CreateLineResponse'
+        replaceAllText:
+          $ref: '#/components/schemas/ReplaceAllTextResponse'
+        replaceAllShapesWithImage:
+          $ref: '#/components/schemas/ReplaceAllShapesWithImageResponse'
+        replaceAllShapesWithSheetsChart:
+          $ref: '#/components/schemas/ReplaceAllShapesWithSheetsChartResponse'
+        duplicateObject:
+          $ref: '#/components/schemas/DuplicateObjectResponse'
+        groupObjects:
+          $ref: '#/components/schemas/GroupObjectsResponse'
+
+    CreateSlideRequest:
+      type: object
+      description: Creates a new slide.
+      properties:
+        objectId:
+          type: string
+          description: >
+            A user-supplied object ID. If specified, the ID must be unique among
+            all pages and page elements in the presentation.
+        insertionIndex:
+          type: integer
+          description: >
+            The optional zero-based index indicating where in the presentation
+            to insert the slide.
+        slideLayoutReference:
+          $ref: '#/components/schemas/LayoutReference'
+        placeholderIdMappings:
+          type: array
+          description: >
+            An optional list of object ID mappings from the placeholder(s) on
+            the layout to the placeholders that are created on the new slide.
+          items:
+            $ref: '#/components/schemas/LayoutPlaceholderIdMapping'
+
+    LayoutReference:
+      type: object
+      description: Slide layout reference.
+      properties:
+        predefinedLayout:
+          type: string
+          description: Predefined layout.
+          enum:
+            - PREDEFINED_LAYOUT_UNSPECIFIED
+            - BLANK
+            - CAPTION_ONLY
+            - TITLE
+            - TITLE_AND_BODY
+            - TITLE_AND_TWO_COLUMNS
+            - TITLE_ONLY
+            - SECTION_HEADER
+            - SECTION_TITLE_AND_DESCRIPTION
+            - ONE_COLUMN_TEXT
+            - MAIN_POINT
+            - BIG_NUMBER
+        layoutId:
+          type: string
+          description: Layout ID referring to an existing layout in the presentation.
+
+    LayoutPlaceholderIdMapping:
+      type: object
+      description: >
+        The mapping between a placeholder on a layout and an object ID for the
+        placeholder on a created slide.
+      properties:
+        layoutPlaceholder:
+          $ref: '#/components/schemas/Placeholder'
+        layoutPlaceholderObjectId:
+          type: string
+          description: >
+            The object ID of the placeholder on a layout that will be applied
+            to a slide.
+        objectId:
+          type: string
+          description: >
+            A user-supplied object ID for the placeholder identified above that
+            is to be created on the corresponding slide.
+
+    CreateShapeRequest:
+      type: object
+      description: Creates a new shape.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        shapeType:
+          type: string
+          description: The shape type.
+
+    CreateTableRequest:
+      type: object
+      description: Creates a new table.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        rows:
+          type: integer
+          description: Number of rows in the table.
+        columns:
+          type: integer
+          description: Number of columns in the table.
+
+    CreateImageRequest:
+      type: object
+      description: Creates an image.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        url:
+          type: string
+          description: >
+            The image URL. The image is fetched once at insertion time and a
+            copy is stored for display inside the presentation.
+
+    CreateVideoRequest:
+      type: object
+      description: Creates a video.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        source:
+          type: string
+          description: The video source.
+          enum:
+            - SOURCE_UNSPECIFIED
+            - YOUTUBE
+            - DRIVE
+            - GOOGLE_MEET
+        id:
+          type: string
+          description: >
+            The video source's unique identifier for this video.
+
+    CreateSheetsChartRequest:
+      type: object
+      description: Creates an embedded Google Sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet that contains the chart.
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+        linkingMode:
+          type: string
+          description: The mode with which the chart is linked to the source spreadsheet.
+          enum:
+            - NOT_LINKED_IMAGE
+            - LINKED
+
+    CreateLineRequest:
+      type: object
+      description: Creates a line.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        lineCategory:
+          type: string
+          description: The category of the line to be created.
+          enum:
+            - STRAIGHT
+            - BENT
+            - CURVED
+        category:
+          type: string
+          description: The category of the line to be created (preferred over lineCategory).
+          enum:
+            - LINE_CATEGORY_UNSPECIFIED
+            - STRAIGHT
+            - BENT
+            - CURVED
+
+    InsertTextRequest:
+      type: object
+      description: Inserts text into a shape or a table cell.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table cell.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        text:
+          type: string
+          description: >
+            The text to be inserted. Inserting a newline character will
+            implicitly create a new ParagraphMarker.
+        insertionIndex:
+          type: integer
+          description: >
+            The index where the text will be inserted, in Unicode code units
+            of the UTF-16 encoding.
+
+    InsertTableRowsRequest:
+      type: object
+      description: Inserts rows into a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to insert rows into.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        insertBelow:
+          type: boolean
+          description: Whether to insert new rows below the reference cell location.
+        number:
+          type: integer
+          description: The number of rows to be inserted.
+
+    InsertTableColumnsRequest:
+      type: object
+      description: Inserts columns into a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to insert columns into.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        insertRight:
+          type: boolean
+          description: Whether to insert new columns to the right of the reference cell location.
+        number:
+          type: integer
+          description: The number of columns to be inserted.
+
+    DeleteObjectRequest:
+      type: object
+      description: >
+        Deletes an object, either pages or page elements, from the presentation.
+      properties:
+        objectId:
+          type: string
+          description: >
+            The object ID of the page or page element to delete.
+
+    DeleteTextRequest:
+      type: object
+      description: Deletes text from a shape or a table cell.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table where the text will be deleted.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+
+    DeleteTableRowRequest:
+      type: object
+      description: Deletes a row from a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to delete rows from.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+
+    DeleteTableColumnRequest:
+      type: object
+      description: Deletes a column from a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to delete columns from.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+
+    ReplaceAllTextRequest:
+      type: object
+      description: >
+        Replaces all instances of text matching a criteria with replace text.
+      properties:
+        replaceText:
+          type: string
+          description: The text that will replace the matched text.
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        pageObjectIds:
+          type: array
+          description: >
+            If non-empty, limits the matches to page elements only on the
+            given pages.
+          items:
+            type: string
+
+    ReplaceAllShapesWithImageRequest:
+      type: object
+      description: >
+        Replaces all shapes that match the given criteria with the provided image.
+      properties:
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        imageUrl:
+          type: string
+          description: The image URL.
+        imageReplaceMethod:
+          type: string
+          description: The image replace method.
+          enum:
+            - IMAGE_REPLACE_METHOD_UNSPECIFIED
+            - CENTER_INSIDE
+            - CENTER_CROP
+        pageObjectIds:
+          type: array
+          description: If non-empty, limits to the given pages.
+          items:
+            type: string
+
+    ReplaceAllShapesWithSheetsChartRequest:
+      type: object
+      description: >
+        Replaces all shapes that match the given criteria with the provided
+        Google Sheets chart.
+      properties:
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet.
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+        linkingMode:
+          type: string
+          description: The mode with which the chart is linked to the source spreadsheet.
+          enum:
+            - NOT_LINKED_IMAGE
+            - LINKED
+        pageObjectIds:
+          type: array
+          description: If non-empty, limits to the given pages.
+          items:
+            type: string
+
+    ReplaceImageRequest:
+      type: object
+      description: Replaces an existing image with a new image.
+      properties:
+        imageObjectId:
+          type: string
+          description: The ID of the existing image that will be replaced.
+        url:
+          type: string
+          description: The URL of the new image.
+        imageReplaceMethod:
+          type: string
+          description: The replace method.
+          enum:
+            - IMAGE_REPLACE_METHOD_UNSPECIFIED
+            - CENTER_INSIDE
+            - CENTER_CROP
+
+    DuplicateObjectRequest:
+      type: object
+      description: >
+        Duplicates a slide or page element. When duplicating a slide, the
+        duplicate slide will be created immediately following the specified slide.
+      properties:
+        objectId:
+          type: string
+          description: The ID of the object to duplicate.
+        objectIds:
+          type: object
+          description: >
+            The object being duplicated may contain other objects. This defines
+            how the IDs of duplicated objects are generated.
+          additionalProperties:
+            type: string
+
+    UpdateSlidesPositionRequest:
+      type: object
+      description: Updates the position of slides in the presentation.
+      properties:
+        slideObjectIds:
+          type: array
+          description: The IDs of the slides in the presentation that should be moved.
+          items:
+            type: string
+        insertionIndex:
+          type: integer
+          description: >
+            The index where the slides should be inserted, based on the slide
+            arrangement before the move takes place.
+
+    UpdatePageElementTransformRequest:
+      type: object
+      description: >
+        Updates the transform of a page element.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the page element to update.
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        applyMode:
+          type: string
+          description: The apply mode of the transform update.
+          enum:
+            - APPLY_MODE_UNSPECIFIED
+            - RELATIVE
+            - ABSOLUTE
+
+    UpdateShapePropertiesRequest:
+      type: object
+      description: Update the properties of a Shape.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape.
+        shapeProperties:
+          $ref: '#/components/schemas/ShapeProperties'
+        fields:
+          type: string
+          description: >
+            The fields that should be updated. At least one field must be
+            specified. Uses Google's FieldMask format.
+
+    UpdateImagePropertiesRequest:
+      type: object
+      description: Update the properties of an Image.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the image.
+        imageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateVideoPropertiesRequest:
+      type: object
+      description: Update the properties of a Video.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the video.
+        videoProperties:
+          $ref: '#/components/schemas/VideoProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdatePagePropertiesRequest:
+      type: object
+      description: Updates the properties of a Page.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the page the update is applied to.
+        pageProperties:
+          $ref: '#/components/schemas/PageProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateTableCellPropertiesRequest:
+      type: object
+      description: Update the properties of a TableCell.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+        tableCellProperties:
+          $ref: '#/components/schemas/TableCellProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateLinePropertiesRequest:
+      type: object
+      description: Updates the properties of a Line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line.
+        lineProperties:
+          $ref: '#/components/schemas/LineProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateTextStyleRequest:
+      type: object
+      description: >
+        Update the styling of text in a Shape or Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table with the text to be styled.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        style:
+          $ref: '#/components/schemas/TextStyle'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateParagraphStyleRequest:
+      type: object
+      description: Updates the styling of paragraphs within a Shape or Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        style:
+          $ref: '#/components/schemas/ParagraphStyle'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateTableBorderPropertiesRequest:
+      type: object
+      description: Updates the properties of the table borders in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+        tableBorderProperties:
+          $ref: '#/components/schemas/TableBorderProperties'
+        borderPosition:
+          type: string
+          description: The border position in the table range.
+          enum:
+            - ALL
+            - BOTTOM
+            - INNER
+            - INNER_HORIZONTAL
+            - INNER_VERTICAL
+            - LEFT
+            - OUTER
+            - RIGHT
+            - TOP
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateTableColumnPropertiesRequest:
+      type: object
+      description: Updates the properties of a Table column.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        columnIndices:
+          type: array
+          description: The list of zero-based indices specifying which columns to update.
+          items:
+            type: integer
+        tableColumnProperties:
+          $ref: '#/components/schemas/TableColumnProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateTableRowPropertiesRequest:
+      type: object
+      description: Updates the properties of a Table row.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        rowIndices:
+          type: array
+          description: The list of zero-based indices specifying which rows to update.
+          items:
+            type: integer
+        tableRowProperties:
+          $ref: '#/components/schemas/TableRowProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdateSlidePropertiesRequest:
+      type: object
+      description: Updates the properties of a Slide.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the slide.
+        slideProperties:
+          $ref: '#/components/schemas/SlideProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+
+    UpdatePageElementAltTextRequest:
+      type: object
+      description: Updates the alt text title and/or description of a page element.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the page element.
+        title:
+          type: string
+          description: The updated alt text title of the page element.
+        description:
+          type: string
+          description: The updated alt text description of the page element.
+
+    UpdatePageElementsZOrderRequest:
+      type: object
+      description: Updates the Z-order of page elements.
+      properties:
+        pageElementObjectIds:
+          type: array
+          description: The object IDs of the page elements to update.
+          items:
+            type: string
+        operation:
+          type: string
+          description: The Z-order operation to apply on the page elements.
+          enum:
+            - Z_ORDER_OPERATION_UNSPECIFIED
+            - BRING_TO_FRONT
+            - BRING_FORWARD
+            - SEND_BACKWARD
+            - SEND_TO_BACK
+
+    UpdateLineCategoryRequest:
+      type: object
+      description: Updates the category of a line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line.
+        lineCategory:
+          type: string
+          description: The line category to update to.
+          enum:
+            - LINE_CATEGORY_UNSPECIFIED
+            - STRAIGHT
+            - BENT
+            - CURVED
+
+    RerouteLineRequest:
+      type: object
+      description: >
+        Reroutes a line such that it is connected at the two closest connection
+        sites on the connected page elements.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line to reroute.
+
+    CreateParagraphBulletsRequest:
+      type: object
+      description: Creates bullets for all of the paragraphs that overlap with a text range.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        bulletPreset:
+          type: string
+          description: The kinds of bullet glyphs to be used.
+          enum:
+            - BULLET_DISC_CIRCLE_SQUARE
+            - BULLET_DIAMONDX_ARROW3D_SQUARE
+            - BULLET_CHECKBOX
+            - BULLET_ARROW_DIAMOND_DISC
+            - BULLET_STAR_CIRCLE_SQUARE
+            - BULLET_ARROW3D_CIRCLE_SQUARE
+            - BULLET_LEFTTRIANGLE_DIAMOND_DISC
+            - BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE
+            - BULLET_DIAMOND_CIRCLE_SQUARE
+            - NUMBERED_DECIMAL_ALPHA_ROMAN
+            - NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS
+            - NUMBERED_DECIMAL_NESTED
+            - NUMBERED_UPPERALPHA_ALPHA_ROMAN
+            - NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL
+            - NUMBERED_ZERODIGIT_ALPHA_ROMAN
+
+    DeleteParagraphBulletsRequest:
+      type: object
+      description: Deletes bullets from all of the paragraphs that overlap with a text range.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table.
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+
+    GroupObjectsRequest:
+      type: object
+      description: Groups objects to create an object group.
+      properties:
+        groupObjectId:
+          type: string
+          description: A user-supplied object ID for the group to be created.
+        childrenObjectIds:
+          type: array
+          description: The object IDs of the objects to group.
+          items:
+            type: string
+
+    UngroupObjectsRequest:
+      type: object
+      description: Ungroups objects, such as groups.
+      properties:
+        objectIds:
+          type: array
+          description: >
+            The object IDs of the objects to ungroup. Only groups that are not
+            inside other groups can be ungrouped.
+          items:
+            type: string
+
+    MergeTableCellsRequest:
+      type: object
+      description: Merges cells in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+
+    UnmergeTableCellsRequest:
+      type: object
+      description: Unmerges cells in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+
+    RefreshSheetsChartRequest:
+      type: object
+      description: Refreshes an embedded Google Sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the chart to refresh.
+
+    PageElementProperties:
+      type: object
+      description: Common properties for a page element.
+      properties:
+        pageObjectId:
+          type: string
+          description: The object ID of the page where the element is located.
+        size:
+          $ref: '#/components/schemas/Size'
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+
+    Range:
+      type: object
+      description: Specifies a contiguous range of an indexed collection.
+      properties:
+        startIndex:
+          type: integer
+          description: The optional zero-based start index of the collection.
+        endIndex:
+          type: integer
+          description: The optional zero-based end index of the collection.
+        type:
+          type: string
+          description: The type of range.
+          enum:
+            - RANGE_TYPE_UNSPECIFIED
+            - FIXED_RANGE
+            - FROM_START_INDEX
+            - ALL
+
+    TableRange:
+      type: object
+      description: A table range represents a reference to a subset of a table.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        rowSpan:
+          type: integer
+          description: The row span of the table range.
+        columnSpan:
+          type: integer
+          description: The column span of the table range.
+
+    SubstringMatchCriteria:
+      type: object
+      description: >
+        A criteria that matches a specific string of text in a shape or table.
+      properties:
+        text:
+          type: string
+          description: The text to search for in the shape or table.
+        matchCase:
+          type: boolean
+          description: >
+            Indicates whether the search should respect case. True by default.
+
+    CreateSlideResponse:
+      type: object
+      description: The result of creating a slide.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created slide.
+
+    CreateShapeResponse:
+      type: object
+      description: The result of creating a shape.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created shape.
+
+    CreateTableResponse:
+      type: object
+      description: The result of creating a table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created table.
+
+    CreateImageResponse:
+      type: object
+      description: The result of creating an image.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created image.
+
+    CreateVideoResponse:
+      type: object
+      description: The result of creating a video.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created video.
+
+    CreateSheetsChartResponse:
+      type: object
+      description: The result of creating a sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created chart.
+
+    CreateLineResponse:
+      type: object
+      description: The result of creating a line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created line.
+
+    ReplaceAllTextResponse:
+      type: object
+      description: The result of replacing text.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of occurrences changed by replacing all text.
+
+    ReplaceAllShapesWithImageResponse:
+      type: object
+      description: The result of replacing shapes with an image.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of shapes replaced.
+
+    ReplaceAllShapesWithSheetsChartResponse:
+      type: object
+      description: The result of replacing shapes with a Sheets chart.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of shapes replaced.
+
+    DuplicateObjectResponse:
+      type: object
+      description: The response of duplicating an object.
+      properties:
+        objectId:
+          type: string
+          description: The ID of the new duplicate object.
+
+    GroupObjectsResponse:
+      type: object
+      description: The result of grouping objects.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created group.
+
+    ErrorResponse:
+      type: object
+      description: An error response from the Google Slides API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status code string.
+            details:
+              type: array
+              description: A list of messages carrying error details.
+              items:
+                type: object
+                additionalProperties: true

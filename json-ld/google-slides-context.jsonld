@@ -1,0 +1,1060 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "slides": "https://slides.googleapis.com/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "Presentation": {
+      "@id": "slides:Presentation",
+      "@context": {
+        "presentationId": {
+          "@id": "slides:Presentation/presentationId",
+          "@type": "xsd:string"
+        },
+        "title": {
+          "@id": "dcterms:title",
+          "@type": "xsd:string"
+        },
+        "pageSize": {
+          "@id": "slides:Presentation/pageSize",
+          "@type": "slides:Size"
+        },
+        "slides": {
+          "@id": "slides:Presentation/slides",
+          "@container": "@list"
+        },
+        "masters": {
+          "@id": "slides:Presentation/masters",
+          "@container": "@list"
+        },
+        "layouts": {
+          "@id": "slides:Presentation/layouts",
+          "@container": "@list"
+        },
+        "locale": {
+          "@id": "slides:Presentation/locale",
+          "@type": "xsd:string"
+        },
+        "revisionId": {
+          "@id": "slides:Presentation/revisionId",
+          "@type": "xsd:string"
+        },
+        "notesMaster": {
+          "@id": "slides:Presentation/notesMaster",
+          "@type": "slides:Page"
+        }
+      }
+    },
+
+    "Page": {
+      "@id": "slides:Page",
+      "@context": {
+        "objectId": {
+          "@id": "slides:Page/objectId",
+          "@type": "xsd:string"
+        },
+        "pageType": {
+          "@id": "slides:Page/pageType",
+          "@type": "xsd:string"
+        },
+        "pageElements": {
+          "@id": "slides:Page/pageElements",
+          "@container": "@list"
+        },
+        "revisionId": {
+          "@id": "slides:Page/revisionId",
+          "@type": "xsd:string"
+        },
+        "pageProperties": {
+          "@id": "slides:Page/pageProperties",
+          "@type": "slides:PageProperties"
+        },
+        "slideProperties": {
+          "@id": "slides:Page/slideProperties",
+          "@type": "slides:SlideProperties"
+        },
+        "layoutProperties": {
+          "@id": "slides:Page/layoutProperties",
+          "@type": "slides:LayoutProperties"
+        },
+        "notesProperties": {
+          "@id": "slides:Page/notesProperties",
+          "@type": "slides:NotesProperties"
+        },
+        "masterProperties": {
+          "@id": "slides:Page/masterProperties",
+          "@type": "slides:MasterProperties"
+        }
+      }
+    },
+
+    "PageElement": {
+      "@id": "slides:PageElement",
+      "@context": {
+        "objectId": {
+          "@id": "slides:PageElement/objectId",
+          "@type": "xsd:string"
+        },
+        "size": {
+          "@id": "slides:PageElement/size",
+          "@type": "slides:Size"
+        },
+        "transform": {
+          "@id": "slides:PageElement/transform",
+          "@type": "slides:AffineTransform"
+        },
+        "title": {
+          "@id": "dcterms:title",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        },
+        "shape": {
+          "@id": "slides:PageElement/shape",
+          "@type": "slides:Shape"
+        },
+        "image": {
+          "@id": "slides:PageElement/image",
+          "@type": "slides:Image"
+        },
+        "video": {
+          "@id": "slides:PageElement/video",
+          "@type": "slides:Video"
+        },
+        "line": {
+          "@id": "slides:PageElement/line",
+          "@type": "slides:Line"
+        },
+        "table": {
+          "@id": "slides:PageElement/table",
+          "@type": "slides:Table"
+        },
+        "wordArt": {
+          "@id": "slides:PageElement/wordArt",
+          "@type": "slides:WordArt"
+        },
+        "sheetsChart": {
+          "@id": "slides:PageElement/sheetsChart",
+          "@type": "slides:SheetsChart"
+        },
+        "elementGroup": {
+          "@id": "slides:PageElement/elementGroup",
+          "@type": "slides:Group"
+        },
+        "speakerSpotlight": {
+          "@id": "slides:PageElement/speakerSpotlight",
+          "@type": "slides:SpeakerSpotlight"
+        }
+      }
+    },
+
+    "Shape": {
+      "@id": "slides:Shape",
+      "@context": {
+        "shapeType": {
+          "@id": "slides:Shape/shapeType",
+          "@type": "xsd:string"
+        },
+        "text": {
+          "@id": "slides:Shape/text",
+          "@type": "slides:TextContent"
+        },
+        "shapeProperties": {
+          "@id": "slides:Shape/shapeProperties",
+          "@type": "slides:ShapeProperties"
+        },
+        "placeholder": {
+          "@id": "slides:Shape/placeholder",
+          "@type": "slides:Placeholder"
+        }
+      }
+    },
+
+    "Image": {
+      "@id": "slides:Image",
+      "@context": {
+        "contentUrl": {
+          "@id": "schema:contentUrl",
+          "@type": "xsd:string"
+        },
+        "sourceUrl": {
+          "@id": "slides:Image/sourceUrl",
+          "@type": "xsd:string"
+        },
+        "imageProperties": {
+          "@id": "slides:Image/imageProperties",
+          "@type": "slides:ImageProperties"
+        },
+        "placeholder": {
+          "@id": "slides:Image/placeholder",
+          "@type": "slides:Placeholder"
+        }
+      }
+    },
+
+    "Video": {
+      "@id": "slides:Video",
+      "@context": {
+        "url": {
+          "@id": "schema:url",
+          "@type": "xsd:string"
+        },
+        "source": {
+          "@id": "slides:Video/source",
+          "@type": "xsd:string"
+        },
+        "id": {
+          "@id": "slides:Video/id",
+          "@type": "xsd:string"
+        },
+        "videoProperties": {
+          "@id": "slides:Video/videoProperties",
+          "@type": "slides:VideoProperties"
+        }
+      }
+    },
+
+    "Line": {
+      "@id": "slides:Line",
+      "@context": {
+        "lineCategory": {
+          "@id": "slides:Line/lineCategory",
+          "@type": "xsd:string"
+        },
+        "lineType": {
+          "@id": "slides:Line/lineType",
+          "@type": "xsd:string"
+        },
+        "lineProperties": {
+          "@id": "slides:Line/lineProperties",
+          "@type": "slides:LineProperties"
+        }
+      }
+    },
+
+    "Table": {
+      "@id": "slides:Table",
+      "@context": {
+        "rows": {
+          "@id": "slides:Table/rows",
+          "@type": "xsd:integer"
+        },
+        "columns": {
+          "@id": "slides:Table/columns",
+          "@type": "xsd:integer"
+        },
+        "tableRows": {
+          "@id": "slides:Table/tableRows",
+          "@container": "@list"
+        },
+        "tableColumns": {
+          "@id": "slides:Table/tableColumns",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "WordArt": {
+      "@id": "slides:WordArt",
+      "@context": {
+        "renderedText": {
+          "@id": "slides:WordArt/renderedText",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "SheetsChart": {
+      "@id": "slides:SheetsChart",
+      "@context": {
+        "spreadsheetId": {
+          "@id": "slides:SheetsChart/spreadsheetId",
+          "@type": "xsd:string"
+        },
+        "chartId": {
+          "@id": "slides:SheetsChart/chartId",
+          "@type": "xsd:integer"
+        },
+        "contentUrl": {
+          "@id": "schema:contentUrl",
+          "@type": "xsd:string"
+        },
+        "sheetsChartProperties": {
+          "@id": "slides:SheetsChart/sheetsChartProperties",
+          "@type": "slides:SheetsChartProperties"
+        }
+      }
+    },
+
+    "Group": {
+      "@id": "slides:Group",
+      "@context": {
+        "children": {
+          "@id": "slides:Group/children",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "TextContent": {
+      "@id": "slides:TextContent",
+      "@context": {
+        "textElements": {
+          "@id": "slides:TextContent/textElements",
+          "@container": "@list"
+        },
+        "lists": {
+          "@id": "slides:TextContent/lists"
+        }
+      }
+    },
+
+    "TextElement": {
+      "@id": "slides:TextElement",
+      "@context": {
+        "startIndex": {
+          "@id": "slides:TextElement/startIndex",
+          "@type": "xsd:integer"
+        },
+        "endIndex": {
+          "@id": "slides:TextElement/endIndex",
+          "@type": "xsd:integer"
+        },
+        "paragraphMarker": {
+          "@id": "slides:TextElement/paragraphMarker",
+          "@type": "slides:ParagraphMarker"
+        },
+        "textRun": {
+          "@id": "slides:TextElement/textRun",
+          "@type": "slides:TextRun"
+        },
+        "autoText": {
+          "@id": "slides:TextElement/autoText",
+          "@type": "slides:AutoText"
+        }
+      }
+    },
+
+    "TextRun": {
+      "@id": "slides:TextRun",
+      "@context": {
+        "content": {
+          "@id": "slides:TextRun/content",
+          "@type": "xsd:string"
+        },
+        "style": {
+          "@id": "slides:TextRun/style",
+          "@type": "slides:TextStyle"
+        }
+      }
+    },
+
+    "AutoText": {
+      "@id": "slides:AutoText",
+      "@context": {
+        "type": {
+          "@id": "slides:AutoText/type",
+          "@type": "xsd:string"
+        },
+        "content": {
+          "@id": "slides:AutoText/content",
+          "@type": "xsd:string"
+        },
+        "style": {
+          "@id": "slides:AutoText/style",
+          "@type": "slides:TextStyle"
+        }
+      }
+    },
+
+    "ParagraphMarker": {
+      "@id": "slides:ParagraphMarker",
+      "@context": {
+        "style": {
+          "@id": "slides:ParagraphMarker/style",
+          "@type": "slides:ParagraphStyle"
+        },
+        "bullet": {
+          "@id": "slides:ParagraphMarker/bullet",
+          "@type": "slides:Bullet"
+        }
+      }
+    },
+
+    "Bullet": {
+      "@id": "slides:Bullet",
+      "@context": {
+        "listId": {
+          "@id": "slides:Bullet/listId",
+          "@type": "xsd:string"
+        },
+        "nestingLevel": {
+          "@id": "slides:Bullet/nestingLevel",
+          "@type": "xsd:integer"
+        },
+        "glyph": {
+          "@id": "slides:Bullet/glyph",
+          "@type": "xsd:string"
+        },
+        "bulletStyle": {
+          "@id": "slides:Bullet/bulletStyle",
+          "@type": "slides:TextStyle"
+        }
+      }
+    },
+
+    "TextStyle": {
+      "@id": "slides:TextStyle",
+      "@context": {
+        "backgroundColor": {
+          "@id": "slides:TextStyle/backgroundColor",
+          "@type": "slides:OptionalColor"
+        },
+        "foregroundColor": {
+          "@id": "slides:TextStyle/foregroundColor",
+          "@type": "slides:OptionalColor"
+        },
+        "bold": {
+          "@id": "slides:TextStyle/bold",
+          "@type": "xsd:boolean"
+        },
+        "italic": {
+          "@id": "slides:TextStyle/italic",
+          "@type": "xsd:boolean"
+        },
+        "fontFamily": {
+          "@id": "slides:TextStyle/fontFamily",
+          "@type": "xsd:string"
+        },
+        "fontSize": {
+          "@id": "slides:TextStyle/fontSize",
+          "@type": "slides:Dimension"
+        },
+        "link": {
+          "@id": "slides:TextStyle/link",
+          "@type": "slides:Link"
+        },
+        "baselineOffset": {
+          "@id": "slides:TextStyle/baselineOffset",
+          "@type": "xsd:string"
+        },
+        "smallCaps": {
+          "@id": "slides:TextStyle/smallCaps",
+          "@type": "xsd:boolean"
+        },
+        "strikethrough": {
+          "@id": "slides:TextStyle/strikethrough",
+          "@type": "xsd:boolean"
+        },
+        "underline": {
+          "@id": "slides:TextStyle/underline",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "ParagraphStyle": {
+      "@id": "slides:ParagraphStyle",
+      "@context": {
+        "lineSpacing": {
+          "@id": "slides:ParagraphStyle/lineSpacing",
+          "@type": "xsd:decimal"
+        },
+        "alignment": {
+          "@id": "slides:ParagraphStyle/alignment",
+          "@type": "xsd:string"
+        },
+        "indentStart": {
+          "@id": "slides:ParagraphStyle/indentStart",
+          "@type": "slides:Dimension"
+        },
+        "indentEnd": {
+          "@id": "slides:ParagraphStyle/indentEnd",
+          "@type": "slides:Dimension"
+        },
+        "indentFirstLine": {
+          "@id": "slides:ParagraphStyle/indentFirstLine",
+          "@type": "slides:Dimension"
+        },
+        "direction": {
+          "@id": "slides:ParagraphStyle/direction",
+          "@type": "xsd:string"
+        },
+        "spacingMode": {
+          "@id": "slides:ParagraphStyle/spacingMode",
+          "@type": "xsd:string"
+        },
+        "spaceAbove": {
+          "@id": "slides:ParagraphStyle/spaceAbove",
+          "@type": "slides:Dimension"
+        },
+        "spaceBelow": {
+          "@id": "slides:ParagraphStyle/spaceBelow",
+          "@type": "slides:Dimension"
+        }
+      }
+    },
+
+    "ShapeProperties": {
+      "@id": "slides:ShapeProperties",
+      "@context": {
+        "shapeBackgroundFill": {
+          "@id": "slides:ShapeProperties/shapeBackgroundFill",
+          "@type": "slides:ShapeBackgroundFill"
+        },
+        "outline": {
+          "@id": "slides:ShapeProperties/outline",
+          "@type": "slides:Outline"
+        },
+        "shadow": {
+          "@id": "slides:ShapeProperties/shadow",
+          "@type": "slides:Shadow"
+        },
+        "link": {
+          "@id": "slides:ShapeProperties/link",
+          "@type": "slides:Link"
+        },
+        "contentAlignment": {
+          "@id": "slides:ShapeProperties/contentAlignment",
+          "@type": "xsd:string"
+        },
+        "autofit": {
+          "@id": "slides:ShapeProperties/autofit",
+          "@type": "slides:Autofit"
+        }
+      }
+    },
+
+    "ImageProperties": {
+      "@id": "slides:ImageProperties",
+      "@context": {
+        "cropProperties": {
+          "@id": "slides:ImageProperties/cropProperties",
+          "@type": "slides:CropProperties"
+        },
+        "transparency": {
+          "@id": "slides:ImageProperties/transparency",
+          "@type": "xsd:decimal"
+        },
+        "brightness": {
+          "@id": "slides:ImageProperties/brightness",
+          "@type": "xsd:decimal"
+        },
+        "contrast": {
+          "@id": "slides:ImageProperties/contrast",
+          "@type": "xsd:decimal"
+        },
+        "recolor": {
+          "@id": "slides:ImageProperties/recolor",
+          "@type": "slides:Recolor"
+        },
+        "outline": {
+          "@id": "slides:ImageProperties/outline",
+          "@type": "slides:Outline"
+        },
+        "shadow": {
+          "@id": "slides:ImageProperties/shadow",
+          "@type": "slides:Shadow"
+        },
+        "link": {
+          "@id": "slides:ImageProperties/link",
+          "@type": "slides:Link"
+        }
+      }
+    },
+
+    "VideoProperties": {
+      "@id": "slides:VideoProperties",
+      "@context": {
+        "outline": {
+          "@id": "slides:VideoProperties/outline",
+          "@type": "slides:Outline"
+        },
+        "autoPlay": {
+          "@id": "slides:VideoProperties/autoPlay",
+          "@type": "xsd:boolean"
+        },
+        "start": {
+          "@id": "slides:VideoProperties/start",
+          "@type": "xsd:integer"
+        },
+        "end": {
+          "@id": "slides:VideoProperties/end",
+          "@type": "xsd:integer"
+        },
+        "mute": {
+          "@id": "slides:VideoProperties/mute",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "LineProperties": {
+      "@id": "slides:LineProperties",
+      "@context": {
+        "lineFill": {
+          "@id": "slides:LineProperties/lineFill",
+          "@type": "slides:LineFill"
+        },
+        "weight": {
+          "@id": "slides:LineProperties/weight",
+          "@type": "slides:Dimension"
+        },
+        "dashStyle": {
+          "@id": "slides:LineProperties/dashStyle",
+          "@type": "xsd:string"
+        },
+        "startArrow": {
+          "@id": "slides:LineProperties/startArrow",
+          "@type": "xsd:string"
+        },
+        "endArrow": {
+          "@id": "slides:LineProperties/endArrow",
+          "@type": "xsd:string"
+        },
+        "startConnection": {
+          "@id": "slides:LineProperties/startConnection",
+          "@type": "slides:LineConnection"
+        },
+        "endConnection": {
+          "@id": "slides:LineProperties/endConnection",
+          "@type": "slides:LineConnection"
+        },
+        "link": {
+          "@id": "slides:LineProperties/link",
+          "@type": "slides:Link"
+        }
+      }
+    },
+
+    "Link": {
+      "@id": "slides:Link",
+      "@context": {
+        "url": {
+          "@id": "schema:url",
+          "@type": "xsd:string"
+        },
+        "relativeLink": {
+          "@id": "slides:Link/relativeLink",
+          "@type": "xsd:string"
+        },
+        "pageObjectId": {
+          "@id": "slides:Link/pageObjectId",
+          "@type": "xsd:string"
+        },
+        "slideIndex": {
+          "@id": "slides:Link/slideIndex",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Placeholder": {
+      "@id": "slides:Placeholder",
+      "@context": {
+        "type": {
+          "@id": "slides:Placeholder/type",
+          "@type": "xsd:string"
+        },
+        "index": {
+          "@id": "slides:Placeholder/index",
+          "@type": "xsd:integer"
+        },
+        "parentObjectId": {
+          "@id": "slides:Placeholder/parentObjectId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "PageProperties": {
+      "@id": "slides:PageProperties",
+      "@context": {
+        "pageBackgroundFill": {
+          "@id": "slides:PageProperties/pageBackgroundFill",
+          "@type": "slides:PageBackgroundFill"
+        },
+        "colorScheme": {
+          "@id": "slides:PageProperties/colorScheme",
+          "@type": "slides:ColorScheme"
+        }
+      }
+    },
+
+    "SlideProperties": {
+      "@id": "slides:SlideProperties",
+      "@context": {
+        "layoutObjectId": {
+          "@id": "slides:SlideProperties/layoutObjectId",
+          "@type": "xsd:string"
+        },
+        "masterObjectId": {
+          "@id": "slides:SlideProperties/masterObjectId",
+          "@type": "xsd:string"
+        },
+        "notesPage": {
+          "@id": "slides:SlideProperties/notesPage",
+          "@type": "slides:Page"
+        },
+        "isSkipped": {
+          "@id": "slides:SlideProperties/isSkipped",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "LayoutProperties": {
+      "@id": "slides:LayoutProperties",
+      "@context": {
+        "masterObjectId": {
+          "@id": "slides:LayoutProperties/masterObjectId",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "slides:LayoutProperties/displayName",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "NotesProperties": {
+      "@id": "slides:NotesProperties",
+      "@context": {
+        "speakerNotesObjectId": {
+          "@id": "slides:NotesProperties/speakerNotesObjectId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "MasterProperties": {
+      "@id": "slides:MasterProperties",
+      "@context": {
+        "displayName": {
+          "@id": "slides:MasterProperties/displayName",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Outline": {
+      "@id": "slides:Outline",
+      "@context": {
+        "outlineFill": {
+          "@id": "slides:Outline/outlineFill",
+          "@type": "slides:OutlineFill"
+        },
+        "weight": {
+          "@id": "slides:Outline/weight",
+          "@type": "slides:Dimension"
+        },
+        "dashStyle": {
+          "@id": "slides:Outline/dashStyle",
+          "@type": "xsd:string"
+        },
+        "propertyState": {
+          "@id": "slides:Outline/propertyState",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Shadow": {
+      "@id": "slides:Shadow",
+      "@context": {
+        "type": {
+          "@id": "slides:Shadow/type",
+          "@type": "xsd:string"
+        },
+        "transform": {
+          "@id": "slides:Shadow/transform",
+          "@type": "slides:AffineTransform"
+        },
+        "alignment": {
+          "@id": "slides:Shadow/alignment",
+          "@type": "xsd:string"
+        },
+        "blurRadius": {
+          "@id": "slides:Shadow/blurRadius",
+          "@type": "slides:Dimension"
+        },
+        "color": {
+          "@id": "slides:Shadow/color",
+          "@type": "slides:OpaqueColor"
+        },
+        "alpha": {
+          "@id": "slides:Shadow/alpha",
+          "@type": "xsd:decimal"
+        },
+        "rotateWithShape": {
+          "@id": "slides:Shadow/rotateWithShape",
+          "@type": "xsd:boolean"
+        },
+        "propertyState": {
+          "@id": "slides:Shadow/propertyState",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "SolidFill": {
+      "@id": "slides:SolidFill",
+      "@context": {
+        "color": {
+          "@id": "slides:SolidFill/color",
+          "@type": "slides:OpaqueColor"
+        },
+        "alpha": {
+          "@id": "slides:SolidFill/alpha",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "OpaqueColor": {
+      "@id": "slides:OpaqueColor",
+      "@context": {
+        "rgbColor": {
+          "@id": "slides:OpaqueColor/rgbColor",
+          "@type": "slides:RgbColor"
+        },
+        "themeColor": {
+          "@id": "slides:OpaqueColor/themeColor",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "RgbColor": {
+      "@id": "slides:RgbColor",
+      "@context": {
+        "red": {
+          "@id": "slides:RgbColor/red",
+          "@type": "xsd:decimal"
+        },
+        "green": {
+          "@id": "slides:RgbColor/green",
+          "@type": "xsd:decimal"
+        },
+        "blue": {
+          "@id": "slides:RgbColor/blue",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Size": {
+      "@id": "slides:Size",
+      "@context": {
+        "width": {
+          "@id": "slides:Size/width",
+          "@type": "slides:Dimension"
+        },
+        "height": {
+          "@id": "slides:Size/height",
+          "@type": "slides:Dimension"
+        }
+      }
+    },
+
+    "Dimension": {
+      "@id": "slides:Dimension",
+      "@context": {
+        "magnitude": {
+          "@id": "slides:Dimension/magnitude",
+          "@type": "xsd:decimal"
+        },
+        "unit": {
+          "@id": "slides:Dimension/unit",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AffineTransform": {
+      "@id": "slides:AffineTransform",
+      "@context": {
+        "scaleX": {
+          "@id": "slides:AffineTransform/scaleX",
+          "@type": "xsd:decimal"
+        },
+        "scaleY": {
+          "@id": "slides:AffineTransform/scaleY",
+          "@type": "xsd:decimal"
+        },
+        "shearX": {
+          "@id": "slides:AffineTransform/shearX",
+          "@type": "xsd:decimal"
+        },
+        "shearY": {
+          "@id": "slides:AffineTransform/shearY",
+          "@type": "xsd:decimal"
+        },
+        "translateX": {
+          "@id": "slides:AffineTransform/translateX",
+          "@type": "xsd:decimal"
+        },
+        "translateY": {
+          "@id": "slides:AffineTransform/translateY",
+          "@type": "xsd:decimal"
+        },
+        "unit": {
+          "@id": "slides:AffineTransform/unit",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Thumbnail": {
+      "@id": "slides:Thumbnail",
+      "@context": {
+        "contentUrl": {
+          "@id": "schema:contentUrl",
+          "@type": "xsd:string"
+        },
+        "width": {
+          "@id": "schema:width",
+          "@type": "xsd:integer"
+        },
+        "height": {
+          "@id": "schema:height",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "BatchUpdatePresentationRequest": {
+      "@id": "slides:BatchUpdatePresentationRequest",
+      "@context": {
+        "requests": {
+          "@id": "slides:BatchUpdatePresentationRequest/requests",
+          "@container": "@list"
+        },
+        "writeControl": {
+          "@id": "slides:BatchUpdatePresentationRequest/writeControl",
+          "@type": "slides:WriteControl"
+        }
+      }
+    },
+
+    "BatchUpdatePresentationResponse": {
+      "@id": "slides:BatchUpdatePresentationResponse",
+      "@context": {
+        "presentationId": {
+          "@id": "slides:BatchUpdatePresentationResponse/presentationId",
+          "@type": "xsd:string"
+        },
+        "replies": {
+          "@id": "slides:BatchUpdatePresentationResponse/replies",
+          "@container": "@list"
+        },
+        "writeControl": {
+          "@id": "slides:BatchUpdatePresentationResponse/writeControl",
+          "@type": "slides:WriteControl"
+        }
+      }
+    },
+
+    "WriteControl": {
+      "@id": "slides:WriteControl",
+      "@context": {
+        "requiredRevisionId": {
+          "@id": "slides:WriteControl/requiredRevisionId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "TableRow": {
+      "@id": "slides:TableRow",
+      "@context": {
+        "rowHeight": {
+          "@id": "slides:TableRow/rowHeight",
+          "@type": "slides:Dimension"
+        },
+        "tableCells": {
+          "@id": "slides:TableRow/tableCells",
+          "@container": "@list"
+        },
+        "tableRowProperties": {
+          "@id": "slides:TableRow/tableRowProperties",
+          "@type": "slides:TableRowProperties"
+        }
+      }
+    },
+
+    "TableCell": {
+      "@id": "slides:TableCell",
+      "@context": {
+        "location": {
+          "@id": "slides:TableCell/location",
+          "@type": "slides:TableCellLocation"
+        },
+        "rowSpan": {
+          "@id": "slides:TableCell/rowSpan",
+          "@type": "xsd:integer"
+        },
+        "columnSpan": {
+          "@id": "slides:TableCell/columnSpan",
+          "@type": "xsd:integer"
+        },
+        "text": {
+          "@id": "slides:TableCell/text",
+          "@type": "slides:TextContent"
+        },
+        "tableCellProperties": {
+          "@id": "slides:TableCell/tableCellProperties",
+          "@type": "slides:TableCellProperties"
+        }
+      }
+    },
+
+    "TableCellLocation": {
+      "@id": "slides:TableCellLocation",
+      "@context": {
+        "rowIndex": {
+          "@id": "slides:TableCellLocation/rowIndex",
+          "@type": "xsd:integer"
+        },
+        "columnIndex": {
+          "@id": "slides:TableCellLocation/columnIndex",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "ColorScheme": {
+      "@id": "slides:ColorScheme",
+      "@context": {
+        "colors": {
+          "@id": "slides:ColorScheme/colors",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "ThemeColorPair": {
+      "@id": "slides:ThemeColorPair",
+      "@context": {
+        "type": {
+          "@id": "slides:ThemeColorPair/type",
+          "@type": "xsd:string"
+        },
+        "color": {
+          "@id": "slides:ThemeColorPair/color",
+          "@type": "slides:RgbColor"
+        }
+      }
+    }
+  }
+}
