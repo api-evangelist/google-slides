@@ -1,5 +1,5 @@
 aid: google-slides
-name: Google Slides API
+name: Google Slides
 description: An API for creating, reading, and editing Google Slides presentations
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/slides
