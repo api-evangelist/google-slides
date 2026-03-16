@@ -1,16 +1,18 @@
+aid: google-slides
 name: Google Slides API
 description: An API for creating, reading, and editing Google Slides presentations
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
-tags:
-- presentations
-- slides
-- productivity
-- collaboration
-- google workspace
-created: '2024'
-modified: '2026-03-03'
 url: https://developers.google.com/slides
-specificationVersion: '0.18'
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
+tags:
+  - Presentations
+  - Slides
+  - Productivity
+  - Collaboration
+  - Google Workspace
 apis:
 - name: Google Slides API
   description: Create and edit presentations programmatically
@@ -102,4 +104,3 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-  url: https://developers.google.com/slides
