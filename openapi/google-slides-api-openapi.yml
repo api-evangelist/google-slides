@@ -25,11 +25,11 @@ security:
   - OAuth2: []
 
 tags:
-  - name: Presentations
-    description: Operations on Google Slides presentations
   - name: Pages
     description: Operations on pages within presentations
 
+  - name: Presentations
+    description: Operations on Google Slides presentations
 paths:
   /v1/presentations:
     post:
