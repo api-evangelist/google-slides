@@ -33,7 +33,7 @@ tags:
 paths:
   /v1/presentations:
     post:
-      summary: Create Presentation
+      summary: Google Slides Create Presentation
       description: >
         Creates a blank presentation using the title given in the request. If a
         presentationId is provided, it is used as the ID of the new presentation.
@@ -81,7 +81,7 @@ paths:
 
   /v1/presentations/{presentationId}:
     get:
-      summary: Get Presentation
+      summary: Google Slides Get Presentation
       description: >
         Gets the latest version of the specified presentation.
       operationId: getPresentation
@@ -117,7 +117,7 @@ paths:
 
   /v1/presentations/{presentationId}:batchUpdate:
     post:
-      summary: Batch Update Presentation
+      summary: Google Slides Batch Update Presentation
       description: >
         Applies one or more updates to the presentation. Each request is
         validated before being applied. If any request is not valid, then the
@@ -187,7 +187,7 @@ paths:
 
   /v1/presentations/{presentationId}/pages/{pageObjectId}:
     get:
-      summary: Get Page
+      summary: Google Slides Get Page
       description: >
         Gets the latest version of the specified page in the presentation.
       operationId: getPage
@@ -224,7 +224,7 @@ paths:
 
   /v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail:
     get:
-      summary: Get Page Thumbnail
+      summary: Google Slides Get Page Thumbnail
       description: >
         Generates a thumbnail of the latest version of the specified page in
         the presentation and returns a URL to the thumbnail image. This request
