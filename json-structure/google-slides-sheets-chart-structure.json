@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SheetsChart",
+  "type": "object",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string"
+    },
+    "chartId": {
+      "type": "integer"
+    },
+    "contentUrl": {
+      "type": "string"
+    }
+  }
+}

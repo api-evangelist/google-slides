@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteTableColumnRequest",
+  "type": "object",
+  "description": "Deletes a column from a table.",
+  "properties": {
+    "tableObjectId": {
+      "type": "string",
+      "description": "The table to delete columns from."
+    }
+  }
+}

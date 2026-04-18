@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TextRun",
+  "type": "object",
+  "description": "A TextElement kind that represents a run of text that all has the same styling.\n",
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "The text of this run."
+    }
+  }
+}

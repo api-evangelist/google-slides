@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsertTextRequest",
+  "type": "object",
+  "description": "Inserts text into a shape or a table cell.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the shape or table cell."
+    },
+    "text": {
+      "type": "string",
+      "description": "The text to be inserted. Inserting a newline character will implicitly create a new ParagraphMarker.\n"
+    },
+    "insertionIndex": {
+      "type": "integer",
+      "description": "The index where the text will be inserted, in Unicode code units of the UTF-16 encoding.\n"
+    }
+  }
+}

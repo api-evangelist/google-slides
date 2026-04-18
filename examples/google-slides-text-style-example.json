@@ -1,0 +1,9 @@
+{
+  "bold": true,
+  "italic": true,
+  "fontFamily": "example_value",
+  "baselineOffset": "example_value",
+  "smallCaps": true,
+  "strikethrough": true,
+  "underline": true
+}

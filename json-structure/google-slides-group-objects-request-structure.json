@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GroupObjectsRequest",
+  "type": "object",
+  "properties": {
+    "groupObjectId": {
+      "type": "string"
+    },
+    "childrenObjectIds": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CropProperties",
+  "type": "object",
+  "properties": {
+    "leftOffset": {
+      "type": "number"
+    },
+    "rightOffset": {
+      "type": "number"
+    },
+    "topOffset": {
+      "type": "number"
+    },
+    "bottomOffset": {
+      "type": "number"
+    },
+    "angle": {
+      "type": "number"
+    }
+  }
+}

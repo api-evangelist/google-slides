@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReplaceAllTextResponse",
+  "type": "object",
+  "description": "The result of replacing text.",
+  "properties": {
+    "occurrencesChanged": {
+      "type": "integer",
+      "description": "The number of occurrences changed by replacing all text."
+    }
+  }
+}

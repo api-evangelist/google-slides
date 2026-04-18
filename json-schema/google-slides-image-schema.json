@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Image",
+  "type": "object",
+  "description": "A PageElement kind representing an image.\n",
+  "properties": {
+    "contentUrl": {
+      "type": "string",
+      "description": "An URL to an image with a default lifetime of 30 minutes. This URL is tagged with the account of the requester.\n"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "description": "The source URL is the URL used to insert the image. The source URL can be empty.\n"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Thumbnail",
+  "type": "object",
+  "description": "The thumbnail of a page.",
+  "properties": {
+    "contentUrl": {
+      "type": "string",
+      "description": "The content URL of the thumbnail image. The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the requester.\n"
+    },
+    "width": {
+      "type": "integer",
+      "description": "The positive width in pixels of the thumbnail image."
+    },
+    "height": {
+      "type": "integer",
+      "description": "The positive height in pixels of the thumbnail image."
+    }
+  }
+}

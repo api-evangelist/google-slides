@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ParagraphMarker",
+  "type": "object",
+  "description": "A TextElement kind that represents the beginning of a new paragraph.\n",
+  "properties": {}
+}

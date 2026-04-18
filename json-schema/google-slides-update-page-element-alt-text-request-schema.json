@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdatePageElementAltTextRequest",
+  "type": "object",
+  "description": "Updates the alt text title and/or description of a page element.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the page element."
+    },
+    "title": {
+      "type": "string",
+      "description": "The updated alt text title of the page element."
+    },
+    "description": {
+      "type": "string",
+      "description": "The updated alt text description of the page element."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LineProperties",
+  "type": "object",
+  "description": "The properties of a Line.",
+  "properties": {
+    "dashStyle": {
+      "type": "string",
+      "description": "The dash style of the line."
+    },
+    "startArrow": {
+      "type": "string",
+      "description": "The style of the arrow at the beginning of the line."
+    },
+    "endArrow": {
+      "type": "string",
+      "description": "The style of the arrow at the end of the line."
+    }
+  }
+}

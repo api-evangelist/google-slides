@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateTableRequest",
+  "type": "object",
+  "description": "Creates a new table.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "A user-supplied object ID."
+    },
+    "rows": {
+      "type": "integer",
+      "description": "Number of rows in the table."
+    },
+    "columns": {
+      "type": "integer",
+      "description": "Number of columns in the table."
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TextStyle",
+  "type": "object",
+  "description": "Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the parent.\n",
+  "properties": {
+    "bold": {
+      "type": "boolean",
+      "description": "Whether the text is bold."
+    },
+    "italic": {
+      "type": "boolean",
+      "description": "Whether the text is italicized."
+    },
+    "fontFamily": {
+      "type": "string",
+      "description": "The font family of the text."
+    },
+    "baselineOffset": {
+      "type": "string",
+      "description": "The text's vertical offset from its normal position."
+    },
+    "smallCaps": {
+      "type": "boolean",
+      "description": "Whether the text is in small capital letters."
+    },
+    "strikethrough": {
+      "type": "boolean",
+      "description": "Whether the text is struck through."
+    },
+    "underline": {
+      "type": "boolean",
+      "description": "Whether the text is underlined."
+    }
+  }
+}

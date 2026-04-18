@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "InsertTableColumnsRequest",
+  "type": "object",
+  "properties": {
+    "tableObjectId": {
+      "type": "string"
+    },
+    "insertRight": {
+      "type": "boolean"
+    },
+    "number": {
+      "type": "integer"
+    }
+  }
+}

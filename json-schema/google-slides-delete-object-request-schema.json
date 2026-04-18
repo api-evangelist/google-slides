@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteObjectRequest",
+  "type": "object",
+  "description": "Deletes an object, either pages or page elements, from the presentation.\n",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the page or page element to delete.\n"
+    }
+  }
+}

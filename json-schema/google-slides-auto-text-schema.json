@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AutoText",
+  "type": "object",
+  "description": "A TextElement kind that represents auto text.\n",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of this auto text."
+    },
+    "content": {
+      "type": "string",
+      "description": "The rendered content of this auto text, if available.\n"
+    }
+  }
+}

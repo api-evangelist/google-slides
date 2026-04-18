@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateImageRequest",
+  "type": "object",
+  "description": "Creates an image.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "A user-supplied object ID."
+    },
+    "url": {
+      "type": "string",
+      "description": "The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation.\n"
+    }
+  }
+}

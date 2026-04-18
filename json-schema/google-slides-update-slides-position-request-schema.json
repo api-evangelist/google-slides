@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateSlidesPositionRequest",
+  "type": "object",
+  "description": "Updates the position of slides in the presentation.",
+  "properties": {
+    "slideObjectIds": {
+      "type": "array",
+      "description": "The IDs of the slides in the presentation that should be moved."
+    },
+    "insertionIndex": {
+      "type": "integer",
+      "description": "The index where the slides should be inserted, based on the slide arrangement before the move takes place.\n"
+    }
+  }
+}

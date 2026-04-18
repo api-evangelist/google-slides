@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RerouteLineRequest",
+  "type": "object",
+  "description": "Reroutes a line such that it is connected at the two closest connection sites on the connected page elements.\n",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the line to reroute."
+    }
+  }
+}

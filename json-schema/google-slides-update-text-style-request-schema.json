@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateTextStyleRequest",
+  "type": "object",
+  "description": "Update the styling of text in a Shape or Table.\n",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the shape or table with the text to be styled."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

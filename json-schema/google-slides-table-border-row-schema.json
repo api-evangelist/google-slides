@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TableBorderRow",
+  "type": "object",
+  "description": "Contents of each border row in a table.",
+  "properties": {
+    "tableBorderCells": {
+      "type": "array",
+      "description": "Properties of each border cell."
+    }
+  }
+}

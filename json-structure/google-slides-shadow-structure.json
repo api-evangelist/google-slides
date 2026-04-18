@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Shadow",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "alignment": {
+      "type": "string"
+    },
+    "alpha": {
+      "type": "number"
+    },
+    "rotateWithShape": {
+      "type": "boolean"
+    },
+    "propertyState": {
+      "type": "string"
+    }
+  }
+}

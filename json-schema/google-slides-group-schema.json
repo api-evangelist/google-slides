@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Group",
+  "type": "object",
+  "description": "A PageElement kind representing a joined collection of PageElements.\n",
+  "properties": {
+    "children": {
+      "type": "array",
+      "description": "The collection of elements in the group."
+    }
+  }
+}

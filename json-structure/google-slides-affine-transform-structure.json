@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AffineTransform",
+  "type": "object",
+  "properties": {
+    "scaleX": {
+      "type": "number"
+    },
+    "scaleY": {
+      "type": "number"
+    },
+    "shearX": {
+      "type": "number"
+    },
+    "shearY": {
+      "type": "number"
+    },
+    "translateX": {
+      "type": "number"
+    },
+    "translateY": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    }
+  }
+}

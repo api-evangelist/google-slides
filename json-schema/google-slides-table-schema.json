@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Table",
+  "type": "object",
+  "description": "A PageElement kind representing a table.\n",
+  "properties": {
+    "rows": {
+      "type": "integer",
+      "description": "Number of rows in the table."
+    },
+    "columns": {
+      "type": "integer",
+      "description": "Number of columns in the table."
+    },
+    "tableRows": {
+      "type": "array",
+      "description": "Properties and contents of each row. Cells that span multiple rows are contained in only one of these rows and have a rowSpan greater than 1.\n"
+    },
+    "tableColumns": {
+      "type": "array",
+      "description": "Properties of each column."
+    },
+    "horizontalBorderRows": {
+      "type": "array",
+      "description": "Properties of horizontal cell borders."
+    },
+    "verticalBorderRows": {
+      "type": "array",
+      "description": "Properties of vertical cell borders."
+    }
+  }
+}

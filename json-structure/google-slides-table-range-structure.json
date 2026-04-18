@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TableRange",
+  "type": "object",
+  "properties": {
+    "rowSpan": {
+      "type": "integer"
+    },
+    "columnSpan": {
+      "type": "integer"
+    }
+  }
+}

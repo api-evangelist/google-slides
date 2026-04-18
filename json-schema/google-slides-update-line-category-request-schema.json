@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateLineCategoryRequest",
+  "type": "object",
+  "description": "Updates the category of a line.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the line."
+    },
+    "lineCategory": {
+      "type": "string",
+      "description": "The line category to update to."
+    }
+  }
+}

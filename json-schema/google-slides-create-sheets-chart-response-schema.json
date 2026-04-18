@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateSheetsChartResponse",
+  "type": "object",
+  "description": "The result of creating a sheets chart.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the created chart."
+    }
+  }
+}

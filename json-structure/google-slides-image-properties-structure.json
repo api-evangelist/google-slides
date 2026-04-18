@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ImageProperties",
+  "type": "object",
+  "properties": {
+    "transparency": {
+      "type": "number"
+    },
+    "brightness": {
+      "type": "number"
+    },
+    "contrast": {
+      "type": "number"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WriteControl",
+  "type": "object",
+  "description": "Provides control over how write requests are executed. When a write request is made, the requiredRevisionId can be specified to indicate that the write should only succeed if the presentation's current revision matches the specified value.\n",
+  "properties": {
+    "requiredRevisionId": {
+      "type": "string",
+      "description": "The revision ID of the presentation required for the write request. If specified, the write request is only processed if the current revision ID of the presentation matches this value.\n"
+    }
+  }
+}

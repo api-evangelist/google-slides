@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateSheetsChartRequest",
+  "type": "object",
+  "description": "Creates an embedded Google Sheets chart.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "A user-supplied object ID."
+    },
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The ID of the Google Sheets spreadsheet that contains the chart."
+    },
+    "chartId": {
+      "type": "integer",
+      "description": "The ID of the specific chart in the Google Sheets spreadsheet."
+    },
+    "linkingMode": {
+      "type": "string",
+      "description": "The mode with which the chart is linked to the source spreadsheet."
+    }
+  }
+}

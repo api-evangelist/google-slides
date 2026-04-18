@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdatePagePropertiesRequest",
+  "type": "object",
+  "description": "Updates the properties of a Page.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the page the update is applied to."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

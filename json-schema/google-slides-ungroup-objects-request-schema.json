@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UngroupObjectsRequest",
+  "type": "object",
+  "description": "Ungroups objects, such as groups.",
+  "properties": {
+    "objectIds": {
+      "type": "array",
+      "description": "The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped.\n"
+    }
+  }
+}

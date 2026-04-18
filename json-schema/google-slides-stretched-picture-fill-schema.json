@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StretchedPictureFill",
+  "type": "object",
+  "description": "The stretched picture fill of a page background.",
+  "properties": {
+    "contentUrl": {
+      "type": "string",
+      "description": "Reading the contentUrl returns the content of the picture. The URL has a default lifetime of 30 minutes.\n"
+    }
+  }
+}

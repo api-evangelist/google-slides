@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdatePageElementTransformRequest",
+  "type": "object",
+  "description": "Updates the transform of a page element.\n",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the page element to update."
+    },
+    "applyMode": {
+      "type": "string",
+      "description": "The apply mode of the transform update."
+    }
+  }
+}

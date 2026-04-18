@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Link",
+  "type": "object",
+  "description": "A hypertext link.",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "If set, indicates this is a link to the external web page at this URL."
+    },
+    "relativeLink": {
+      "type": "string",
+      "description": "If set, indicates this is a link to a slide in this presentation, addressed by its position.\n"
+    },
+    "pageObjectId": {
+      "type": "string",
+      "description": "If set, indicates this is a link to the specific page in this presentation with this ID.\n"
+    },
+    "slideIndex": {
+      "type": "integer",
+      "description": "If set, indicates this is a link to the slide at this zero-based index in the presentation.\n"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateLineResponse",
+  "type": "object",
+  "description": "The result of creating a line.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the created line."
+    }
+  }
+}

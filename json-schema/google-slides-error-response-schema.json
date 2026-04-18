@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "An error response from the Google Slides API.",
+  "properties": {
+    "error": {
+      "type": "object"
+    }
+  }
+}

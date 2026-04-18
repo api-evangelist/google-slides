@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PageElement",
+  "type": "object",
+  "description": "A visual element rendered on a page.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID for this page element."
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the page element for accessibility."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the page element for accessibility."
+    }
+  }
+}

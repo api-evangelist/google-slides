@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "UpdateVideoPropertiesRequest",
+  "type": "object",
+  "properties": {
+    "objectId": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "string"
+    }
+  }
+}

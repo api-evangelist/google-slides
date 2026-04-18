@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupObjectsResponse",
+  "type": "object",
+  "description": "The result of grouping objects.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the created group."
+    }
+  }
+}

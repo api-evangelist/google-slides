@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShapeProperties",
+  "type": "object",
+  "description": "The properties of a Shape. If the shape is a placeholder shape, then these properties may be inherited from its parent placeholder shape.\n",
+  "properties": {
+    "contentAlignment": {
+      "type": "string",
+      "description": "The alignment of the content in the shape."
+    }
+  }
+}

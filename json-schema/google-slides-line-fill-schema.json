@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LineFill",
+  "type": "object",
+  "description": "The fill of a line.",
+  "properties": {}
+}

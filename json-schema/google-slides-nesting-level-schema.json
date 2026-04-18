@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NestingLevel",
+  "type": "object",
+  "description": "Contains properties describing the look and feel of a list bullet at a given level of nesting.\n",
+  "properties": {}
+}

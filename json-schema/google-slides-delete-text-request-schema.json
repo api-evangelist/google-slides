@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteTextRequest",
+  "type": "object",
+  "description": "Deletes text from a shape or a table cell.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the shape or table where the text will be deleted."
+    }
+  }
+}

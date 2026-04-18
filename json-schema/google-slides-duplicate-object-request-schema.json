@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DuplicateObjectRequest",
+  "type": "object",
+  "description": "Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created immediately following the specified slide.\n",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The ID of the object to duplicate."
+    },
+    "objectIds": {
+      "type": "object",
+      "description": "The object being duplicated may contain other objects. This defines how the IDs of duplicated objects are generated.\n"
+    }
+  }
+}

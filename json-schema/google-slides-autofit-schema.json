@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Autofit",
+  "type": "object",
+  "description": "The autofit properties of a Shape.",
+  "properties": {
+    "autofitType": {
+      "type": "string",
+      "description": "The autofit type of the shape."
+    },
+    "fontScale": {
+      "type": "number",
+      "description": "The font scale applied to the shape. For shapes with autofit enabled, this is the font scale value applied by the auto-fit algorithm.\n"
+    }
+  }
+}

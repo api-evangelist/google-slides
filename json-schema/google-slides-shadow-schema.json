@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shadow",
+  "type": "object",
+  "description": "The shadow properties of a page element.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of the shadow."
+    },
+    "alignment": {
+      "type": "string",
+      "description": "The alignment point of the shadow."
+    },
+    "alpha": {
+      "type": "number",
+      "description": "The alpha of the shadow's color, from 0.0 to 1.0.\n"
+    },
+    "rotateWithShape": {
+      "type": "boolean",
+      "description": "Whether the shadow should rotate with the shape."
+    },
+    "propertyState": {
+      "type": "string",
+      "description": "The shadow property state."
+    }
+  }
+}

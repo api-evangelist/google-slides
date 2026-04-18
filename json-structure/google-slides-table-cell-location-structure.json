@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TableCellLocation",
+  "type": "object",
+  "properties": {
+    "rowIndex": {
+      "type": "integer"
+    },
+    "columnIndex": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VideoProperties",
+  "type": "object",
+  "description": "The properties of a Video.",
+  "properties": {
+    "autoPlay": {
+      "type": "boolean",
+      "description": "Whether to enable video autoplay when the page is displayed."
+    },
+    "start": {
+      "type": "integer",
+      "description": "The time at which to start playback, measured in seconds from the beginning."
+    },
+    "end": {
+      "type": "integer",
+      "description": "The time at which to end playback, measured in seconds from the beginning."
+    },
+    "mute": {
+      "type": "boolean",
+      "description": "Whether to mute the audio during video playback."
+    }
+  }
+}

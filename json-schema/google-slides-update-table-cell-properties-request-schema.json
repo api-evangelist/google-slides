@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateTableCellPropertiesRequest",
+  "type": "object",
+  "description": "Update the properties of a TableCell.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the table."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateParagraphBulletsRequest",
+  "type": "object",
+  "description": "Creates bullets for all of the paragraphs that overlap with a text range.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the shape or table."
+    },
+    "bulletPreset": {
+      "type": "string",
+      "description": "The kinds of bullet glyphs to be used."
+    }
+  }
+}

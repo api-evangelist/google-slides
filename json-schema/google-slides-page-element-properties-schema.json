@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PageElementProperties",
+  "type": "object",
+  "description": "Common properties for a page element.",
+  "properties": {
+    "pageObjectId": {
+      "type": "string",
+      "description": "The object ID of the page where the element is located."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateTableRowPropertiesRequest",
+  "type": "object",
+  "description": "Updates the properties of a Table row.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the table."
+    },
+    "rowIndices": {
+      "type": "array",
+      "description": "The list of zero-based indices specifying which rows to update."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

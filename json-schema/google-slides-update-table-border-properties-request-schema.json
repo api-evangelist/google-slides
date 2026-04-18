@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateTableBorderPropertiesRequest",
+  "type": "object",
+  "description": "Updates the properties of the table borders in a Table.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the table."
+    },
+    "borderPosition": {
+      "type": "string",
+      "description": "The border position in the table range."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

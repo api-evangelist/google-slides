@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsertTableColumnsRequest",
+  "type": "object",
+  "description": "Inserts columns into a table.",
+  "properties": {
+    "tableObjectId": {
+      "type": "string",
+      "description": "The table to insert columns into."
+    },
+    "insertRight": {
+      "type": "boolean",
+      "description": "Whether to insert new columns to the right of the reference cell location."
+    },
+    "number": {
+      "type": "integer",
+      "description": "The number of columns to be inserted."
+    }
+  }
+}

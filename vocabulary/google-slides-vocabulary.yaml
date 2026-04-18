@@ -1,0 +1,9 @@
+name: google-slides API Vocabulary
+provider: google-slides
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 5
+schemas: 137
+tags:
+- Pages
+- Presentations

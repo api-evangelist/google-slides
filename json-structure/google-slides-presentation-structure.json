@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Presentation",
+  "type": "object",
+  "properties": {
+    "presentationId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "slides": {
+      "type": "array"
+    },
+    "masters": {
+      "type": "array"
+    },
+    "layouts": {
+      "type": "array"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "revisionId": {
+      "type": "string"
+    }
+  }
+}

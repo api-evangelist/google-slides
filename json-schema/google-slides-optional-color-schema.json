@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OptionalColor",
+  "type": "object",
+  "description": "A color that can either be fully opaque or fully transparent.\n",
+  "properties": {}
+}

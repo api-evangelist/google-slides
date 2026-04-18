@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Range",
+  "type": "object",
+  "properties": {
+    "startIndex": {
+      "type": "integer"
+    },
+    "endIndex": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}

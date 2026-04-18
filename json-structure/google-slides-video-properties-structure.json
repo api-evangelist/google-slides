@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VideoProperties",
+  "type": "object",
+  "properties": {
+    "autoPlay": {
+      "type": "boolean"
+    },
+    "start": {
+      "type": "integer"
+    },
+    "end": {
+      "type": "integer"
+    },
+    "mute": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ParagraphStyle",
+  "type": "object",
+  "description": "Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent.\n",
+  "properties": {
+    "lineSpacing": {
+      "type": "number",
+      "description": "The amount of space between lines, as a percentage of normal, where normal is represented as 100.0.\n"
+    },
+    "alignment": {
+      "type": "string",
+      "description": "The text alignment for this paragraph."
+    },
+    "direction": {
+      "type": "string",
+      "description": "The text direction of this paragraph."
+    },
+    "spacingMode": {
+      "type": "string",
+      "description": "The spacing mode for the paragraph."
+    }
+  }
+}

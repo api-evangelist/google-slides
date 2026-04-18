@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReplaceAllShapesWithSheetsChartResponse",
+  "type": "object",
+  "description": "The result of replacing shapes with a Sheets chart.",
+  "properties": {
+    "occurrencesChanged": {
+      "type": "integer",
+      "description": "The number of shapes replaced."
+    }
+  }
+}

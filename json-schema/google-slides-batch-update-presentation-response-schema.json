@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BatchUpdatePresentationResponse",
+  "type": "object",
+  "description": "Response message from a BatchUpdatePresentation request.",
+  "properties": {
+    "presentationId": {
+      "type": "string",
+      "description": "The presentation the updates were applied to."
+    },
+    "replies": {
+      "type": "array",
+      "description": "The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty.\n"
+    }
+  }
+}

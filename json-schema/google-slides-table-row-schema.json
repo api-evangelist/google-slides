@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TableRow",
+  "type": "object",
+  "description": "Properties and contents of each row in a table.",
+  "properties": {
+    "tableCells": {
+      "type": "array",
+      "description": "Properties and contents of each cell. Cells that span multiple columns are represented only once with a columnSpan greater than 1.\n"
+    }
+  }
+}

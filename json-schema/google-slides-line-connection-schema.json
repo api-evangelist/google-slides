@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LineConnection",
+  "type": "object",
+  "description": "The properties for one end of a Line connection.",
+  "properties": {
+    "connectedObjectId": {
+      "type": "string",
+      "description": "The object ID of the connected page element."
+    },
+    "connectionSiteIndex": {
+      "type": "integer",
+      "description": "The index of the connection site on the connected page element.\n"
+    }
+  }
+}

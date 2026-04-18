@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReplaceAllShapesWithImageRequest",
+  "type": "object",
+  "description": "Replaces all shapes that match the given criteria with the provided image.\n",
+  "properties": {
+    "imageUrl": {
+      "type": "string",
+      "description": "The image URL."
+    },
+    "imageReplaceMethod": {
+      "type": "string",
+      "description": "The image replace method."
+    },
+    "pageObjectIds": {
+      "type": "array",
+      "description": "If non-empty, limits to the given pages."
+    }
+  }
+}

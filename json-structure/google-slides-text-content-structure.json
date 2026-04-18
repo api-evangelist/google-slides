@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TextContent",
+  "type": "object",
+  "properties": {
+    "textElements": {
+      "type": "array"
+    },
+    "lists": {
+      "type": "object"
+    }
+  }
+}

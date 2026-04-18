@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LayoutPlaceholderIdMapping",
+  "type": "object",
+  "description": "The mapping between a placeholder on a layout and an object ID for the placeholder on a created slide.\n",
+  "properties": {
+    "layoutPlaceholderObjectId": {
+      "type": "string",
+      "description": "The object ID of the placeholder on a layout that will be applied to a slide.\n"
+    },
+    "objectId": {
+      "type": "string",
+      "description": "A user-supplied object ID for the placeholder identified above that is to be created on the corresponding slide.\n"
+    }
+  }
+}

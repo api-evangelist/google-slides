@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LineConnection",
+  "type": "object",
+  "properties": {
+    "connectedObjectId": {
+      "type": "string"
+    },
+    "connectionSiteIndex": {
+      "type": "integer"
+    }
+  }
+}

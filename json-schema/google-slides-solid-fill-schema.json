@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SolidFill",
+  "type": "object",
+  "description": "A solid color fill.",
+  "properties": {
+    "alpha": {
+      "type": "number",
+      "description": "The fraction of this color that should be applied to the pixel. The final pixel color is defined by the equation pixel_color = alpha * this_color + (1.0 - alpha) * pixel_color. Value is in [0.0, 1.0].\n"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recolor",
+  "type": "object",
+  "description": "A recolor effect applied on an image.\n",
+  "properties": {
+    "recolorStops": {
+      "type": "array",
+      "description": "The recolor effect is represented by a gradient."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the recolor effect."
+    }
+  }
+}

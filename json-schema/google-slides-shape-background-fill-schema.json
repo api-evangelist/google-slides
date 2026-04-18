@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShapeBackgroundFill",
+  "type": "object",
+  "description": "The background fill of a shape.",
+  "properties": {
+    "propertyState": {
+      "type": "string",
+      "description": "The background fill property state.\n"
+    }
+  }
+}

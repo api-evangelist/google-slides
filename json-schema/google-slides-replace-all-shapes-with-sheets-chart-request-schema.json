@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReplaceAllShapesWithSheetsChartRequest",
+  "type": "object",
+  "description": "Replaces all shapes that match the given criteria with the provided Google Sheets chart.\n",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The ID of the Google Sheets spreadsheet."
+    },
+    "chartId": {
+      "type": "integer",
+      "description": "The ID of the specific chart in the Google Sheets spreadsheet."
+    },
+    "linkingMode": {
+      "type": "string",
+      "description": "The mode with which the chart is linked to the source spreadsheet."
+    },
+    "pageObjectIds": {
+      "type": "array",
+      "description": "If non-empty, limits to the given pages."
+    }
+  }
+}

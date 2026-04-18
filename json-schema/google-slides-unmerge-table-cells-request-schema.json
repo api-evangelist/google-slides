@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UnmergeTableCellsRequest",
+  "type": "object",
+  "description": "Unmerges cells in a Table.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the table."
+    }
+  }
+}

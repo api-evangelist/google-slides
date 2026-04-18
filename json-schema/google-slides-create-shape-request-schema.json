@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateShapeRequest",
+  "type": "object",
+  "description": "Creates a new shape.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "A user-supplied object ID."
+    },
+    "shapeType": {
+      "type": "string",
+      "description": "The shape type."
+    }
+  }
+}

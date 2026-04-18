@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DuplicateObjectResponse",
+  "type": "object",
+  "description": "The response of duplicating an object.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The ID of the new duplicate object."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Outline",
+  "type": "object",
+  "description": "The outline of a PageElement.",
+  "properties": {
+    "dashStyle": {
+      "type": "string",
+      "description": "The dash style of the outline."
+    },
+    "propertyState": {
+      "type": "string",
+      "description": "The outline property state."
+    }
+  }
+}

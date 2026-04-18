@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteParagraphBulletsRequest",
+  "type": "object",
+  "description": "Deletes bullets from all of the paragraphs that overlap with a text range.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the shape or table."
+    }
+  }
+}

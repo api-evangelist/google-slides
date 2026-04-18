@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LayoutReference",
+  "type": "object",
+  "description": "Slide layout reference.",
+  "properties": {
+    "predefinedLayout": {
+      "type": "string",
+      "description": "Predefined layout."
+    },
+    "layoutId": {
+      "type": "string",
+      "description": "Layout ID referring to an existing layout in the presentation."
+    }
+  }
+}

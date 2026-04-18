@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Page",
+  "type": "object",
+  "description": "A page in a presentation.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID for this page. Object IDs used by Page and PageElement share the same namespace.\n"
+    },
+    "pageType": {
+      "type": "string",
+      "description": "The type of the page."
+    },
+    "pageElements": {
+      "type": "array",
+      "description": "The page elements rendered on the page."
+    },
+    "revisionId": {
+      "type": "string",
+      "description": "Output only. The revision ID of the presentation containing this page. Can be used in update requests to assert the presentation revision has not changed since the last read operation.\n"
+    }
+  }
+}

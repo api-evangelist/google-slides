@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TableRange",
+  "type": "object",
+  "description": "A table range represents a reference to a subset of a table.",
+  "properties": {
+    "rowSpan": {
+      "type": "integer",
+      "description": "The row span of the table range."
+    },
+    "columnSpan": {
+      "type": "integer",
+      "description": "The column span of the table range."
+    }
+  }
+}

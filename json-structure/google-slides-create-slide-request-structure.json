@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreateSlideRequest",
+  "type": "object",
+  "properties": {
+    "objectId": {
+      "type": "string"
+    },
+    "insertionIndex": {
+      "type": "integer"
+    },
+    "placeholderIdMappings": {
+      "type": "array"
+    }
+  }
+}

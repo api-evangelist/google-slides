@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Page",
+  "type": "object",
+  "properties": {
+    "objectId": {
+      "type": "string"
+    },
+    "pageType": {
+      "type": "string"
+    },
+    "pageElements": {
+      "type": "array"
+    },
+    "revisionId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ReplaceAllShapesWithSheetsChartRequest",
+  "type": "object",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string"
+    },
+    "chartId": {
+      "type": "integer"
+    },
+    "linkingMode": {
+      "type": "string"
+    },
+    "pageObjectIds": {
+      "type": "array"
+    }
+  }
+}

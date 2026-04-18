@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateLinePropertiesRequest",
+  "type": "object",
+  "description": "Updates the properties of a Line.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the line."
+    },
+    "fields": {
+      "type": "string",
+      "description": "The fields that should be updated."
+    }
+  }
+}

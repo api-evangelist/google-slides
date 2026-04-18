@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SheetsChart",
+  "type": "object",
+  "description": "A PageElement kind representing a linked chart embedded from Google Sheets.\n",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The ID of the Google Sheets spreadsheet that contains the source chart."
+    },
+    "chartId": {
+      "type": "integer",
+      "description": "The ID of the specific chart in the Google Sheets spreadsheet."
+    },
+    "contentUrl": {
+      "type": "string",
+      "description": "The URL of an image of the embedded chart, with a default lifetime of 30 minutes.\n"
+    }
+  }
+}

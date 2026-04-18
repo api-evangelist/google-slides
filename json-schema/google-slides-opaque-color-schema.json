@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpaqueColor",
+  "type": "object",
+  "description": "A themeable solid color value.",
+  "properties": {
+    "themeColor": {
+      "type": "string",
+      "description": "An opaque theme color."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "List",
+  "type": "object",
+  "description": "A list describes the look and feel of bullets belonging to paragraphs.",
+  "properties": {
+    "listId": {
+      "type": "string",
+      "description": "The ID of the list."
+    },
+    "nestingLevel": {
+      "type": "object",
+      "description": "A map of nesting levels to the properties of bullets at the associated level.\n"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReplaceAllTextRequest",
+  "type": "object",
+  "description": "Replaces all instances of text matching a criteria with replace text.\n",
+  "properties": {
+    "replaceText": {
+      "type": "string",
+      "description": "The text that will replace the matched text."
+    },
+    "pageObjectIds": {
+      "type": "array",
+      "description": "If non-empty, limits the matches to page elements only on the given pages.\n"
+    }
+  }
+}

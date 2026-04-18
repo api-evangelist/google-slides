@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WordArt",
+  "type": "object",
+  "description": "A PageElement kind representing word art.",
+  "properties": {
+    "renderedText": {
+      "type": "string",
+      "description": "The text rendered as word art."
+    }
+  }
+}

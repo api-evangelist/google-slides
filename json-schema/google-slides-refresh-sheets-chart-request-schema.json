@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RefreshSheetsChartRequest",
+  "type": "object",
+  "description": "Refreshes an embedded Google Sheets chart.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the chart to refresh."
+    }
+  }
+}

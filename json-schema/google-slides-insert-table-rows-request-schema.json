@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InsertTableRowsRequest",
+  "type": "object",
+  "description": "Inserts rows into a table.",
+  "properties": {
+    "tableObjectId": {
+      "type": "string",
+      "description": "The table to insert rows into."
+    },
+    "insertBelow": {
+      "type": "boolean",
+      "description": "Whether to insert new rows below the reference cell location."
+    },
+    "number": {
+      "type": "integer",
+      "description": "The number of rows to be inserted."
+    }
+  }
+}

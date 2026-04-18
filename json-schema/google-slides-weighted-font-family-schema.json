@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeightedFontFamily",
+  "type": "object",
+  "description": "Represents a font family and weight of text.",
+  "properties": {
+    "fontFamily": {
+      "type": "string",
+      "description": "The font family of the text."
+    },
+    "weight": {
+      "type": "integer",
+      "description": "The weight of the font. This field can have any value that is a multiple of 100 between 100 and 900, inclusive.\n"
+    }
+  }
+}

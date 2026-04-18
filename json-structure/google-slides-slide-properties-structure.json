@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SlideProperties",
+  "type": "object",
+  "properties": {
+    "layoutObjectId": {
+      "type": "string"
+    },
+    "masterObjectId": {
+      "type": "string"
+    },
+    "isSkipped": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AffineTransform",
+  "type": "object",
+  "description": "A 3x3 matrix that represents an affine transformation. The matrix maps a source coordinate (x, y) to a destination coordinate (x', y') according to matrix multiplication.\n",
+  "properties": {
+    "scaleX": {
+      "type": "number",
+      "description": "The X coordinate scaling element."
+    },
+    "scaleY": {
+      "type": "number",
+      "description": "The Y coordinate scaling element."
+    },
+    "shearX": {
+      "type": "number",
+      "description": "The X coordinate shearing element."
+    },
+    "shearY": {
+      "type": "number",
+      "description": "The Y coordinate shearing element."
+    },
+    "translateX": {
+      "type": "number",
+      "description": "The X coordinate translation element."
+    },
+    "translateY": {
+      "type": "number",
+      "description": "The Y coordinate translation element."
+    },
+    "unit": {
+      "type": "string",
+      "description": "The units for translate elements."
+    }
+  }
+}

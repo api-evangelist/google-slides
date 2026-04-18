@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ColorStop",
+  "type": "object",
+  "description": "A color and position in a gradient band.",
+  "properties": {
+    "alpha": {
+      "type": "number",
+      "description": "The alpha value of this color in the gradient band. Defaults to 1.0, fully opaque.\n"
+    },
+    "position": {
+      "type": "number",
+      "description": "The relative position of the color stop in the gradient band measured in percentage.\n"
+    }
+  }
+}

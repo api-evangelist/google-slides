@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupObjectsRequest",
+  "type": "object",
+  "description": "Groups objects to create an object group.",
+  "properties": {
+    "groupObjectId": {
+      "type": "string",
+      "description": "A user-supplied object ID for the group to be created."
+    },
+    "childrenObjectIds": {
+      "type": "array",
+      "description": "The object IDs of the objects to group."
+    }
+  }
+}

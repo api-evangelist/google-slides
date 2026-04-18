@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dimension",
+  "type": "object",
+  "description": "A magnitude in a single direction in the specified units.",
+  "properties": {
+    "magnitude": {
+      "type": "number",
+      "description": "The magnitude."
+    },
+    "unit": {
+      "type": "string",
+      "description": "The units for the magnitude."
+    }
+  }
+}

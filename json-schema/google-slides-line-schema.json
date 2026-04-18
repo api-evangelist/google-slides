@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Line",
+  "type": "object",
+  "description": "A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector.\n",
+  "properties": {
+    "lineCategory": {
+      "type": "string",
+      "description": "The category of the line."
+    },
+    "lineType": {
+      "type": "string",
+      "description": "The type of the line."
+    }
+  }
+}

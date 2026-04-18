@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MergeTableCellsRequest",
+  "type": "object",
+  "description": "Merges cells in a Table.",
+  "properties": {
+    "objectId": {
+      "type": "string",
+      "description": "The object ID of the table."
+    }
+  }
+}
