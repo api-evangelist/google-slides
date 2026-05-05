@@ -1,0 +1,13 @@
+{
+  "repo": "google-slides",
+  "feeds": [
+    {
+      "source": "https://cloud.google.com/blog/products/application-development/introducing-google-slides-api",
+      "feed_url": "https://cloudblog.withgoogle.com/products/application-development/rss",
+      "saved": 10,
+      "title": "Application Development"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:29:02Z"
+}
