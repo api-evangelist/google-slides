@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Slides API — Presentations
+  description: 'Google Slides API — Presentations. 3 operations. Lead operation: Google Slides Create Presentation. Self-contained
+    Naftiko capability covering one Google Slides business surface.'
+  tags:
+  - Google Slides
+  - Presentations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SLIDES_API_KEY: GOOGLE_SLIDES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-slides-presentations
+    baseUri: https://slides.googleapis.com
+    description: Google Slides API — Presentations business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-presentations
+      path: /v1/presentations
+      operations:
+      - name: createpresentation
+        method: POST
+        description: Google Slides Create Presentation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-presentations-presentationId
+      path: /v1/presentations/{presentationId}
+      operations:
+      - name: getpresentation
+        method: GET
+        description: Google Slides Get Presentation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-presentations-presentationId}:batchUpdate
+      path: /v1/presentations/{presentationId}:batchUpdate
+      operations:
+      - name: batchupdatepresentation
+        method: POST
+        description: Google Slides Batch Update Presentation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_SLIDES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-slides-presentations-rest
+    port: 8080
+    description: REST adapter for Google Slides API — Presentations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/presentations
+      name: v1-presentations
+      description: REST surface for v1-presentations.
+      operations:
+      - method: POST
+        name: createpresentation
+        description: Google Slides Create Presentation
+        call: google-slides-presentations.createpresentation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/presentations/{presentationid}
+      name: v1-presentations-presentationid
+      description: REST surface for v1-presentations-presentationId.
+      operations:
+      - method: GET
+        name: getpresentation
+        description: Google Slides Get Presentation
+        call: google-slides-presentations.getpresentation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/presentations/presentationid-batchupdate
+      name: v1-presentations-presentationid-batchupdate
+      description: REST surface for v1-presentations-presentationId}:batchUpdate.
+      operations:
+      - method: POST
+        name: batchupdatepresentation
+        description: Google Slides Batch Update Presentation
+        call: google-slides-presentations.batchupdatepresentation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-slides-presentations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Slides API — Presentations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-slides-create-presentation
+      description: Google Slides Create Presentation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-slides-presentations.createpresentation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-slides-get-presentation
+      description: Google Slides Get Presentation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-slides-presentations.getpresentation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-slides-batch-update-presentation
+      description: Google Slides Batch Update Presentation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-slides-presentations.batchupdatepresentation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
