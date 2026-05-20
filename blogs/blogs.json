@@ -3,12 +3,11 @@
   "feeds": [
     {
       "source": "https://cloud.google.com/blog/products/application-development/introducing-google-slides-api",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
+      "feed_url": "https://cloudblog.withgoogle.com/products/application-development/rss/",
+      "title": "Application Development",
+      "saved": 16
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-09T20:17:51Z"
+  "post_count": 26,
+  "fetched": "2026-05-17T20:48:52Z"
 }
