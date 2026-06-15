@@ -1,0 +1,1561 @@
+{
+  "item": [
+    {
+      "id": "04f0f3ba-ed3d-48e8-99a0-71d4d219fc2e",
+      "name": "Pages",
+      "description": {
+        "content": "Operations on pages within presentations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d409fc6-97fe-4b5b-8282-ec7c717e2cf4",
+          "name": "Google Slides Get Page",
+          "request": {
+            "name": "Google Slides Get Page",
+            "description": {
+              "content": "Gets the latest version of the specified page in the presentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                ":presentationId",
+                "pages",
+                ":pageObjectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "presentationId",
+                  "description": "(Required) The ID of the presentation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageObjectId",
+                  "description": "(Required) The object ID of the page to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e60277a-74b6-4fd6-bba1-af64d3efbb23",
+              "name": "Successful response containing the page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objectId\": \"500123\",\n  \"pageType\": \"SLIDE\",\n  \"pageElements\": [\n    {\n      \"objectId\": \"500123\",\n      \"title\": \"Example Title\",\n      \"description\": \"A sample description.\"\n    }\n  ],\n  \"revisionId\": \"500123\",\n  \"pageProperties\": {},\n  \"slideProperties\": {\n    \"layoutObjectId\": \"500123\",\n    \"masterObjectId\": \"500123\",\n    \"isSkipped\": true\n  },\n  \"layoutProperties\": {\n    \"masterObjectId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"displayName\": \"example_value\"\n  },\n  \"notesProperties\": {\n    \"speakerNotesObjectId\": \"500123\"\n  },\n  \"masterProperties\": {\n    \"displayName\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68752622-692d-4793-b63c-a989146b7523",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be8fff8-4845-4167-9af7-3e5ccf3480fd",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f570933-fa6c-4cc1-b4c0-164bd5221cdd",
+              "name": "Not Found - Page does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a700ce44-30a2-40c6-b3c7-bc6728733d55",
+          "name": "Google Slides Get Page Thumbnail",
+          "request": {
+            "name": "Google Slides Get Page Thumbnail",
+            "description": {
+              "content": "Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts against the presentation's read quota.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                ":presentationId",
+                "pages",
+                ":pageObjectId",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "thumbnailProperties.mimeType",
+                  "value": "<string>",
+                  "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "thumbnailProperties.thumbnailSize",
+                  "value": "<string>",
+                  "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "presentationId",
+                  "description": "(Required) The ID of the presentation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageObjectId",
+                  "description": "(Required) The object ID of the page to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cd7ba6c-538e-4bd3-874c-785ca28c2edc",
+              "name": "Successful response containing the thumbnail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentUrl\": \"https://www.example.com\",\n  \"width\": 10,\n  \"height\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f9e27f2-31ce-4dd7-800b-2e809dc6d13b",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa3bcc03-d391-45c6-9813-5531ba4496df",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd0e9e78-a592-4214-953b-ecd58578c779",
+              "name": "Not Found - Page does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9b65fcbb-a335-4495-a69b-f00c0a4ba903",
+      "name": "Presentations",
+      "description": {
+        "content": "Operations on Google Slides presentations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e56c4008-182f-439c-aaab-f8faa4c1ac3e",
+          "name": "Google Slides Create Presentation",
+          "request": {
+            "name": "Google Slides Create Presentation",
+            "description": {
+              "content": "Creates a blank presentation using the title given in the request. If a presentationId is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"pageSize\": {\n    \"width\": {\n      \"magnitude\": \"<number>\",\n      \"unit\": \"<string>\"\n    },\n    \"height\": {\n      \"magnitude\": \"<number>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"locale\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4b02329-60ae-42e1-afbd-49753cd644f7",
+              "name": "Successful response containing the created presentation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"My New Presentation\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"presentationId\": \"500123\",\n  \"title\": \"Example Title\",\n  \"pageSize\": {},\n  \"slides\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"masters\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"layouts\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"locale\": \"example_value\",\n  \"revisionId\": \"500123\",\n  \"notesMaster\": {\n    \"objectId\": \"500123\",\n    \"pageType\": \"SLIDE\",\n    \"pageElements\": [\n      {}\n    ],\n    \"revisionId\": \"500123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89471c9b-cdfc-431e-8e43-f812873ec5a2",
+              "name": "Bad Request - Invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"My New Presentation\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa846ab0-304f-45f7-beb2-0f079c80d317",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"My New Presentation\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caf63413-bef0-4ff1-ac78-101cbfbace2f",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"My New Presentation\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8bfb863-197a-4382-b08f-116484465f3a",
+          "name": "Google Slides Get Presentation",
+          "request": {
+            "name": "Google Slides Get Presentation",
+            "description": {
+              "content": "Gets the latest version of the specified presentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                ":presentationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "presentationId",
+                  "description": "(Required) The ID of the presentation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b94c751d-bea8-4e2c-820e-d52a1e3478e8",
+              "name": "Successful response containing the presentation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"presentationId\": \"500123\",\n  \"title\": \"Example Title\",\n  \"pageSize\": {},\n  \"slides\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"masters\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"layouts\": [\n    {\n      \"objectId\": \"500123\",\n      \"pageType\": \"SLIDE\",\n      \"pageElements\": {},\n      \"revisionId\": \"500123\"\n    }\n  ],\n  \"locale\": \"example_value\",\n  \"revisionId\": \"500123\",\n  \"notesMaster\": {\n    \"objectId\": \"500123\",\n    \"pageType\": \"SLIDE\",\n    \"pageElements\": [\n      {}\n    ],\n    \"revisionId\": \"500123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22a2f1ac-627b-4502-a5a6-adcb8fab8b0d",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0fe4e1c-581d-4254-b15d-5cd76f9e9638",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67f163a7-0810-4799-a917-1c6aa7152fb1",
+              "name": "Not Found - Presentation does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87ebf4dc-abfd-4168-8d7c-29e50fceba19",
+          "name": "Google Slides Batch Update Presentation",
+          "request": {
+            "name": "Google Slides Batch Update Presentation",
+            "description": {
+              "content": "Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                "{{presentationId}}:batchUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"createSlide\": {\n        \"objectId\": \"<string>\",\n        \"insertionIndex\": \"<integer>\",\n        \"slideLayoutReference\": {\n          \"predefinedLayout\": \"<string>\",\n          \"layoutId\": \"<string>\"\n        },\n        \"placeholderIdMappings\": [\n          {\n            \"layoutPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutPlaceholderObjectId\": \"<string>\",\n            \"objectId\": \"<string>\"\n          },\n          {\n            \"layoutPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutPlaceholderObjectId\": \"<string>\",\n            \"objectId\": \"<string>\"\n          }\n        ]\n      },\n      \"createShape\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"shapeType\": \"<string>\"\n      },\n      \"createTable\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"rows\": \"<integer>\",\n        \"columns\": \"<integer>\"\n      },\n      \"createImage\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"url\": \"<string>\"\n      },\n      \"createVideo\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"source\": \"<string>\",\n        \"id\": \"<string>\"\n      },\n      \"createSheetsChart\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"spreadsheetId\": \"<string>\",\n        \"chartId\": \"<integer>\",\n        \"linkingMode\": \"<string>\"\n      },\n      \"createLine\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"lineCategory\": \"<string>\",\n        \"category\": \"<string>\"\n      },\n      \"insertText\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"text\": \"<string>\",\n        \"insertionIndex\": \"<integer>\"\n      },\n      \"insertTableRows\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"insertBelow\": \"<boolean>\",\n        \"number\": \"<integer>\"\n      },\n      \"insertTableColumns\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"insertRight\": \"<boolean>\",\n        \"number\": \"<integer>\"\n      },\n      \"deleteObject\": {\n        \"objectId\": \"<string>\"\n      },\n      \"deleteText\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"deleteTableRow\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        }\n      },\n      \"deleteTableColumn\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        }\n      },\n      \"replaceAllText\": {\n        \"replaceText\": \"<string>\",\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceAllShapesWithImage\": {\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"imageUrl\": \"<string>\",\n        \"imageReplaceMethod\": \"<string>\",\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceAllShapesWithSheetsChart\": {\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"spreadsheetId\": \"<string>\",\n        \"chartId\": \"<integer>\",\n        \"linkingMode\": \"<string>\",\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceImage\": {\n        \"imageObjectId\": \"<string>\",\n        \"url\": \"<string>\",\n        \"imageReplaceMethod\": \"<string>\"\n      },\n      \"duplicateObject\": {\n        \"objectId\": \"<string>\",\n        \"objectIds\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"updateSlidesPosition\": {\n        \"slideObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"insertionIndex\": \"<integer>\"\n      },\n      \"updatePageElementTransform\": {\n        \"objectId\": \"<string>\",\n        \"transform\": {\n          \"scaleX\": \"<number>\",\n          \"scaleY\": \"<number>\",\n          \"shearX\": \"<number>\",\n          \"shearY\": \"<number>\",\n          \"translateX\": \"<number>\",\n          \"translateY\": \"<number>\",\n          \"unit\": \"<string>\"\n        },\n        \"applyMode\": \"<string>\"\n      },\n      \"updateShapeProperties\": {\n        \"objectId\": \"<string>\",\n        \"shapeProperties\": {\n          \"shapeBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shadow\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blurRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rotateWithShape\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contentAlignment\": \"<string>\",\n          \"autofit\": {\n            \"autofitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontScale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateImageProperties\": {\n        \"objectId\": \"<string>\",\n        \"imageProperties\": {\n          \"cropProperties\": {\n            \"leftOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rightOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bottomOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"angle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transparency\": \"<number>\",\n          \"brightness\": \"<number>\",\n          \"contrast\": \"<number>\",\n          \"recolor\": {\n            \"recolorStops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shadow\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blurRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rotateWithShape\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateVideoProperties\": {\n        \"objectId\": \"<string>\",\n        \"videoProperties\": {\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"autoPlay\": \"<boolean>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\",\n          \"mute\": \"<boolean>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updatePageProperties\": {\n        \"objectId\": \"<string>\",\n        \"pageProperties\": {\n          \"pageBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stretchedPictureFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"colorScheme\": {\n            \"colors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableCellProperties\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        },\n        \"tableCellProperties\": {\n          \"tableCellBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contentAlignment\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateLineProperties\": {\n        \"objectId\": \"<string>\",\n        \"lineProperties\": {\n          \"lineFill\": {\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dashStyle\": \"<string>\",\n          \"startArrow\": \"<string>\",\n          \"endArrow\": \"<string>\",\n          \"startConnection\": {\n            \"connectedObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectionSiteIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"endConnection\": {\n            \"connectedObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectionSiteIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTextStyle\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"style\": {\n          \"backgroundColor\": {\n            \"opaqueColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"foregroundColor\": {\n            \"opaqueColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bold\": \"<boolean>\",\n          \"italic\": \"<boolean>\",\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"baselineOffset\": \"<string>\",\n          \"smallCaps\": \"<boolean>\",\n          \"strikethrough\": \"<boolean>\",\n          \"underline\": \"<boolean>\",\n          \"weightedFontFamily\": {\n            \"fontFamily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateParagraphStyle\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"style\": {\n          \"lineSpacing\": \"<number>\",\n          \"alignment\": \"<string>\",\n          \"indentStart\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"indentEnd\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"indentFirstLine\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"direction\": \"<string>\",\n          \"spacingMode\": \"<string>\",\n          \"spaceAbove\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spaceBelow\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableBorderProperties\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        },\n        \"tableBorderProperties\": {\n          \"tableBorderFill\": {\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dashStyle\": \"<string>\"\n        },\n        \"borderPosition\": \"<string>\",\n        \"fields\": \"<string>\"\n      },\n      \"updateTableColumnProperties\": {\n        \"objectId\": \"<string>\",\n        \"columnIndices\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"tableColumnProperties\": {\n          \"columnWidth\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableRowProperties\": {\n        \"objectId\": \"<string>\",\n        \"rowIndices\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"tableRowProperties\": {\n          \"minRowHeight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateSlideProperties\": {\n        \"objectId\": \"<string>\",\n        \"slideProperties\": {\n          \"layoutObjectId\": \"<string>\",\n          \"masterObjectId\": \"<string>\",\n          \"notesPage\": {\n            \"objectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageElements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"notesProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"masterProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isSkipped\": \"<boolean>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updatePageElementAltText\": {\n        \"objectId\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"updatePageElementsZOrder\": {\n        \"pageElementObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"operation\": \"<string>\"\n      },\n      \"updateLineCategoryRequest\": {\n        \"objectId\": \"<string>\",\n        \"lineCategory\": \"<string>\"\n      },\n      \"rerouteLine\": {\n        \"objectId\": \"<string>\"\n      },\n      \"createParagraphBullets\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"bulletPreset\": \"<string>\"\n      },\n      \"deleteParagraphBullets\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"groupObjects\": {\n        \"groupObjectId\": \"<string>\",\n        \"childrenObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"ungroupObjects\": {\n        \"objectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"mergeTableCells\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        }\n      },\n      \"unmergeTableCells\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        }\n      },\n      \"refreshSheetsChart\": {\n        \"objectId\": \"<string>\"\n      }\n    },\n    {\n      \"createSlide\": {\n        \"objectId\": \"<string>\",\n        \"insertionIndex\": \"<integer>\",\n        \"slideLayoutReference\": {\n          \"predefinedLayout\": \"<string>\",\n          \"layoutId\": \"<string>\"\n        },\n        \"placeholderIdMappings\": [\n          {\n            \"layoutPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutPlaceholderObjectId\": \"<string>\",\n            \"objectId\": \"<string>\"\n          },\n          {\n            \"layoutPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutPlaceholderObjectId\": \"<string>\",\n            \"objectId\": \"<string>\"\n          }\n        ]\n      },\n      \"createShape\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"shapeType\": \"<string>\"\n      },\n      \"createTable\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"rows\": \"<integer>\",\n        \"columns\": \"<integer>\"\n      },\n      \"createImage\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"url\": \"<string>\"\n      },\n      \"createVideo\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"source\": \"<string>\",\n        \"id\": \"<string>\"\n      },\n      \"createSheetsChart\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"spreadsheetId\": \"<string>\",\n        \"chartId\": \"<integer>\",\n        \"linkingMode\": \"<string>\"\n      },\n      \"createLine\": {\n        \"objectId\": \"<string>\",\n        \"elementProperties\": {\n          \"pageObjectId\": \"<string>\",\n          \"size\": {\n            \"width\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"height\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transform\": {\n            \"scaleX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shearY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateX\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"translateY\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"lineCategory\": \"<string>\",\n        \"category\": \"<string>\"\n      },\n      \"insertText\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"text\": \"<string>\",\n        \"insertionIndex\": \"<integer>\"\n      },\n      \"insertTableRows\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"insertBelow\": \"<boolean>\",\n        \"number\": \"<integer>\"\n      },\n      \"insertTableColumns\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"insertRight\": \"<boolean>\",\n        \"number\": \"<integer>\"\n      },\n      \"deleteObject\": {\n        \"objectId\": \"<string>\"\n      },\n      \"deleteText\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"deleteTableRow\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        }\n      },\n      \"deleteTableColumn\": {\n        \"tableObjectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        }\n      },\n      \"replaceAllText\": {\n        \"replaceText\": \"<string>\",\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceAllShapesWithImage\": {\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"imageUrl\": \"<string>\",\n        \"imageReplaceMethod\": \"<string>\",\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceAllShapesWithSheetsChart\": {\n        \"containsText\": {\n          \"text\": \"<string>\",\n          \"matchCase\": \"<boolean>\"\n        },\n        \"spreadsheetId\": \"<string>\",\n        \"chartId\": \"<integer>\",\n        \"linkingMode\": \"<string>\",\n        \"pageObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"replaceImage\": {\n        \"imageObjectId\": \"<string>\",\n        \"url\": \"<string>\",\n        \"imageReplaceMethod\": \"<string>\"\n      },\n      \"duplicateObject\": {\n        \"objectId\": \"<string>\",\n        \"objectIds\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"updateSlidesPosition\": {\n        \"slideObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"insertionIndex\": \"<integer>\"\n      },\n      \"updatePageElementTransform\": {\n        \"objectId\": \"<string>\",\n        \"transform\": {\n          \"scaleX\": \"<number>\",\n          \"scaleY\": \"<number>\",\n          \"shearX\": \"<number>\",\n          \"shearY\": \"<number>\",\n          \"translateX\": \"<number>\",\n          \"translateY\": \"<number>\",\n          \"unit\": \"<string>\"\n        },\n        \"applyMode\": \"<string>\"\n      },\n      \"updateShapeProperties\": {\n        \"objectId\": \"<string>\",\n        \"shapeProperties\": {\n          \"shapeBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shadow\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blurRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rotateWithShape\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contentAlignment\": \"<string>\",\n          \"autofit\": {\n            \"autofitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fontScale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateImageProperties\": {\n        \"objectId\": \"<string>\",\n        \"imageProperties\": {\n          \"cropProperties\": {\n            \"leftOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rightOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"topOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bottomOffset\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"angle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"transparency\": \"<number>\",\n          \"brightness\": \"<number>\",\n          \"contrast\": \"<number>\",\n          \"recolor\": {\n            \"recolorStops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"shadow\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alignment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blurRadius\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"color\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rotateWithShape\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateVideoProperties\": {\n        \"objectId\": \"<string>\",\n        \"videoProperties\": {\n          \"outline\": {\n            \"outlineFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dashStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"autoPlay\": \"<boolean>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\",\n          \"mute\": \"<boolean>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updatePageProperties\": {\n        \"objectId\": \"<string>\",\n        \"pageProperties\": {\n          \"pageBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stretchedPictureFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"colorScheme\": {\n            \"colors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableCellProperties\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        },\n        \"tableCellProperties\": {\n          \"tableCellBackgroundFill\": {\n            \"propertyState\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contentAlignment\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateLineProperties\": {\n        \"objectId\": \"<string>\",\n        \"lineProperties\": {\n          \"lineFill\": {\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dashStyle\": \"<string>\",\n          \"startArrow\": \"<string>\",\n          \"endArrow\": \"<string>\",\n          \"startConnection\": {\n            \"connectedObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectionSiteIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"endConnection\": {\n            \"connectedObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectionSiteIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTextStyle\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"style\": {\n          \"backgroundColor\": {\n            \"opaqueColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"foregroundColor\": {\n            \"opaqueColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"bold\": \"<boolean>\",\n          \"italic\": \"<boolean>\",\n          \"fontFamily\": \"<string>\",\n          \"fontSize\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"link\": {\n            \"url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"relativeLink\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageObjectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"baselineOffset\": \"<string>\",\n          \"smallCaps\": \"<boolean>\",\n          \"strikethrough\": \"<boolean>\",\n          \"underline\": \"<boolean>\",\n          \"weightedFontFamily\": {\n            \"fontFamily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"weight\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateParagraphStyle\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"style\": {\n          \"lineSpacing\": \"<number>\",\n          \"alignment\": \"<string>\",\n          \"indentStart\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"indentEnd\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"indentFirstLine\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"direction\": \"<string>\",\n          \"spacingMode\": \"<string>\",\n          \"spaceAbove\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"spaceBelow\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableBorderProperties\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        },\n        \"tableBorderProperties\": {\n          \"tableBorderFill\": {\n            \"solidFill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"weight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dashStyle\": \"<string>\"\n        },\n        \"borderPosition\": \"<string>\",\n        \"fields\": \"<string>\"\n      },\n      \"updateTableColumnProperties\": {\n        \"objectId\": \"<string>\",\n        \"columnIndices\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"tableColumnProperties\": {\n          \"columnWidth\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateTableRowProperties\": {\n        \"objectId\": \"<string>\",\n        \"rowIndices\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"tableRowProperties\": {\n          \"minRowHeight\": {\n            \"magnitude\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updateSlideProperties\": {\n        \"objectId\": \"<string>\",\n        \"slideProperties\": {\n          \"layoutObjectId\": \"<string>\",\n          \"masterObjectId\": \"<string>\",\n          \"notesPage\": {\n            \"objectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageElements\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pageProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slideProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"layoutProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"notesProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"masterProperties\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isSkipped\": \"<boolean>\"\n        },\n        \"fields\": \"<string>\"\n      },\n      \"updatePageElementAltText\": {\n        \"objectId\": \"<string>\",\n        \"title\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"updatePageElementsZOrder\": {\n        \"pageElementObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"operation\": \"<string>\"\n      },\n      \"updateLineCategoryRequest\": {\n        \"objectId\": \"<string>\",\n        \"lineCategory\": \"<string>\"\n      },\n      \"rerouteLine\": {\n        \"objectId\": \"<string>\"\n      },\n      \"createParagraphBullets\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        },\n        \"bulletPreset\": \"<string>\"\n      },\n      \"deleteParagraphBullets\": {\n        \"objectId\": \"<string>\",\n        \"cellLocation\": {\n          \"rowIndex\": \"<integer>\",\n          \"columnIndex\": \"<integer>\"\n        },\n        \"textRange\": {\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"groupObjects\": {\n        \"groupObjectId\": \"<string>\",\n        \"childrenObjectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"ungroupObjects\": {\n        \"objectIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"mergeTableCells\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        }\n      },\n      \"unmergeTableCells\": {\n        \"objectId\": \"<string>\",\n        \"tableRange\": {\n          \"location\": {\n            \"rowIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rowSpan\": \"<integer>\",\n          \"columnSpan\": \"<integer>\"\n        }\n      },\n      \"refreshSheetsChart\": {\n        \"objectId\": \"<string>\"\n      }\n    }\n  ],\n  \"writeControl\": {\n    \"requiredRevisionId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b18a63a-bce5-465d-8321-0a896511a250",
+              "name": "Successful response containing update replies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    "{{presentationId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"objectId\": \"MyShape_01\",\n        \"text\": \"Hello World\",\n        \"insertionIndex\": 0\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"presentationId\": \"500123\",\n  \"replies\": [\n    {}\n  ],\n  \"writeControl\": {\n    \"requiredRevisionId\": \"500123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "939c4a31-42bb-4fc4-b749-e912feb8dbab",
+              "name": "Bad Request - One or more requests are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    "{{presentationId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"objectId\": \"MyShape_01\",\n        \"text\": \"Hello World\",\n        \"insertionIndex\": 0\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "153921f8-f7e5-4800-bda6-8c441df10ca0",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    "{{presentationId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"objectId\": \"MyShape_01\",\n        \"text\": \"Hello World\",\n        \"insertionIndex\": 0\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14c2afec-f65b-488b-b2ec-20532c897f71",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    "{{presentationId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"objectId\": \"MyShape_01\",\n        \"text\": \"Hello World\",\n        \"insertionIndex\": 0\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81be96f6-03e5-4d0b-904b-69f14c736e59",
+              "name": "Not Found - Presentation does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    "{{presentationId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"insertText\": {\n        \"objectId\": \"MyShape_01\",\n        \"text\": \"Hello World\",\n        \"insertionIndex\": 0\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://slides.googleapis.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The ID of the presentation.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "presentationId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/presentations https://www.googleapis.com/auth/presentations.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "63d02223-d8aa-40d0-8a47-09997759d045",
+    "name": "Google Slides API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reads and writes Google Slides presentations. The Google Slides API lets you create and modify Google Slides presentations. Apps can integrate with the Slides API to create presentations, add and modify slides, format text and shapes, embed charts and images, and perform batch updates to presentations programmatically.\n\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

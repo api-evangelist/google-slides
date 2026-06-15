@@ -9,13 +9,20 @@
       "method": "feed"
     },
     {
+      "source": "https://developers.google.com/feeds/workspace-release-notes.xml",
+      "feed_url": "https://developers.google.com/feeds/workspace-release-notes.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://developers.google.com/workspace/release-notes",
       "feed_url": "https://developers.google.com/feeds/workspace-release-notes.xml",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "discovered"
     }
   ],
   "post_count": 33,
-  "fetched": "2026-06-01T23:35:02Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }
