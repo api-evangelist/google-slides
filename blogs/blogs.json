@@ -5,14 +5,14 @@
       "source": "https://cloudblog.withgoogle.com/products/application-development/rss/",
       "feed_url": "https://cloudblog.withgoogle.com/products/application-development/rss/",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
       "source": "https://developers.google.com/feeds/workspace-release-notes.xml",
       "feed_url": "https://developers.google.com/feeds/workspace-release-notes.xml",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 33,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 37,
+  "fetched": "2026-06-27T12:03:07Z"
 }

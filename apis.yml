@@ -37,7 +37,7 @@ apis:
         url: json-ld/google-slides-context.jsonld
       - type: Authentication
         url: https://developers.google.com/slides/api/guides/authorizing
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/slides/api/quickstart/python
         title: Python Quickstart
       - type: Documentation
@@ -54,7 +54,7 @@ apis:
       - type: Documentation
         url: https://developers.google.com/workspace/slides/api/guides/overview
         title: Overview
-      - type: SDK
+      - type: SDKs
         url: https://developers.google.com/workspace/slides/api/guides/libraries
         title: Client Libraries
       - type: ReleaseNotes
@@ -64,19 +64,19 @@ apis:
         title: Scopes
       - type: Troubleshooting
         url: https://developers.google.com/workspace/slides/api/troubleshoot-authentication-authorization
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/slides/api/quickstart/java
         title: Java Quickstart
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/workspace/slides/api/quickstart/nodejs
         title: Node.js Quickstart
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/workspace/slides/api/quickstart/javascript
         title: JavaScript Quickstart
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/workspace/slides/api/quickstart/go
         title: Go Quickstart
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/workspace/slides/api/quickstart/apps-script
         title: Apps Script Quickstart
       - type: YouTube
