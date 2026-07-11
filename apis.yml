@@ -84,6 +84,12 @@ apis:
       - type: GitHubRepository
         url: https://github.com/googleworkspace/slides-api
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-slides-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-slides-domain-security.yml
+  - type: Authentication
+    url: authentication/google-slides-authentication.yml
   - type: OAuthScopes
     url: scopes/google-slides-scopes.yml
   - type: Portal

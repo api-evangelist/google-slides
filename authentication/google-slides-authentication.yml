@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-slides-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+    scopes: 7
+  description: Google OAuth 2.0 authentication. Requires one of the following scopes depending
+    on the operation.
+  sources:
+  - openapi/google-slides-api-openapi.yml
