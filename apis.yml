@@ -84,6 +84,8 @@ apis:
       - type: GitHubRepository
         url: https://github.com/googleworkspace/slides-api
 common:
+  - type: OAuthScopes
+    url: scopes/google-slides-scopes.yml
   - type: Portal
     url: https://console.cloud.google.com/
   - type: Authentication
