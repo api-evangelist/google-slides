@@ -1,0 +1,694 @@
+{
+  "info": {
+    "_postman_id": "d5668ee8-6e26-4d92-b5cb-ac4e418494af",
+    "name": "Google Slides Pages API",
+    "description": "Reads and writes Google Slides presentations. The Google Slides API lets you create and modify Google Slides presentations. Apps can integrate with the Slides API to create presentations, add and modify slides, format text and shapes, embed charts and images, and perform batch updates to presentations programmatically.\n\n\nContact Support:\n Name: Google Workspace Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:50:20.000Z",
+    "updatedAt": "2026-07-28T01:50:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d5668ee8-6e26-4d92-b5cb-ac4e418494af"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "presentations",
+          "item": [
+            {
+              "name": "{presentationId}",
+              "item": [
+                {
+                  "name": "pages",
+                  "item": [
+                    {
+                      "name": "{pageObjectId}",
+                      "item": [
+                        {
+                          "name": "thumbnail",
+                          "item": [
+                            {
+                              "name": "Google Slides Get Page Thumbnail",
+                              "id": "c1822a07-2086-4fd9-952a-4a93cbae76c9",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail?thumbnailProperties.mimeType=JPEG&thumbnailProperties.thumbnailSize=LARGE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "presentations",
+                                    ":presentationId",
+                                    "pages",
+                                    ":pageObjectId",
+                                    "thumbnail"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n",
+                                      "key": "thumbnailProperties.mimeType",
+                                      "value": "JPEG"
+                                    },
+                                    {
+                                      "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n",
+                                      "key": "thumbnailProperties.thumbnailSize",
+                                      "value": "LARGE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f5d85435-6180-4562-9865-3164806fdc21",
+                                      "key": "presentationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The ID of the presentation."
+                                    },
+                                    {
+                                      "id": "43e6178e-1095-4bb9-9562-677c4352be92",
+                                      "key": "pageObjectId",
+                                      "value": "<string>",
+                                      "description": "(Required) The object ID of the page to retrieve."
+                                    }
+                                  ]
+                                },
+                                "description": "Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts against the presentation's read quota.\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "b90b1170-f8cd-4224-a0fb-5bc240b46736",
+                                  "name": "Successful response containing the thumbnail",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail?thumbnailProperties.mimeType=JPEG&thumbnailProperties.thumbnailSize=LARGE",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "presentations",
+                                        ":presentationId",
+                                        "pages",
+                                        ":pageObjectId",
+                                        "thumbnail"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n",
+                                          "key": "thumbnailProperties.mimeType",
+                                          "value": "JPEG"
+                                        },
+                                        {
+                                          "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n",
+                                          "key": "thumbnailProperties.thumbnailSize",
+                                          "value": "LARGE"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "presentationId"
+                                        },
+                                        {
+                                          "key": "pageObjectId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"contentUrl\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+                                  "createdAt": "2026-07-28T01:50:20.000Z",
+                                  "updatedAt": "2026-07-28T01:50:20.000Z",
+                                  "uid": "35240-b90b1170-f8cd-4224-a0fb-5bc240b46736"
+                                },
+                                {
+                                  "id": "8b9fe83e-2f0e-4645-bc86-d523c7b3ce47",
+                                  "name": "Unauthorized - Authentication required",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail?thumbnailProperties.mimeType=JPEG&thumbnailProperties.thumbnailSize=LARGE",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "presentations",
+                                        ":presentationId",
+                                        "pages",
+                                        ":pageObjectId",
+                                        "thumbnail"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n",
+                                          "key": "thumbnailProperties.mimeType",
+                                          "value": "JPEG"
+                                        },
+                                        {
+                                          "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n",
+                                          "key": "thumbnailProperties.thumbnailSize",
+                                          "value": "LARGE"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "presentationId"
+                                        },
+                                        {
+                                          "key": "pageObjectId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:50:20.000Z",
+                                  "updatedAt": "2026-07-28T01:50:20.000Z",
+                                  "uid": "35240-8b9fe83e-2f0e-4645-bc86-d523c7b3ce47"
+                                },
+                                {
+                                  "id": "cbb812c4-86f0-4704-8f3f-d4ec70a80e02",
+                                  "name": "Forbidden - Insufficient permissions",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail?thumbnailProperties.mimeType=JPEG&thumbnailProperties.thumbnailSize=LARGE",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "presentations",
+                                        ":presentationId",
+                                        "pages",
+                                        ":pageObjectId",
+                                        "thumbnail"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n",
+                                          "key": "thumbnailProperties.mimeType",
+                                          "value": "JPEG"
+                                        },
+                                        {
+                                          "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n",
+                                          "key": "thumbnailProperties.thumbnailSize",
+                                          "value": "LARGE"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "presentationId"
+                                        },
+                                        {
+                                          "key": "pageObjectId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:50:20.000Z",
+                                  "updatedAt": "2026-07-28T01:50:20.000Z",
+                                  "uid": "35240-cbb812c4-86f0-4704-8f3f-d4ec70a80e02"
+                                },
+                                {
+                                  "id": "a86de295-86a4-456b-8e25-c9e7a24b6a19",
+                                  "name": "Not Found - Page does not exist",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail?thumbnailProperties.mimeType=JPEG&thumbnailProperties.thumbnailSize=LARGE",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "presentations",
+                                        ":presentationId",
+                                        "pages",
+                                        ":pageObjectId",
+                                        "thumbnail"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n",
+                                          "key": "thumbnailProperties.mimeType",
+                                          "value": "JPEG"
+                                        },
+                                        {
+                                          "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n",
+                                          "key": "thumbnailProperties.thumbnailSize",
+                                          "value": "LARGE"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "presentationId"
+                                        },
+                                        {
+                                          "key": "pageObjectId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:50:20.000Z",
+                                  "updatedAt": "2026-07-28T01:50:20.000Z",
+                                  "uid": "35240-a86de295-86a4-456b-8e25-c9e7a24b6a19"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:50:20.000Z",
+                              "updatedAt": "2026-07-28T01:50:20.000Z",
+                              "uid": "35240-c1822a07-2086-4fd9-952a-4a93cbae76c9"
+                            }
+                          ],
+                          "id": "439235e9-7b1f-46a1-9ea5-16db43550b80",
+                          "createdAt": "2026-07-28T01:50:20.000Z",
+                          "updatedAt": "2026-07-28T01:50:20.000Z",
+                          "uid": "35240-439235e9-7b1f-46a1-9ea5-16db43550b80"
+                        },
+                        {
+                          "name": "Google Slides Get Page",
+                          "id": "9ab80fe1-fd9b-4b45-afed-9132cf7d72a3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "presentations",
+                                ":presentationId",
+                                "pages",
+                                ":pageObjectId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "14cd9462-f39a-47e9-8cf4-db943e5eaf69",
+                                  "key": "presentationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the presentation."
+                                },
+                                {
+                                  "id": "440fa08d-6c6d-47ee-95ef-beda3d8ba654",
+                                  "key": "pageObjectId",
+                                  "value": "<string>",
+                                  "description": "(Required) The object ID of the page to retrieve."
+                                }
+                              ]
+                            },
+                            "description": "Gets the latest version of the specified page in the presentation.\n"
+                          },
+                          "response": [
+                            {
+                              "id": "d79810e4-fa01-40b6-8f9c-91565baac497",
+                              "name": "Successful response containing the page",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "presentations",
+                                    ":presentationId",
+                                    "pages",
+                                    ":pageObjectId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "presentationId"
+                                    },
+                                    {
+                                      "key": "pageObjectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"objectId\": \"<string>\",\n  \"pageType\": \"MASTER\",\n  \"pageElements\": [\n    {\n      \"objectId\": \"<string>\",\n      \"size\": {\n        \"width\": {\n          \"magnitude\": \"<number>\",\n          \"unit\": \"UNIT_UNSPECIFIED\"\n        },\n        \"height\": {\n          \"magnitude\": \"<number>\",\n          \"unit\": \"PT\"\n        }\n      },\n      \"transform\": {\n        \"scaleX\": \"<number>\",\n        \"scaleY\": \"<number>\",\n        \"shearX\": \"<number>\",\n        \"shearY\": \"<number>\",\n        \"translateX\": \"<number>\",\n        \"translateY\": \"<number>\",\n        \"unit\": \"PT\"\n      },\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"shape\": {\n        \"shapeType\": \"LEFT_BRACKET\",\n        \"text\": {\n          \"textElements\": [\n            {\n              \"startIndex\": \"<integer>\",\n              \"endIndex\": \"<integer>\",\n              \"paragraphMarker\": {\n                \"style\": {\n                  \"lineSpacing\": \"<number>\",\n                  \"alignment\": \"END\",\n                  \"indentStart\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"PT\"\n                  },\n                  \"indentEnd\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"PT\"\n                  },\n                  \"indentFirstLine\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"EMU\"\n                  },\n                  \"direction\": \"LEFT_TO_RIGHT\",\n                  \"spacingMode\": \"NEVER_COLLAPSE\",\n                  \"spaceAbove\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"UNIT_UNSPECIFIED\"\n                  },\n                  \"spaceBelow\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"PT\"\n                  }\n                },\n                \"bullet\": {\n                  \"listId\": \"<string>\",\n                  \"nestingLevel\": \"<integer>\",\n                  \"glyph\": \"<string>\",\n                  \"bulletStyle\": {\n                    \"backgroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"TEXT2\"\n                      }\n                    },\n                    \"foregroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"DARK2\"\n                      }\n                    },\n                    \"bold\": \"<boolean>\",\n                    \"italic\": \"<boolean>\",\n                    \"fontFamily\": \"<string>\",\n                    \"fontSize\": {\n                      \"magnitude\": \"<number>\",\n                      \"unit\": \"PT\"\n                    },\n                    \"link\": {\n                      \"url\": \"<string>\",\n                      \"relativeLink\": \"PREVIOUS_SLIDE\",\n                      \"pageObjectId\": \"<string>\",\n                      \"slideIndex\": \"<integer>\"\n                    },\n                    \"baselineOffset\": \"BASELINE_OFFSET_UNSPECIFIED\",\n                    \"smallCaps\": \"<boolean>\",\n                    \"strikethrough\": \"<boolean>\",\n                    \"underline\": \"<boolean>\",\n                    \"weightedFontFamily\": {\n                      \"fontFamily\": \"<string>\",\n                      \"weight\": \"<integer>\"\n                    }\n                  }\n                }\n              },\n              \"textRun\": {\n                \"content\": \"<string>\",\n                \"style\": {\n                  \"backgroundColor\": {\n                    \"opaqueColor\": {\n                      \"rgbColor\": {\n                        \"red\": \"<number>\",\n                        \"green\": \"<number>\",\n                        \"blue\": \"<number>\"\n                      },\n                      \"themeColor\": \"DARK2\"\n                    }\n                  },\n                  \"foregroundColor\": {\n                    \"opaqueColor\": {\n                      \"rgbColor\": {\n                        \"red\": \"<number>\",\n                        \"green\": \"<number>\",\n                        \"blue\": \"<number>\"\n                      },\n                      \"themeColor\": \"ACCENT6\"\n                    }\n                  },\n                  \"bold\": \"<boolean>\",\n                  \"italic\": \"<boolean>\",\n                  \"fontFamily\": \"<string>\",\n                  \"fontSize\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"PT\"\n                  },\n                  \"link\": {\n                    \"url\": \"<string>\",\n                    \"relativeLink\": \"PREVIOUS_SLIDE\",\n                    \"pageObjectId\": \"<string>\",\n                    \"slideIndex\": \"<integer>\"\n                  },\n                  \"baselineOffset\": \"SUBSCRIPT\",\n                  \"smallCaps\": \"<boolean>\",\n                  \"strikethrough\": \"<boolean>\",\n                  \"underline\": \"<boolean>\",\n                  \"weightedFontFamily\": {\n                    \"fontFamily\": \"<string>\",\n                    \"weight\": \"<integer>\"\n                  }\n                }\n              },\n              \"autoText\": {\n                \"type\": \"SLIDE_NUMBER\",\n                \"content\": \"<string>\",\n                \"style\": {\n                  \"backgroundColor\": {\n                    \"opaqueColor\": {\n                      \"rgbColor\": {\n                        \"red\": \"<number>\",\n                        \"green\": \"<number>\",\n                        \"blue\": \"<number>\"\n                      },\n                      \"themeColor\": \"DARK1\"\n                    }\n                  },\n                  \"foregroundColor\": {\n                    \"opaqueColor\": {\n                      \"rgbColor\": {\n                        \"red\": \"<number>\",\n                        \"green\": \"<number>\",\n                        \"blue\": \"<number>\"\n                      },\n                      \"themeColor\": \"HYPERLINK\"\n                    }\n                  },\n                  \"bold\": \"<boolean>\",\n                  \"italic\": \"<boolean>\",\n                  \"fontFamily\": \"<string>\",\n                  \"fontSize\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"EMU\"\n                  },\n                  \"link\": {\n                    \"url\": \"<string>\",\n                    \"relativeLink\": \"LAST_SLIDE\",\n                    \"pageObjectId\": \"<string>\",\n                    \"slideIndex\": \"<integer>\"\n                  },\n                  \"baselineOffset\": \"SUBSCRIPT\",\n                  \"smallCaps\": \"<boolean>\",\n                  \"strikethrough\": \"<boolean>\",\n                  \"underline\": \"<boolean>\",\n                  \"weightedFontFamily\": {\n                    \"fontFamily\": \"<string>\",\n                    \"weight\": \"<integer>\"\n                  }\n                }\n              }\n            }\n          ],\n          \"lists\": {\n            \"minimaa\": {\n              \"listId\": \"<string>\",\n              \"nestingLevel\": {\n                \"irure_512\": {\n                  \"bulletStyle\": {\n                    \"backgroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"ACCENT3\"\n                      }\n                    },\n                    \"foregroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"DARK2\"\n                      }\n                    },\n                    \"bold\": \"<boolean>\",\n                    \"italic\": \"<boolean>\",\n                    \"fontFamily\": \"<string>\",\n                    \"fontSize\": {\n                      \"magnitude\": \"<number>\",\n                      \"unit\": \"EMU\"\n                    },\n                    \"link\": {\n                      \"url\": \"<string>\",\n                      \"relativeLink\": \"PREVIOUS_SLIDE\",\n                      \"pageObjectId\": \"<string>\",\n                      \"slideIndex\": \"<integer>\"\n                    },\n                    \"baselineOffset\": \"SUPERSCRIPT\",\n                    \"smallCaps\": \"<boolean>\",\n                    \"strikethrough\": \"<boolean>\",\n                    \"underline\": \"<boolean>\",\n                    \"weightedFontFamily\": {\n                      \"fontFamily\": \"<string>\",\n                      \"weight\": \"<integer>\"\n                    }\n                  }\n                },\n                \"labore95\": {\n                  \"bulletStyle\": {\n                    \"backgroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"THEME_COLOR_TYPE_UNSPECIFIED\"\n                      }\n                    },\n                    \"foregroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"LIGHT2\"\n                      }\n                    },\n                    \"bold\": \"<boolean>\",\n                    \"italic\": \"<boolean>\",\n                    \"fontFamily\": \"<string>\",\n                    \"fontSize\": {\n                      \"magnitude\": \"<number>\",\n                      \"unit\": \"EMU\"\n                    },\n                    \"link\": {\n                      \"url\": \"<string>\",\n                      \"relativeLink\": \"NEXT_SLIDE\",\n                      \"pageObjectId\": \"<string>\",\n                      \"slideIndex\": \"<integer>\"\n                    },\n                    \"baselineOffset\": \"NONE\",\n                    \"smallCaps\": \"<boolean>\",\n                    \"strikethrough\": \"<boolean>\",\n                    \"underline\": \"<boolean>\",\n                    \"weightedFontFamily\": {\n                      \"fontFamily\": \"<string>\",\n                      \"weight\": \"<integer>\"\n                    }\n                  }\n                }\n              }\n            },\n            \"labore09\": {\n              \"listId\": \"<string>\",\n              \"nestingLevel\": {\n                \"incididunt67\": {\n                  \"bulletStyle\": {\n                    \"backgroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"BACKGROUND1\"\n                      }\n                    },\n                    \"foregroundColor\": {\n                      \"opaqueColor\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"ACCENT5\"\n                      }\n                    },\n                    \"bold\": \"<boolean>\",\n                    \"italic\": \"<boolean>\",\n                    \"fontFamily\": \"<string>\",\n                    \"fontSize\": {\n                      \"magnitude\": \"<number>\",\n                      \"unit\": \"UNIT_UNSPECIFIED\"\n                    },\n                    \"link\": {\n                      \"url\": \"<string>\",\n                      \"relativeLink\": \"NEXT_SLIDE\",\n                      \"pageObjectId\": \"<string>\",\n                      \"slideIndex\": \"<integer>\"\n                    },\n                    \"baselineOffset\": \"SUBSCRIPT\",\n                    \"smallCaps\": \"<boolean>\",\n                    \"strikethrough\": \"<boolean>\",\n                    \"underline\": \"<boolean>\",\n                    \"weightedFontFamily\": {\n                      \"fontFamily\": \"<string>\",\n                      \"weight\": \"<integer>\"\n                    }\n                  }\n                }\n              }\n            }\n          }\n        },\n        \"shapeProperties\": {\n          \"shapeBackgroundFill\": {\n            \"propertyState\": \"RENDERED\",\n            \"solidFill\": {\n              \"color\": {\n                \"rgbColor\": {\n                  \"red\": \"<number>\",\n                  \"green\": \"<number>\",\n                  \"blue\": \"<number>\"\n                },\n                \"themeColor\": \"ACCENT5\"\n              },\n              \"alpha\": \"<number>\"\n            }\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"solidFill\": {\n                \"color\": {\n                  \"rgbColor\": {\n                    \"red\": \"<number>\",\n                    \"green\": \"<number>\",\n                    \"blue\": \"<number>\"\n                  },\n                  \"themeColor\": \"ACCENT5\"\n                },\n                \"alpha\": \"<number>\"\n              }\n            },\n            \"weight\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"UNIT_UNSPECIFIED\"\n            },\n            \"dashStyle\": \"LONG_DASH_DOT\",\n            \"propertyState\": \"NOT_RENDERED\"\n          },\n          \"shadow\": {\n            \"type\": \"SHADOW_TYPE_UNSPECIFIED\",\n            \"transform\": {\n              \"scaleX\": \"<number>\",\n              \"scaleY\": \"<number>\",\n              \"shearX\": \"<number>\",\n              \"shearY\": \"<number>\",\n              \"translateX\": \"<number>\",\n              \"translateY\": \"<number>\",\n              \"unit\": \"UNIT_UNSPECIFIED\"\n            },\n            \"alignment\": \"CENTER\",\n            \"blurRadius\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"EMU\"\n            },\n            \"color\": {\n              \"rgbColor\": {\n                \"red\": \"<number>\",\n                \"green\": \"<number>\",\n                \"blue\": \"<number>\"\n              },\n              \"themeColor\": \"ACCENT6\"\n            },\n            \"alpha\": \"<number>\",\n            \"rotateWithShape\": \"<boolean>\",\n            \"propertyState\": \"RENDERED\"\n          },\n          \"link\": {\n            \"url\": \"<string>\",\n            \"relativeLink\": \"PREVIOUS_SLIDE\",\n            \"pageObjectId\": \"<string>\",\n            \"slideIndex\": \"<integer>\"\n          },\n          \"contentAlignment\": \"TOP\",\n          \"autofit\": {\n            \"autofitType\": \"TEXT_AUTOFIT\",\n            \"fontScale\": \"<number>\"\n          }\n        },\n        \"placeholder\": {\n          \"type\": \"CLIP_ART\",\n          \"index\": \"<integer>\",\n          \"parentObjectId\": \"<string>\"\n        }\n      },\n      \"image\": {\n        \"contentUrl\": \"<string>\",\n        \"sourceUrl\": \"<string>\",\n        \"imageProperties\": {\n          \"cropProperties\": {\n            \"leftOffset\": \"<number>\",\n            \"rightOffset\": \"<number>\",\n            \"topOffset\": \"<number>\",\n            \"bottomOffset\": \"<number>\",\n            \"angle\": \"<number>\"\n          },\n          \"transparency\": \"<number>\",\n          \"brightness\": \"<number>\",\n          \"contrast\": \"<number>\",\n          \"recolor\": {\n            \"recolorStops\": [\n              {\n                \"color\": {\n                  \"rgbColor\": {\n                    \"red\": \"<number>\",\n                    \"green\": \"<number>\",\n                    \"blue\": \"<number>\"\n                  },\n                  \"themeColor\": \"BACKGROUND1\"\n                },\n                \"alpha\": \"<number>\",\n                \"position\": \"<number>\"\n              }\n            ],\n            \"name\": \"LIGHT6\"\n          },\n          \"outline\": {\n            \"outlineFill\": {\n              \"solidFill\": {\n                \"color\": {\n                  \"rgbColor\": {\n                    \"red\": \"<number>\",\n                    \"green\": \"<number>\",\n                    \"blue\": \"<number>\"\n                  },\n                  \"themeColor\": \"LIGHT1\"\n                },\n                \"alpha\": \"<number>\"\n              }\n            },\n            \"weight\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"UNIT_UNSPECIFIED\"\n            },\n            \"dashStyle\": \"DASH_STYLE_UNSPECIFIED\",\n            \"propertyState\": \"RENDERED\"\n          },\n          \"shadow\": {\n            \"type\": \"SHADOW_TYPE_UNSPECIFIED\",\n            \"transform\": {\n              \"scaleX\": \"<number>\",\n              \"scaleY\": \"<number>\",\n              \"shearX\": \"<number>\",\n              \"shearY\": \"<number>\",\n              \"translateX\": \"<number>\",\n              \"translateY\": \"<number>\",\n              \"unit\": \"PT\"\n            },\n            \"alignment\": \"TOP_LEFT\",\n            \"blurRadius\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"PT\"\n            },\n            \"color\": {\n              \"rgbColor\": {\n                \"red\": \"<number>\",\n                \"green\": \"<number>\",\n                \"blue\": \"<number>\"\n              },\n              \"themeColor\": \"HYPERLINK\"\n            },\n            \"alpha\": \"<number>\",\n            \"rotateWithShape\": \"<boolean>\",\n            \"propertyState\": \"NOT_RENDERED\"\n          },\n          \"link\": {\n            \"url\": \"<string>\",\n            \"relativeLink\": \"LAST_SLIDE\",\n            \"pageObjectId\": \"<string>\",\n            \"slideIndex\": \"<integer>\"\n          }\n        },\n        \"placeholder\": {\n          \"type\": \"CENTERED_TITLE\",\n          \"index\": \"<integer>\",\n          \"parentObjectId\": \"<string>\"\n        }\n      },\n      \"video\": {\n        \"url\": \"<string>\",\n        \"source\": \"DRIVE\",\n        \"id\": \"<string>\",\n        \"videoProperties\": {\n          \"outline\": {\n            \"outlineFill\": {\n              \"solidFill\": {\n                \"color\": {\n                  \"rgbColor\": {\n                    \"red\": \"<number>\",\n                    \"green\": \"<number>\",\n                    \"blue\": \"<number>\"\n                  },\n                  \"themeColor\": \"ACCENT6\"\n                },\n                \"alpha\": \"<number>\"\n              }\n            },\n            \"weight\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"EMU\"\n            },\n            \"dashStyle\": \"LONG_DASH_DOT\",\n            \"propertyState\": \"NOT_RENDERED\"\n          },\n          \"autoPlay\": \"<boolean>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\",\n          \"mute\": \"<boolean>\"\n        }\n      },\n      \"line\": {\n        \"lineCategory\": \"STRAIGHT\",\n        \"lineType\": \"BENT_CONNECTOR_2\",\n        \"lineProperties\": {\n          \"lineFill\": {\n            \"solidFill\": {\n              \"color\": {\n                \"rgbColor\": {\n                  \"red\": \"<number>\",\n                  \"green\": \"<number>\",\n                  \"blue\": \"<number>\"\n                },\n                \"themeColor\": \"DARK1\"\n              },\n              \"alpha\": \"<number>\"\n            }\n          },\n          \"weight\": {\n            \"magnitude\": \"<number>\",\n            \"unit\": \"EMU\"\n          },\n          \"dashStyle\": \"DASH_DOT\",\n          \"startArrow\": \"FILL_CIRCLE\",\n          \"endArrow\": \"OPEN_SQUARE\",\n          \"startConnection\": {\n            \"connectedObjectId\": \"<string>\",\n            \"connectionSiteIndex\": \"<integer>\"\n          },\n          \"endConnection\": {\n            \"connectedObjectId\": \"<string>\",\n            \"connectionSiteIndex\": \"<integer>\"\n          },\n          \"link\": {\n            \"url\": \"<string>\",\n            \"relativeLink\": \"PREVIOUS_SLIDE\",\n            \"pageObjectId\": \"<string>\",\n            \"slideIndex\": \"<integer>\"\n          }\n        }\n      },\n      \"table\": {\n        \"rows\": \"<integer>\",\n        \"columns\": \"<integer>\",\n        \"tableRows\": [\n          {\n            \"rowHeight\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"UNIT_UNSPECIFIED\"\n            },\n            \"tableCells\": [\n              {\n                \"location\": {\n                  \"rowIndex\": \"<integer>\",\n                  \"columnIndex\": \"<integer>\"\n                },\n                \"rowSpan\": \"<integer>\",\n                \"columnSpan\": \"<integer>\",\n                \"text\": {\n                  \"textElements\": [\n                    {\n                      \"startIndex\": \"<integer>\",\n                      \"endIndex\": \"<integer>\",\n                      \"paragraphMarker\": {\n                        \"style\": {\n                          \"lineSpacing\": \"<number>\",\n                          \"alignment\": \"ALIGNMENT_UNSPECIFIED\",\n                          \"indentStart\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"UNIT_UNSPECIFIED\"\n                          },\n                          \"indentEnd\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"PT\"\n                          },\n                          \"indentFirstLine\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"UNIT_UNSPECIFIED\"\n                          },\n                          \"direction\": \"RIGHT_TO_LEFT\",\n                          \"spacingMode\": \"COLLAPSE_LISTS\",\n                          \"spaceAbove\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"PT\"\n                          },\n                          \"spaceBelow\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"EMU\"\n                          }\n                        },\n                        \"bullet\": {\n                          \"listId\": \"<string>\",\n                          \"nestingLevel\": \"<integer>\",\n                          \"glyph\": \"<string>\",\n                          \"bulletStyle\": {\n                            \"backgroundColor\": {\n                              \"opaqueColor\": {\n                                \"rgbColor\": {\n                                  \"red\": \"<number>\",\n                                  \"green\": \"<number>\",\n                                  \"blue\": \"<number>\"\n                                },\n                                \"themeColor\": \"LIGHT1\"\n                              }\n                            },\n                            \"foregroundColor\": {\n                              \"opaqueColor\": {\n                                \"rgbColor\": {\n                                  \"red\": \"<number>\",\n                                  \"green\": \"<number>\",\n                                  \"blue\": \"<number>\"\n                                },\n                                \"themeColor\": \"THEME_COLOR_TYPE_UNSPECIFIED\"\n                              }\n                            },\n                            \"bold\": \"<boolean>\",\n                            \"italic\": \"<boolean>\",\n                            \"fontFamily\": \"<string>\",\n                            \"fontSize\": {\n                              \"magnitude\": \"<number>\",\n                              \"unit\": \"UNIT_UNSPECIFIED\"\n                            },\n                            \"link\": {\n                              \"url\": \"<string>\",\n                              \"relativeLink\": \"NEXT_SLIDE\",\n                              \"pageObjectId\": \"<string>\",\n                              \"slideIndex\": \"<integer>\"\n                            },\n                            \"baselineOffset\": \"SUPERSCRIPT\",\n                            \"smallCaps\": \"<boolean>\",\n                            \"strikethrough\": \"<boolean>\",\n                            \"underline\": \"<boolean>\",\n                            \"weightedFontFamily\": {\n                              \"fontFamily\": \"<string>\",\n                              \"weight\": \"<integer>\"\n                            }\n                          }\n                        }\n                      },\n                      \"textRun\": {\n                        \"content\": \"<string>\",\n                        \"style\": {\n                          \"backgroundColor\": {\n                            \"opaqueColor\": {\n                              \"rgbColor\": {\n                                \"red\": \"<number>\",\n                                \"green\": \"<number>\",\n                                \"blue\": \"<number>\"\n                              },\n                              \"themeColor\": \"ACCENT5\"\n                            }\n                          },\n                          \"foregroundColor\": {\n                            \"opaqueColor\": {\n                              \"rgbColor\": {\n                                \"red\": \"<number>\",\n                                \"green\": \"<number>\",\n                                \"blue\": \"<number>\"\n                              },\n                              \"themeColor\": \"TEXT2\"\n                            }\n                          },\n                          \"bold\": \"<boolean>\",\n                          \"italic\": \"<boolean>\",\n                          \"fontFamily\": \"<string>\",\n                          \"fontSize\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"EMU\"\n                          },\n                          \"link\": {\n                            \"url\": \"<string>\",\n                            \"relativeLink\": \"NEXT_SLIDE\",\n                            \"pageObjectId\": \"<string>\",\n                            \"slideIndex\": \"<integer>\"\n                          },\n                          \"baselineOffset\": \"SUBSCRIPT\",\n                          \"smallCaps\": \"<boolean>\",\n                          \"strikethrough\": \"<boolean>\",\n                          \"underline\": \"<boolean>\",\n                          \"weightedFontFamily\": {\n                            \"fontFamily\": \"<string>\",\n                            \"weight\": \"<integer>\"\n                          }\n                        }\n                      },\n                      \"autoText\": {\n                        \"type\": \"TYPE_UNSPECIFIED\",\n                        \"content\": \"<string>\",\n                        \"style\": {\n                          \"backgroundColor\": {\n                            \"opaqueColor\": {\n                              \"rgbColor\": {\n                                \"red\": \"<number>\",\n                                \"green\": \"<number>\",\n                                \"blue\": \"<number>\"\n                              },\n                              \"themeColor\": \"THEME_COLOR_TYPE_UNSPECIFIED\"\n                            }\n                          },\n                          \"foregroundColor\": {\n                            \"opaqueColor\": {\n                              \"rgbColor\": {\n                                \"red\": \"<number>\",\n                                \"green\": \"<number>\",\n                                \"blue\": \"<number>\"\n                              },\n                              \"themeColor\": \"ACCENT1\"\n                            }\n                          },\n                          \"bold\": \"<boolean>\",\n                          \"italic\": \"<boolean>\",\n                          \"fontFamily\": \"<string>\",\n                          \"fontSize\": {\n                            \"magnitude\": \"<number>\",\n                            \"unit\": \"EMU\"\n                          },\n                          \"link\": {\n                            \"url\": \"<string>\",\n                            \"relativeLink\": \"NEXT_SLIDE\",\n                            \"pageObjectId\": \"<string>\",\n                            \"slideIndex\": \"<integer>\"\n                          },\n                          \"baselineOffset\": \"SUBSCRIPT\",\n                          \"smallCaps\": \"<boolean>\",\n                          \"strikethrough\": \"<boolean>\",\n                          \"underline\": \"<boolean>\",\n                          \"weightedFontFamily\": {\n                            \"fontFamily\": \"<string>\",\n                            \"weight\": \"<integer>\"\n                          }\n                        }\n                      }\n                    }\n                  ],\n                  \"lists\": {\n                    \"fugiat_e45\": {\n                      \"listId\": \"<string>\",\n                      \"nestingLevel\": {\n                        \"adipisicingb1\": {\n                          \"bulletStyle\": {\n                            \"backgroundColor\": {\n                              \"opaqueColor\": {\n                                \"rgbColor\": {\n                                  \"red\": \"<number>\",\n                                  \"green\": \"<number>\",\n                                  \"blue\": \"<number>\"\n                                },\n                                \"themeColor\": \"ACCENT3\"\n                              }\n                            },\n                            \"foregroundColor\": {\n                              \"opaqueColor\": {\n                                \"rgbColor\": {\n                                  \"red\": \"<number>\",\n                                  \"green\": \"<number>\",\n                                  \"blue\": \"<number>\"\n                                },\n                                \"themeColor\": \"ACCENT4\"\n                              }\n                            },\n                            \"bold\": \"<boolean>\",\n                            \"italic\": \"<boolean>\",\n                            \"fontFamily\": \"<string>\",\n                            \"fontSize\": {\n                              \"magnitude\": \"<number>\",\n                              \"unit\": \"UNIT_UNSPECIFIED\"\n                            },\n                            \"link\": {\n                              \"url\": \"<string>\",\n                              \"relativeLink\": \"PREVIOUS_SLIDE\",\n                              \"pageObjectId\": \"<string>\",\n                              \"slideIndex\": \"<integer>\"\n                            },\n                            \"baselineOffset\": \"SUBSCRIPT\",\n                            \"smallCaps\": \"<boolean>\",\n                            \"strikethrough\": \"<boolean>\",\n                            \"underline\": \"<boolean>\",\n                            \"weightedFontFamily\": {\n                              \"fontFamily\": \"<string>\",\n                              \"weight\": \"<integer>\"\n                            }\n                          }\n                        }\n                      }\n                    }\n                  }\n                },\n                \"tableCellProperties\": {\n                  \"tableCellBackgroundFill\": {\n                    \"propertyState\": \"NOT_RENDERED\",\n                    \"solidFill\": {\n                      \"color\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"TEXT2\"\n                      },\n                      \"alpha\": \"<number>\"\n                    }\n                  },\n                  \"contentAlignment\": \"BOTTOM\"\n                }\n              }\n            ],\n            \"tableRowProperties\": {\n              \"minRowHeight\": {\n                \"magnitude\": \"<number>\",\n                \"unit\": \"PT\"\n              }\n            }\n          }\n        ],\n        \"tableColumns\": [\n          {\n            \"columnWidth\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"UNIT_UNSPECIFIED\"\n            }\n          }\n        ],\n        \"horizontalBorderRows\": [\n          {\n            \"tableBorderCells\": [\n              {\n                \"location\": {\n                  \"rowIndex\": \"<integer>\",\n                  \"columnIndex\": \"<integer>\"\n                },\n                \"tableBorderProperties\": {\n                  \"tableBorderFill\": {\n                    \"solidFill\": {\n                      \"color\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"BACKGROUND2\"\n                      },\n                      \"alpha\": \"<number>\"\n                    }\n                  },\n                  \"weight\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"EMU\"\n                  },\n                  \"dashStyle\": \"LONG_DASH_DOT\"\n                }\n              }\n            ]\n          }\n        ],\n        \"verticalBorderRows\": [\n          {\n            \"tableBorderCells\": [\n              {\n                \"location\": {\n                  \"rowIndex\": \"<integer>\",\n                  \"columnIndex\": \"<integer>\"\n                },\n                \"tableBorderProperties\": {\n                  \"tableBorderFill\": {\n                    \"solidFill\": {\n                      \"color\": {\n                        \"rgbColor\": {\n                          \"red\": \"<number>\",\n                          \"green\": \"<number>\",\n                          \"blue\": \"<number>\"\n                        },\n                        \"themeColor\": \"ACCENT2\"\n                      },\n                      \"alpha\": \"<number>\"\n                    }\n                  },\n                  \"weight\": {\n                    \"magnitude\": \"<number>\",\n                    \"unit\": \"PT\"\n                  },\n                  \"dashStyle\": \"DOT\"\n                }\n              }\n            ]\n          }\n        ]\n      },\n      \"wordArt\": {\n        \"renderedText\": \"<string>\"\n      },\n      \"sheetsChart\": {\n        \"spreadsheetId\": \"<string>\",\n        \"chartId\": \"<integer>\",\n        \"contentUrl\": \"<string>\",\n        \"sheetsChartProperties\": {\n          \"chartImageProperties\": {\n            \"cropProperties\": {\n              \"leftOffset\": \"<number>\",\n              \"rightOffset\": \"<number>\",\n              \"topOffset\": \"<number>\",\n              \"bottomOffset\": \"<number>\",\n              \"angle\": \"<number>\"\n            },\n            \"transparency\": \"<number>\",\n            \"brightness\": \"<number>\",\n            \"contrast\": \"<number>\",\n            \"recolor\": {\n              \"recolorStops\": [\n                {\n                  \"color\": {\n                    \"rgbColor\": {\n                      \"red\": \"<number>\",\n                      \"green\": \"<number>\",\n                      \"blue\": \"<number>\"\n                    },\n                    \"themeColor\": \"FOLLOWED_HYPERLINK\"\n                  },\n                  \"alpha\": \"<number>\",\n                  \"position\": \"<number>\"\n                }\n              ],\n              \"name\": \"DARK4\"\n            },\n            \"outline\": {\n              \"outlineFill\": {\n                \"solidFill\": {\n                  \"color\": {\n                    \"rgbColor\": {\n                      \"red\": \"<number>\",\n                      \"green\": \"<number>\",\n                      \"blue\": \"<number>\"\n                    },\n                    \"themeColor\": \"ACCENT1\"\n                  },\n                  \"alpha\": \"<number>\"\n                }\n              },\n              \"weight\": {\n                \"magnitude\": \"<number>\",\n                \"unit\": \"UNIT_UNSPECIFIED\"\n              },\n              \"dashStyle\": \"SOLID\",\n              \"propertyState\": \"NOT_RENDERED\"\n            },\n            \"shadow\": {\n              \"type\": \"OUTER\",\n              \"transform\": {\n                \"scaleX\": \"<number>\",\n                \"scaleY\": \"<number>\",\n                \"shearX\": \"<number>\",\n                \"shearY\": \"<number>\",\n                \"translateX\": \"<number>\",\n                \"translateY\": \"<number>\",\n                \"unit\": \"UNIT_UNSPECIFIED\"\n              },\n              \"alignment\": \"LEFT_CENTER\",\n              \"blurRadius\": {\n                \"magnitude\": \"<number>\",\n                \"unit\": \"UNIT_UNSPECIFIED\"\n              },\n              \"color\": {\n                \"rgbColor\": {\n                  \"red\": \"<number>\",\n                  \"green\": \"<number>\",\n                  \"blue\": \"<number>\"\n                },\n                \"themeColor\": \"ACCENT6\"\n              },\n              \"alpha\": \"<number>\",\n              \"rotateWithShape\": \"<boolean>\",\n              \"propertyState\": \"INHERIT\"\n            },\n            \"link\": {\n              \"url\": \"<string>\",\n              \"relativeLink\": \"FIRST_SLIDE\",\n              \"pageObjectId\": \"<string>\",\n              \"slideIndex\": \"<integer>\"\n            }\n          }\n        }\n      },\n      \"elementGroup\": {\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/PageElement detected>\"\n          }\n        ]\n      },\n      \"speakerSpotlight\": {\n        \"speakerSpotlightProperties\": {\n          \"outline\": {\n            \"outlineFill\": {\n              \"solidFill\": {\n                \"color\": {\n                  \"rgbColor\": {\n                    \"red\": \"<number>\",\n                    \"green\": \"<number>\",\n                    \"blue\": \"<number>\"\n                  },\n                  \"themeColor\": \"ACCENT2\"\n                },\n                \"alpha\": \"<number>\"\n              }\n            },\n            \"weight\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"PT\"\n            },\n            \"dashStyle\": \"DASH_DOT\",\n            \"propertyState\": \"INHERIT\"\n          },\n          \"shadow\": {\n            \"type\": \"SHADOW_TYPE_UNSPECIFIED\",\n            \"transform\": {\n              \"scaleX\": \"<number>\",\n              \"scaleY\": \"<number>\",\n              \"shearX\": \"<number>\",\n              \"shearY\": \"<number>\",\n              \"translateX\": \"<number>\",\n              \"translateY\": \"<number>\",\n              \"unit\": \"PT\"\n            },\n            \"alignment\": \"BOTTOM_RIGHT\",\n            \"blurRadius\": {\n              \"magnitude\": \"<number>\",\n              \"unit\": \"PT\"\n            },\n            \"color\": {\n              \"rgbColor\": {\n                \"red\": \"<number>\",\n                \"green\": \"<number>\",\n                \"blue\": \"<number>\"\n              },\n              \"themeColor\": \"TEXT2\"\n            },\n            \"alpha\": \"<number>\",\n            \"rotateWithShape\": \"<boolean>\",\n            \"propertyState\": \"NOT_RENDERED\"\n          }\n        }\n      }\n    }\n  ],\n  \"revisionId\": \"<string>\",\n  \"pageProperties\": {\n    \"pageBackgroundFill\": {\n      \"propertyState\": \"NOT_RENDERED\",\n      \"solidFill\": {\n        \"color\": {\n          \"rgbColor\": {\n            \"red\": \"<number>\",\n            \"green\": \"<number>\",\n            \"blue\": \"<number>\"\n          },\n          \"themeColor\": \"FOLLOWED_HYPERLINK\"\n        },\n        \"alpha\": \"<number>\"\n      },\n      \"stretchedPictureFill\": {\n        \"contentUrl\": \"<string>\",\n        \"size\": {\n          \"width\": {\n            \"magnitude\": \"<number>\",\n            \"unit\": \"UNIT_UNSPECIFIED\"\n          },\n          \"height\": {\n            \"magnitude\": \"<number>\",\n            \"unit\": \"UNIT_UNSPECIFIED\"\n          }\n        }\n      }\n    },\n    \"colorScheme\": {\n      \"colors\": [\n        {\n          \"type\": \"FOLLOWED_HYPERLINK\",\n          \"color\": {\n            \"red\": \"<number>\",\n            \"green\": \"<number>\",\n            \"blue\": \"<number>\"\n          }\n        }\n      ]\n    }\n  },\n  \"slideProperties\": {\n    \"layoutObjectId\": \"<string>\",\n    \"masterObjectId\": \"<string>\",\n    \"notesPage\": {\n      \"value\": \"<Circular reference to #/components/schemas/Page detected>\"\n    },\n    \"isSkipped\": \"<boolean>\"\n  },\n  \"layoutProperties\": {\n    \"masterObjectId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\"\n  },\n  \"notesProperties\": {\n    \"speakerNotesObjectId\": \"<string>\"\n  },\n  \"masterProperties\": {\n    \"displayName\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:50:20.000Z",
+                              "updatedAt": "2026-07-28T01:50:20.000Z",
+                              "uid": "35240-d79810e4-fa01-40b6-8f9c-91565baac497"
+                            },
+                            {
+                              "id": "4d5c326e-9406-4c83-9f79-1ef7617f1495",
+                              "name": "Unauthorized - Authentication required",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "presentations",
+                                    ":presentationId",
+                                    "pages",
+                                    ":pageObjectId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "presentationId"
+                                    },
+                                    {
+                                      "key": "pageObjectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:50:20.000Z",
+                              "updatedAt": "2026-07-28T01:50:20.000Z",
+                              "uid": "35240-4d5c326e-9406-4c83-9f79-1ef7617f1495"
+                            },
+                            {
+                              "id": "855d33ca-2abf-4941-b963-d294ae9be750",
+                              "name": "Forbidden - Insufficient permissions",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "presentations",
+                                    ":presentationId",
+                                    "pages",
+                                    ":pageObjectId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "presentationId"
+                                    },
+                                    {
+                                      "key": "pageObjectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:50:20.000Z",
+                              "updatedAt": "2026-07-28T01:50:20.000Z",
+                              "uid": "35240-855d33ca-2abf-4941-b963-d294ae9be750"
+                            },
+                            {
+                              "id": "8f49d569-d40c-4c5f-afe7-66bd8ab18179",
+                              "name": "Not Found - Page does not exist",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/presentations/:presentationId/pages/:pageObjectId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "presentations",
+                                    ":presentationId",
+                                    "pages",
+                                    ":pageObjectId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "presentationId"
+                                    },
+                                    {
+                                      "key": "pageObjectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"details\": [\n      {\n        \"consectetur2ee\": false,\n        \"officia_ab\": true,\n        \"fugiat_43\": true,\n        \"ametd\": -16919854\n      },\n      {\n        \"voluptate_fa\": true,\n        \"amet_c\": false\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:50:20.000Z",
+                              "updatedAt": "2026-07-28T01:50:20.000Z",
+                              "uid": "35240-8f49d569-d40c-4c5f-afe7-66bd8ab18179"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:50:20.000Z",
+                          "updatedAt": "2026-07-28T01:50:20.000Z",
+                          "uid": "35240-9ab80fe1-fd9b-4b45-afed-9132cf7d72a3"
+                        }
+                      ],
+                      "id": "3c29b28e-556e-4613-9d9b-0fd65cf0fa45",
+                      "createdAt": "2026-07-28T01:50:20.000Z",
+                      "updatedAt": "2026-07-28T01:50:20.000Z",
+                      "uid": "35240-3c29b28e-556e-4613-9d9b-0fd65cf0fa45"
+                    }
+                  ],
+                  "id": "0928401b-6a39-43d6-9531-710d1ff569bd",
+                  "createdAt": "2026-07-28T01:50:20.000Z",
+                  "updatedAt": "2026-07-28T01:50:20.000Z",
+                  "uid": "35240-0928401b-6a39-43d6-9531-710d1ff569bd"
+                }
+              ],
+              "id": "d0b0c3ae-d167-4338-8771-e654c7c58da5",
+              "createdAt": "2026-07-28T01:50:20.000Z",
+              "updatedAt": "2026-07-28T01:50:20.000Z",
+              "uid": "35240-d0b0c3ae-d167-4338-8771-e654c7c58da5"
+            }
+          ],
+          "id": "e7141897-301b-42ce-8eee-1cace90f5eeb",
+          "createdAt": "2026-07-28T01:50:20.000Z",
+          "updatedAt": "2026-07-28T01:50:20.000Z",
+          "uid": "35240-e7141897-301b-42ce-8eee-1cace90f5eeb"
+        }
+      ],
+      "id": "5490ef9e-3800-45bd-963b-87b724f9e344",
+      "createdAt": "2026-07-28T01:50:20.000Z",
+      "updatedAt": "2026-07-28T01:50:20.000Z",
+      "uid": "35240-5490ef9e-3800-45bd-963b-87b724f9e344"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/presentations https://www.googleapis.com/auth/presentations.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://slides.googleapis.com"
+    }
+  ]
+}

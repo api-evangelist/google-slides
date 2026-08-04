@@ -1,0 +1,16 @@
+{
+  "provider": "google-slides",
+  "sources": [
+    "google-slides-pages-api-openapi.yml",
+    "google-slides-presentations-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-slides-pages-api-openapi.yml",
+    "google-slides-presentations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
