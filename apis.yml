@@ -138,6 +138,15 @@ apis:
   - type: GitHubRepository
     url: https://github.com/googleworkspace/slides-api
 common:
+  - type: IssueTracker
+    url: https://github.com/googleworkspace/slides-api/issues
+  - type: SecurityPolicy
+    url: https://github.com/googleworkspace/slides-api/blob/main/SECURITY.md
+  - type: ContributionGuide
+    url: https://github.com/googleworkspace/slides-api/blob/main/CONTRIBUTING.md
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/googleworkspace/slides-api/blob/main/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-slides/overview
   - type: AgenticAccess
