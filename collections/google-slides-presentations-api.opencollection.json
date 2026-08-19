@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Slides Pages Presentations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Presentations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Slides Create Presentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://slides.googleapis.com/v1/presentations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a blank presentation using the title given in the request. If a presentationId is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored.\n"
+        },
+        {
+          "info": {
+            "name": "Google Slides Get Presentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://slides.googleapis.com/v1/presentations/:presentationId",
+            "params": [
+              {
+                "name": "presentationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the presentation."
+              }
+            ]
+          },
+          "docs": "Gets the latest version of the specified presentation.\n"
+        },
+        {
+          "info": {
+            "name": "Google Slides Batch Update Presentation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://slides.googleapis.com/v1/presentations/:presentationId:batchUpdate",
+            "params": [
+              {
+                "name": "presentationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the presentation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

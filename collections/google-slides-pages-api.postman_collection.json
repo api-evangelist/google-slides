@@ -1,0 +1,711 @@
+{
+  "item": [
+    {
+      "id": "424d34b5-1045-45ea-a7e0-74d53e2bd5e1",
+      "name": "Pages",
+      "description": {
+        "content": "Operations on pages within presentations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "134eb90f-fa54-45b6-b0d9-20179e09fdd3",
+          "name": "Google Slides Get Page",
+          "request": {
+            "name": "Google Slides Get Page",
+            "description": {
+              "content": "Gets the latest version of the specified page in the presentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                ":presentationId",
+                "pages",
+                ":pageObjectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "presentationId",
+                  "description": "(Required) The ID of the presentation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageObjectId",
+                  "description": "(Required) The object ID of the page to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df536af9-f166-4793-bf04-71e22b95c644",
+              "name": "Successful response containing the page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objectId\": \"500123\",\n  \"pageType\": \"SLIDE\",\n  \"pageElements\": [\n    {\n      \"objectId\": \"500123\",\n      \"title\": \"Example Title\",\n      \"description\": \"A sample description.\"\n    }\n  ],\n  \"revisionId\": \"500123\",\n  \"pageProperties\": {},\n  \"slideProperties\": {\n    \"layoutObjectId\": \"500123\",\n    \"masterObjectId\": \"500123\",\n    \"isSkipped\": true\n  },\n  \"layoutProperties\": {\n    \"masterObjectId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"displayName\": \"example_value\"\n  },\n  \"notesProperties\": {\n    \"speakerNotesObjectId\": \"500123\"\n  },\n  \"masterProperties\": {\n    \"displayName\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd9976e4-fec2-4a2a-8597-191b14c18176",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49875cf7-5010-498d-82d1-0b3b24e36663",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da2fef26-63e0-4ad9-9e94-e73271b62eac",
+              "name": "Not Found - Page does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d32eb54a-dc70-48c7-a02a-d391545a248e",
+          "name": "Google Slides Get Page Thumbnail",
+          "request": {
+            "name": "Google Slides Get Page Thumbnail",
+            "description": {
+              "content": "Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts against the presentation's read quota.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "presentations",
+                ":presentationId",
+                "pages",
+                ":pageObjectId",
+                "thumbnail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "thumbnailProperties.mimeType",
+                  "value": "<string>",
+                  "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "thumbnailProperties.thumbnailSize",
+                  "value": "<string>",
+                  "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "presentationId",
+                  "description": "(Required) The ID of the presentation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageObjectId",
+                  "description": "(Required) The object ID of the page to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82958359-f449-4e47-9774-8a14e179ac1b",
+              "name": "Successful response containing the thumbnail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentUrl\": \"https://www.example.com\",\n  \"width\": 10,\n  \"height\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00e5a62e-2b5e-40a8-9bf8-2c3f4275c1be",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a846c9d-6a6b-4e30-8cd8-a4a3849cbe3c",
+              "name": "Forbidden - Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c887696-630e-40f0-90a8-b19a66e86353",
+              "name": "Not Found - Page does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "presentations",
+                    ":presentationId",
+                    "pages",
+                    ":pageObjectId",
+                    "thumbnail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "thumbnailProperties.mimeType",
+                      "value": "PNG"
+                    },
+                    {
+                      "key": "thumbnailProperties.thumbnailSize",
+                      "value": "THUMBNAIL_SIZE_UNSPECIFIED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "presentationId",
+                      "description": "(Required) The ID of the presentation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageObjectId",
+                      "description": "(Required) The object ID of the page to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"status\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://slides.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/presentations https://www.googleapis.com/auth/presentations.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c111c02-1195-4c5b-b692-73362ec0961f",
+    "name": "Google Slides Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reads and writes Google Slides presentations. The Google Slides API lets you create and modify Google Slides presentations. Apps can integrate with the Slides API to create presentations, add and modify slides, format text and shapes, embed charts and images, and perform batch updates to presentations programmatically.\n\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

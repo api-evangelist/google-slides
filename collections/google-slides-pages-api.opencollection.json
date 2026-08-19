@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Slides Pages API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Slides Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://slides.googleapis.com/v1/presentations/:presentationId/pages/:pageObjectId",
+            "params": [
+              {
+                "name": "presentationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the presentation."
+              },
+              {
+                "name": "pageObjectId",
+                "value": "",
+                "type": "path",
+                "description": "The object ID of the page to retrieve."
+              }
+            ]
+          },
+          "docs": "Gets the latest version of the specified page in the presentation.\n"
+        },
+        {
+          "info": {
+            "name": "Google Slides Get Page Thumbnail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://slides.googleapis.com/v1/presentations/:presentationId/pages/:pageObjectId/thumbnail",
+            "params": [
+              {
+                "name": "presentationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the presentation."
+              },
+              {
+                "name": "pageObjectId",
+                "value": "",
+                "type": "path",
+                "description": "The object ID of the page to retrieve."
+              },
+              {
+                "name": "thumbnailProperties.mimeType",
+                "value": "PNG",
+                "type": "query",
+                "description": "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG.\n"
+              },
+              {
+                "name": "thumbnailProperties.thumbnailSize",
+                "value": "THUMBNAIL_SIZE_UNSPECIFIED",
+                "type": "query",
+                "description": "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image.\n"
+              }
+            ]
+          },
+          "docs": "Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts against the presentation's read quota.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
