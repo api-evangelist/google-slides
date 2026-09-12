@@ -152,6 +152,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/googleworkspace/slides-api
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: IssueTracker
     url: https://github.com/googleworkspace/slides-api/issues
   - type: SecurityPolicy
@@ -252,3 +254,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: google
+x-relationship: product
