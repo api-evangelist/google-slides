@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Google Slides Pages Presentations API
-  description: 'Reads and writes Google Slides presentations. The Google Slides API lets you create and modify Google Slides presentations. Apps can integrate with the Slides API to create presentations, add and modify slides, format text and shapes, embed charts and images, and perform batch updates to presentations programmatically.
-
-    '
+  title: Google Slides Presentations API
+  description: Reads and writes Google Slides presentations. The Google Slides API lets you create and modify Google Slides presentations. Apps can integrate with the Slides API to create presentations, add and modify slides, format text and shapes, embed charts and images, and perform batch updates to presentations programmatically.
   version: v1
   contact:
     name: Google Workspace Developer Support
@@ -25,9 +23,7 @@ paths:
   /v1/presentations:
     post:
       summary: Google Slides Create Presentation
-      description: 'Creates a blank presentation using the title given in the request. If a presentationId is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored.
-
-        '
+      description: Creates a blank presentation using the title given in the request. If a presentationId is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored.
       operationId: createPresentation
       tags:
       - Presentations
@@ -137,9 +133,7 @@ paths:
   /v1/presentations/{presentationId}:
     get:
       summary: Google Slides Get Presentation
-      description: 'Gets the latest version of the specified presentation.
-
-        '
+      description: Gets the latest version of the specified presentation.
       operationId: getPresentation
       tags:
       - Presentations
@@ -240,9 +234,7 @@ paths:
   /v1/presentations/{presentationId}:batchUpdate:
     post:
       summary: Google Slides Batch Update Presentation
-      description: 'Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests.
-
-        '
+      description: Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests.
       operationId: batchUpdatePresentation
       tags:
       - Presentations
@@ -361,165 +353,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UpdateTableColumnPropertiesRequest:
-      type: object
-      description: Updates the properties of a Table column.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        columnIndices:
-          type: array
-          description: The list of zero-based indices specifying which columns to update.
-          items:
-            type: integer
-          example: []
-        tableColumnProperties:
-          $ref: '#/components/schemas/TableColumnProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    UpdatePagePropertiesRequest:
-      type: object
-      description: Updates the properties of a Page.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the page the update is applied to.
-          example: '500123'
-        pageProperties:
-          $ref: '#/components/schemas/PageProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    OptionalColor:
-      type: object
-      description: 'A color that can either be fully opaque or fully transparent.
-
-        '
-      properties:
-        opaqueColor:
-          $ref: '#/components/schemas/OpaqueColor'
-    List:
-      type: object
-      description: A list describes the look and feel of bullets belonging to paragraphs.
-      properties:
-        listId:
-          type: string
-          description: The ID of the list.
-          example: '500123'
-        nestingLevel:
-          type: object
-          description: 'A map of nesting levels to the properties of bullets at the associated level.
-
-            '
-          additionalProperties:
-            $ref: '#/components/schemas/NestingLevel'
-          example: example_value
-    OutlineFill:
-      type: object
-      description: The fill of the outline.
-      properties:
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
-    CreateImageResponse:
-      type: object
-      description: The result of creating an image.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the created image.
-          example: '500123'
-    UpdateTableRowPropertiesRequest:
-      type: object
-      description: Updates the properties of a Table row.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        rowIndices:
-          type: array
-          description: The list of zero-based indices specifying which rows to update.
-          items:
-            type: integer
-          example: []
-        tableRowProperties:
-          $ref: '#/components/schemas/TableRowProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    SheetsChartProperties:
-      type: object
-      description: The properties of a SheetsChart.
-      properties:
-        chartImageProperties:
-          $ref: '#/components/schemas/ImageProperties'
-    Line:
-      type: object
-      description: 'A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector.
-
-        '
-      properties:
-        lineCategory:
-          type: string
-          description: The category of the line.
-          enum:
-          - LINE_CATEGORY_UNSPECIFIED
-          - STRAIGHT
-          - BENT
-          - CURVED
-          example: LINE_CATEGORY_UNSPECIFIED
-        lineType:
-          type: string
-          description: The type of the line.
-          enum:
-          - TYPE_UNSPECIFIED
-          - STRAIGHT_CONNECTOR_1
-          - BENT_CONNECTOR_2
-          - BENT_CONNECTOR_3
-          - BENT_CONNECTOR_4
-          - BENT_CONNECTOR_5
-          - CURVED_CONNECTOR_2
-          - CURVED_CONNECTOR_3
-          - CURVED_CONNECTOR_4
-          - CURVED_CONNECTOR_5
-          - STRAIGHT_LINE
-          example: TYPE_UNSPECIFIED
-        lineProperties:
-          $ref: '#/components/schemas/LineProperties'
-    DeleteTextRequest:
-      type: object
-      description: Deletes text from a shape or a table cell.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table where the text will be deleted.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        textRange:
-          $ref: '#/components/schemas/Range'
-    PageBackgroundFill:
-      type: object
-      description: The background fill of a page.
-      properties:
-        propertyState:
-          type: string
-          description: The background fill property state.
-          enum:
-          - RENDERED
-          - NOT_RENDERED
-          - INHERIT
-          example: RENDERED
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
-        stretchedPictureFill:
-          $ref: '#/components/schemas/StretchedPictureFill'
     AutoText:
       type: object
       description: 'A TextElement kind that represents auto text.
@@ -541,947 +374,18 @@ components:
           example: example_value
         style:
           $ref: '#/components/schemas/TextStyle'
-    SlideProperties:
+    TableCellLocation:
       type: object
-      description: 'The properties of a Page that are only relevant for pages with pageType SLIDE.
-
-        '
+      description: A location of a single table cell within a table.
       properties:
-        layoutObjectId:
-          type: string
-          description: 'The object ID of the layout that this slide is based on.
-
-            '
-          example: '500123'
-        masterObjectId:
-          type: string
-          description: 'The object ID of the master that this slide is based on.
-
-            '
-          example: '500123'
-        notesPage:
-          $ref: '#/components/schemas/Page'
-        isSkipped:
-          type: boolean
-          description: Whether the slide is skipped in the presentation mode.
-          example: true
-    ReplaceAllTextResponse:
-      type: object
-      description: The result of replacing text.
-      properties:
-        occurrencesChanged:
+        rowIndex:
           type: integer
-          description: The number of occurrences changed by replacing all text.
+          description: The 0-based row index.
           example: 10
-    ColorStop:
-      type: object
-      description: A color and position in a gradient band.
-      properties:
-        color:
-          $ref: '#/components/schemas/OpaqueColor'
-        alpha:
-          type: number
-          description: 'The alpha value of this color in the gradient band. Defaults to 1.0, fully opaque.
-
-            '
-          example: 42.5
-        position:
-          type: number
-          description: 'The relative position of the color stop in the gradient band measured in percentage.
-
-            '
-          example: 42.5
-    ImageProperties:
-      type: object
-      description: The properties of an Image.
-      properties:
-        cropProperties:
-          $ref: '#/components/schemas/CropProperties'
-        transparency:
-          type: number
-          description: 'The transparency effect of the image. The value should be in the interval [0.0, 1.0], where 0 means no effect and 1 means completely transparent.
-
-            '
-          example: 42.5
-        brightness:
-          type: number
-          description: 'The brightness effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-
-            '
-          example: 42.5
-        contrast:
-          type: number
-          description: 'The contrast effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-
-            '
-          example: 42.5
-        recolor:
-          $ref: '#/components/schemas/Recolor'
-        outline:
-          $ref: '#/components/schemas/Outline'
-        shadow:
-          $ref: '#/components/schemas/Shadow'
-        link:
-          $ref: '#/components/schemas/Link'
-    Presentation:
-      type: object
-      description: A Google Slides presentation.
-      properties:
-        presentationId:
-          type: string
-          description: The ID of the presentation.
-          readOnly: true
-          example: '500123'
-        title:
-          type: string
-          description: The title of the presentation.
-          example: Example Title
-        pageSize:
-          $ref: '#/components/schemas/Size'
-        slides:
-          type: array
-          description: 'The slides in the presentation. A slide inherits properties from a slide layout.
-
-            '
-          items:
-            $ref: '#/components/schemas/Page'
-          readOnly: true
-          example: []
-        masters:
-          type: array
-          description: 'The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts.
-
-            '
-          items:
-            $ref: '#/components/schemas/Page'
-          readOnly: true
-          example: []
-        layouts:
-          type: array
-          description: 'The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout.
-
-            '
-          items:
-            $ref: '#/components/schemas/Page'
-          readOnly: true
-          example: []
-        locale:
-          type: string
-          description: 'The locale of the presentation as an IETF BCP 47 language tag.
-
-            '
-          example: example_value
-        revisionId:
-          type: string
-          description: 'Output only. The revision ID of the presentation. Can be used in update requests to assert that the presentation revision has not changed since the last read operation. Only populated if the user has edit access to the presentation. The revision ID is not a sequential number but an opaque string. The format may change over time. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users.
-
-            '
-          readOnly: true
-          example: '500123'
-        notesMaster:
-          $ref: '#/components/schemas/Page'
-          description: 'The notes master in the presentation. It serves as the template for the notes pages of all slides.
-
-            '
-          readOnly: true
-    TableCellBackgroundFill:
-      type: object
-      description: The table cell background fill.
-      properties:
-        propertyState:
-          type: string
-          description: The background fill property state.
-          enum:
-          - RENDERED
-          - NOT_RENDERED
-          - INHERIT
-          example: RENDERED
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
-    RgbColor:
-      type: object
-      description: An RGB color.
-      properties:
-        red:
-          type: number
-          description: The red component of the color, from 0.0 to 1.0.
-          example: 42.5
-        green:
-          type: number
-          description: The green component of the color, from 0.0 to 1.0.
-          example: 42.5
-        blue:
-          type: number
-          description: The blue component of the color, from 0.0 to 1.0.
-          example: 42.5
-    UpdateParagraphStyleRequest:
-      type: object
-      description: Updates the styling of paragraphs within a Shape or Table.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        style:
-          $ref: '#/components/schemas/ParagraphStyle'
-        textRange:
-          $ref: '#/components/schemas/Range'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    ReplaceAllShapesWithSheetsChartResponse:
-      type: object
-      description: The result of replacing shapes with a Sheets chart.
-      properties:
-        occurrencesChanged:
+        columnIndex:
           type: integer
-          description: The number of shapes replaced.
+          description: The 0-based column index.
           example: 10
-    TableBorderFill:
-      type: object
-      description: The fill of a table border.
-      properties:
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
-    CreateVideoRequest:
-      type: object
-      description: Creates a video.
-      properties:
-        objectId:
-          type: string
-          description: A user-supplied object ID.
-          example: '500123'
-        elementProperties:
-          $ref: '#/components/schemas/PageElementProperties'
-        source:
-          type: string
-          description: The video source.
-          enum:
-          - SOURCE_UNSPECIFIED
-          - YOUTUBE
-          - DRIVE
-          - GOOGLE_MEET
-          example: SOURCE_UNSPECIFIED
-        id:
-          type: string
-          description: 'The video source''s unique identifier for this video.
-
-            '
-          example: abc123
-    CreateShapeRequest:
-      type: object
-      description: Creates a new shape.
-      properties:
-        objectId:
-          type: string
-          description: A user-supplied object ID.
-          example: '500123'
-        elementProperties:
-          $ref: '#/components/schemas/PageElementProperties'
-        shapeType:
-          type: string
-          description: The shape type.
-          example: example_value
-    UngroupObjectsRequest:
-      type: object
-      description: Ungroups objects, such as groups.
-      properties:
-        objectIds:
-          type: array
-          description: 'The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped.
-
-            '
-          items:
-            type: string
-          example: []
-    UpdateLinePropertiesRequest:
-      type: object
-      description: Updates the properties of a Line.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the line.
-          example: '500123'
-        lineProperties:
-          $ref: '#/components/schemas/LineProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    SolidFill:
-      type: object
-      description: A solid color fill.
-      properties:
-        color:
-          $ref: '#/components/schemas/OpaqueColor'
-        alpha:
-          type: number
-          description: 'The fraction of this color that should be applied to the pixel. The final pixel color is defined by the equation pixel_color = alpha * this_color + (1.0 - alpha) * pixel_color. Value is in [0.0, 1.0].
-
-            '
-          example: 42.5
-    UpdateTextStyleRequest:
-      type: object
-      description: 'Update the styling of text in a Shape or Table.
-
-        '
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table with the text to be styled.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        style:
-          $ref: '#/components/schemas/TextStyle'
-        textRange:
-          $ref: '#/components/schemas/Range'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    ThemeColorPair:
-      type: object
-      description: A pair mapping a theme color type to the concrete color it represents.
-      properties:
-        type:
-          type: string
-          description: The type of the theme color.
-          enum:
-          - THEME_COLOR_TYPE_UNSPECIFIED
-          - DARK1
-          - LIGHT1
-          - DARK2
-          - LIGHT2
-          - ACCENT1
-          - ACCENT2
-          - ACCENT3
-          - ACCENT4
-          - ACCENT5
-          - ACCENT6
-          - HYPERLINK
-          - FOLLOWED_HYPERLINK
-          - TEXT1
-          - BACKGROUND1
-          - TEXT2
-          - BACKGROUND2
-          example: THEME_COLOR_TYPE_UNSPECIFIED
-        color:
-          $ref: '#/components/schemas/RgbColor'
-    Image:
-      type: object
-      description: 'A PageElement kind representing an image.
-
-        '
-      properties:
-        contentUrl:
-          type: string
-          description: 'An URL to an image with a default lifetime of 30 minutes. This URL is tagged with the account of the requester.
-
-            '
-          readOnly: true
-          example: https://www.example.com
-        sourceUrl:
-          type: string
-          description: 'The source URL is the URL used to insert the image. The source URL can be empty.
-
-            '
-          example: https://www.example.com
-        imageProperties:
-          $ref: '#/components/schemas/ImageProperties'
-        placeholder:
-          $ref: '#/components/schemas/Placeholder'
-    AffineTransform:
-      type: object
-      description: 'A 3x3 matrix that represents an affine transformation. The matrix maps a source coordinate (x, y) to a destination coordinate (x'', y'') according to matrix multiplication.
-
-        '
-      properties:
-        scaleX:
-          type: number
-          description: The X coordinate scaling element.
-          example: 42.5
-        scaleY:
-          type: number
-          description: The Y coordinate scaling element.
-          example: 42.5
-        shearX:
-          type: number
-          description: The X coordinate shearing element.
-          example: 42.5
-        shearY:
-          type: number
-          description: The Y coordinate shearing element.
-          example: 42.5
-        translateX:
-          type: number
-          description: The X coordinate translation element.
-          example: 42.5
-        translateY:
-          type: number
-          description: The Y coordinate translation element.
-          example: 42.5
-        unit:
-          type: string
-          description: The units for translate elements.
-          enum:
-          - UNIT_UNSPECIFIED
-          - EMU
-          - PT
-          example: UNIT_UNSPECIFIED
-    TextRun:
-      type: object
-      description: 'A TextElement kind that represents a run of text that all has the same styling.
-
-        '
-      properties:
-        content:
-          type: string
-          description: The text of this run.
-          example: example_value
-        style:
-          $ref: '#/components/schemas/TextStyle'
-    ReplaceAllTextRequest:
-      type: object
-      description: 'Replaces all instances of text matching a criteria with replace text.
-
-        '
-      properties:
-        replaceText:
-          type: string
-          description: The text that will replace the matched text.
-          example: example_value
-        containsText:
-          $ref: '#/components/schemas/SubstringMatchCriteria'
-        pageObjectIds:
-          type: array
-          description: 'If non-empty, limits the matches to page elements only on the given pages.
-
-            '
-          items:
-            type: string
-          example: []
-    StretchedPictureFill:
-      type: object
-      description: The stretched picture fill of a page background.
-      properties:
-        contentUrl:
-          type: string
-          description: 'Reading the contentUrl returns the content of the picture. The URL has a default lifetime of 30 minutes.
-
-            '
-          readOnly: true
-          example: https://www.example.com
-        size:
-          $ref: '#/components/schemas/Size'
-    RefreshSheetsChartRequest:
-      type: object
-      description: Refreshes an embedded Google Sheets chart.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the chart to refresh.
-          example: '500123'
-    TextContent:
-      type: object
-      description: 'The general text content. The text must reside in a compatible shape (e.g., text box or rectangle) or a table cell in a page.
-
-        '
-      properties:
-        textElements:
-          type: array
-          description: The text contents broken down into text elements.
-          items:
-            $ref: '#/components/schemas/TextElement'
-          example: []
-        lists:
-          type: object
-          description: 'The bulleted lists contained in this text, keyed by list ID.
-
-            '
-          additionalProperties:
-            $ref: '#/components/schemas/List'
-          example: example_value
-    WriteControl:
-      type: object
-      description: 'Provides control over how write requests are executed. When a write request is made, the requiredRevisionId can be specified to indicate that the write should only succeed if the presentation''s current revision matches the specified value.
-
-        '
-      properties:
-        requiredRevisionId:
-          type: string
-          description: 'The revision ID of the presentation required for the write request. If specified, the write request is only processed if the current revision ID of the presentation matches this value.
-
-            '
-          example: '500123'
-    Shadow:
-      type: object
-      description: The shadow properties of a page element.
-      properties:
-        type:
-          type: string
-          description: The type of the shadow.
-          enum:
-          - SHADOW_TYPE_UNSPECIFIED
-          - OUTER
-          example: SHADOW_TYPE_UNSPECIFIED
-        transform:
-          $ref: '#/components/schemas/AffineTransform'
-        alignment:
-          type: string
-          description: The alignment point of the shadow.
-          enum:
-          - RECTANGLE_POSITION_UNSPECIFIED
-          - TOP_LEFT
-          - TOP_CENTER
-          - TOP_RIGHT
-          - LEFT_CENTER
-          - CENTER
-          - RIGHT_CENTER
-          - BOTTOM_LEFT
-          - BOTTOM_CENTER
-          - BOTTOM_RIGHT
-          example: RECTANGLE_POSITION_UNSPECIFIED
-        blurRadius:
-          $ref: '#/components/schemas/Dimension'
-        color:
-          $ref: '#/components/schemas/OpaqueColor'
-        alpha:
-          type: number
-          description: 'The alpha of the shadow''s color, from 0.0 to 1.0.
-
-            '
-          example: 42.5
-        rotateWithShape:
-          type: boolean
-          description: Whether the shadow should rotate with the shape.
-          example: true
-        propertyState:
-          type: string
-          description: The shadow property state.
-          enum:
-          - RENDERED
-          - NOT_RENDERED
-          - INHERIT
-          example: RENDERED
-    Page:
-      type: object
-      description: A page in a presentation.
-      properties:
-        objectId:
-          type: string
-          description: 'The object ID for this page. Object IDs used by Page and PageElement share the same namespace.
-
-            '
-          example: '500123'
-        pageType:
-          type: string
-          description: The type of the page.
-          enum:
-          - SLIDE
-          - MASTER
-          - LAYOUT
-          - NOTES
-          - NOTES_MASTER
-          example: SLIDE
-        pageElements:
-          type: array
-          description: The page elements rendered on the page.
-          items:
-            $ref: '#/components/schemas/PageElement'
-          example: []
-        revisionId:
-          type: string
-          description: 'Output only. The revision ID of the presentation containing this page. Can be used in update requests to assert the presentation revision has not changed since the last read operation.
-
-            '
-          readOnly: true
-          example: '500123'
-        pageProperties:
-          $ref: '#/components/schemas/PageProperties'
-        slideProperties:
-          $ref: '#/components/schemas/SlideProperties'
-        layoutProperties:
-          $ref: '#/components/schemas/LayoutProperties'
-        notesProperties:
-          $ref: '#/components/schemas/NotesProperties'
-        masterProperties:
-          $ref: '#/components/schemas/MasterProperties'
-    CreateImageRequest:
-      type: object
-      description: Creates an image.
-      properties:
-        objectId:
-          type: string
-          description: A user-supplied object ID.
-          example: '500123'
-        elementProperties:
-          $ref: '#/components/schemas/PageElementProperties'
-        url:
-          type: string
-          description: 'The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation.
-
-            '
-          example: https://www.example.com
-    TextElement:
-      type: object
-      description: 'A TextElement describes the content of a range of indices in the text content of a Shape or TableCell.
-
-        '
-      properties:
-        startIndex:
-          type: integer
-          description: 'The zero-based start index of this text element, in Unicode code units of the UTF-16 encoding.
-
-            '
-          example: 10
-        endIndex:
-          type: integer
-          description: 'The zero-based end index of this text element, exclusive, in Unicode code units of the UTF-16 encoding.
-
-            '
-          example: 10
-        paragraphMarker:
-          $ref: '#/components/schemas/ParagraphMarker'
-        textRun:
-          $ref: '#/components/schemas/TextRun'
-        autoText:
-          $ref: '#/components/schemas/AutoText'
-    UpdatePageElementTransformRequest:
-      type: object
-      description: 'Updates the transform of a page element.
-
-        '
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the page element to update.
-          example: '500123'
-        transform:
-          $ref: '#/components/schemas/AffineTransform'
-        applyMode:
-          type: string
-          description: The apply mode of the transform update.
-          enum:
-          - APPLY_MODE_UNSPECIFIED
-          - RELATIVE
-          - ABSOLUTE
-          example: APPLY_MODE_UNSPECIFIED
-    TableBorderCell:
-      type: object
-      description: The properties of each border cell.
-      properties:
-        location:
-          $ref: '#/components/schemas/TableCellLocation'
-        tableBorderProperties:
-          $ref: '#/components/schemas/TableBorderProperties'
-    LineFill:
-      type: object
-      description: The fill of a line.
-      properties:
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
-    SubstringMatchCriteria:
-      type: object
-      description: 'A criteria that matches a specific string of text in a shape or table.
-
-        '
-      properties:
-        text:
-          type: string
-          description: The text to search for in the shape or table.
-          example: example_value
-        matchCase:
-          type: boolean
-          description: 'Indicates whether the search should respect case. True by default.
-
-            '
-          example: true
-    UpdateTableBorderPropertiesRequest:
-      type: object
-      description: Updates the properties of the table borders in a Table.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        tableRange:
-          $ref: '#/components/schemas/TableRange'
-        tableBorderProperties:
-          $ref: '#/components/schemas/TableBorderProperties'
-        borderPosition:
-          type: string
-          description: The border position in the table range.
-          enum:
-          - ALL
-          - BOTTOM
-          - INNER
-          - INNER_HORIZONTAL
-          - INNER_VERTICAL
-          - LEFT
-          - OUTER
-          - RIGHT
-          - TOP
-          example: ALL
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    LineProperties:
-      type: object
-      description: The properties of a Line.
-      properties:
-        lineFill:
-          $ref: '#/components/schemas/LineFill'
-        weight:
-          $ref: '#/components/schemas/Dimension'
-        dashStyle:
-          type: string
-          description: The dash style of the line.
-          enum:
-          - DASH_STYLE_UNSPECIFIED
-          - SOLID
-          - DOT
-          - DASH
-          - DASH_DOT
-          - LONG_DASH
-          - LONG_DASH_DOT
-          example: DASH_STYLE_UNSPECIFIED
-        startArrow:
-          type: string
-          description: The style of the arrow at the beginning of the line.
-          enum:
-          - ARROW_STYLE_UNSPECIFIED
-          - NONE
-          - STEALTH_ARROW
-          - FILL_ARROW
-          - FILL_CIRCLE
-          - FILL_SQUARE
-          - FILL_DIAMOND
-          - OPEN_ARROW
-          - OPEN_CIRCLE
-          - OPEN_SQUARE
-          - OPEN_DIAMOND
-          example: ARROW_STYLE_UNSPECIFIED
-        endArrow:
-          type: string
-          description: The style of the arrow at the end of the line.
-          enum:
-          - ARROW_STYLE_UNSPECIFIED
-          - NONE
-          - STEALTH_ARROW
-          - FILL_ARROW
-          - FILL_CIRCLE
-          - FILL_SQUARE
-          - FILL_DIAMOND
-          - OPEN_ARROW
-          - OPEN_CIRCLE
-          - OPEN_SQUARE
-          - OPEN_DIAMOND
-          example: ARROW_STYLE_UNSPECIFIED
-        startConnection:
-          $ref: '#/components/schemas/LineConnection'
-        endConnection:
-          $ref: '#/components/schemas/LineConnection'
-        link:
-          $ref: '#/components/schemas/Link'
-    DuplicateObjectRequest:
-      type: object
-      description: 'Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created immediately following the specified slide.
-
-        '
-      properties:
-        objectId:
-          type: string
-          description: The ID of the object to duplicate.
-          example: '500123'
-        objectIds:
-          type: object
-          description: 'The object being duplicated may contain other objects. This defines how the IDs of duplicated objects are generated.
-
-            '
-          additionalProperties:
-            type: string
-          example: example_value
-    SpeakerSpotlight:
-      type: object
-      description: 'A PageElement kind representing a speaker spotlight.
-
-        '
-      properties:
-        speakerSpotlightProperties:
-          $ref: '#/components/schemas/SpeakerSpotlightProperties'
-    NotesProperties:
-      type: object
-      description: 'The properties of a Page that are only relevant for pages with pageType NOTES.
-
-        '
-      properties:
-        speakerNotesObjectId:
-          type: string
-          description: 'The object ID of the shape on this notes page that contains the speaker notes for the corresponding slide.
-
-            '
-          example: '500123'
-    ReplaceAllShapesWithImageRequest:
-      type: object
-      description: 'Replaces all shapes that match the given criteria with the provided image.
-
-        '
-      properties:
-        containsText:
-          $ref: '#/components/schemas/SubstringMatchCriteria'
-        imageUrl:
-          type: string
-          description: The image URL.
-          example: https://www.example.com
-        imageReplaceMethod:
-          type: string
-          description: The image replace method.
-          enum:
-          - IMAGE_REPLACE_METHOD_UNSPECIFIED
-          - CENTER_INSIDE
-          - CENTER_CROP
-          example: IMAGE_REPLACE_METHOD_UNSPECIFIED
-        pageObjectIds:
-          type: array
-          description: If non-empty, limits to the given pages.
-          items:
-            type: string
-          example: []
-    Placeholder:
-      type: object
-      description: 'The placeholder information that uniquely identifies a placeholder shape.
-
-        '
-      properties:
-        type:
-          type: string
-          description: The type of the placeholder.
-          enum:
-          - NONE
-          - BODY
-          - CHART
-          - CLIP_ART
-          - CENTERED_TITLE
-          - DIAGRAM
-          - DATE_AND_TIME
-          - FOOTER
-          - HEADER
-          - MEDIA
-          - OBJECT
-          - PICTURE
-          - SLIDE_NUMBER
-          - SUBTITLE
-          - TABLE
-          - TITLE
-          - SLIDE_IMAGE
-          example: NONE
-        index:
-          type: integer
-          description: 'The index of the placeholder. If the same placeholder types are present in the same page, they would have different index values.
-
-            '
-          example: 10
-        parentObjectId:
-          type: string
-          description: 'The object ID of this shape''s parent placeholder.
-
-            '
-          example: '500123'
-    BatchUpdatePresentationRequest:
-      type: object
-      description: Request message for BatchUpdatePresentation.
-      properties:
-        requests:
-          type: array
-          description: A list of updates to apply to the presentation.
-          items:
-            $ref: '#/components/schemas/Request'
-          example: []
-        writeControl:
-          $ref: '#/components/schemas/WriteControl'
-    Dimension:
-      type: object
-      description: A magnitude in a single direction in the specified units.
-      properties:
-        magnitude:
-          type: number
-          description: The magnitude.
-          example: 42.5
-        unit:
-          type: string
-          description: The units for the magnitude.
-          enum:
-          - UNIT_UNSPECIFIED
-          - EMU
-          - PT
-          example: UNIT_UNSPECIFIED
-    SpeakerSpotlightProperties:
-      type: object
-      description: The properties of a SpeakerSpotlight.
-      properties:
-        outline:
-          $ref: '#/components/schemas/Outline'
-        shadow:
-          $ref: '#/components/schemas/Shadow'
-    LayoutProperties:
-      type: object
-      description: 'The properties of a Page that are only relevant for pages with pageType LAYOUT.
-
-        '
-      properties:
-        masterObjectId:
-          type: string
-          description: 'The object ID of the master that this layout is based on.
-
-            '
-          example: '500123'
-        name:
-          type: string
-          description: The name of the layout.
-          example: Example Title
-        displayName:
-          type: string
-          description: The human-readable name of the layout.
-          example: example_value
-    InsertTableRowsRequest:
-      type: object
-      description: Inserts rows into a table.
-      properties:
-        tableObjectId:
-          type: string
-          description: The table to insert rows into.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        insertBelow:
-          type: boolean
-          description: Whether to insert new rows below the reference cell location.
-          example: true
-        number:
-          type: integer
-          description: The number of rows to be inserted.
-          example: 10
-    TableCellProperties:
-      type: object
-      description: The properties of a TableCell.
-      properties:
-        tableCellBackgroundFill:
-          $ref: '#/components/schemas/TableCellBackgroundFill'
-        contentAlignment:
-          type: string
-          description: The alignment of content within the table cell.
-          enum:
-          - CONTENT_ALIGNMENT_UNSPECIFIED
-          - CONTENT_ALIGNMENT_UNSUPPORTED
-          - TOP
-          - MIDDLE
-          - BOTTOM
-          example: CONTENT_ALIGNMENT_UNSPECIFIED
     LineConnection:
       type: object
       description: The properties for one end of a Line connection.
@@ -1496,104 +400,6 @@ components:
 
             '
           example: 10
-    ReplaceAllShapesWithImageResponse:
-      type: object
-      description: The result of replacing shapes with an image.
-      properties:
-        occurrencesChanged:
-          type: integer
-          description: The number of shapes replaced.
-          example: 10
-    UpdateSlidesPositionRequest:
-      type: object
-      description: Updates the position of slides in the presentation.
-      properties:
-        slideObjectIds:
-          type: array
-          description: The IDs of the slides in the presentation that should be moved.
-          items:
-            type: string
-          example: []
-        insertionIndex:
-          type: integer
-          description: 'The index where the slides should be inserted, based on the slide arrangement before the move takes place.
-
-            '
-          example: 10
-    BatchUpdatePresentationResponse:
-      type: object
-      description: Response message from a BatchUpdatePresentation request.
-      properties:
-        presentationId:
-          type: string
-          description: The presentation the updates were applied to.
-          example: '500123'
-        replies:
-          type: array
-          description: 'The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty.
-
-            '
-          items:
-            $ref: '#/components/schemas/Response'
-          example: []
-        writeControl:
-          $ref: '#/components/schemas/WriteControl'
-    Response:
-      type: object
-      description: A single response from an update.
-      properties:
-        createSlide:
-          $ref: '#/components/schemas/CreateSlideResponse'
-        createShape:
-          $ref: '#/components/schemas/CreateShapeResponse'
-        createTable:
-          $ref: '#/components/schemas/CreateTableResponse'
-        createImage:
-          $ref: '#/components/schemas/CreateImageResponse'
-        createVideo:
-          $ref: '#/components/schemas/CreateVideoResponse'
-        createSheetsChart:
-          $ref: '#/components/schemas/CreateSheetsChartResponse'
-        createLine:
-          $ref: '#/components/schemas/CreateLineResponse'
-        replaceAllText:
-          $ref: '#/components/schemas/ReplaceAllTextResponse'
-        replaceAllShapesWithImage:
-          $ref: '#/components/schemas/ReplaceAllShapesWithImageResponse'
-        replaceAllShapesWithSheetsChart:
-          $ref: '#/components/schemas/ReplaceAllShapesWithSheetsChartResponse'
-        duplicateObject:
-          $ref: '#/components/schemas/DuplicateObjectResponse'
-        groupObjects:
-          $ref: '#/components/schemas/GroupObjectsResponse'
-    GroupObjectsResponse:
-      type: object
-      description: The result of grouping objects.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the created group.
-          example: '500123'
-    LayoutPlaceholderIdMapping:
-      type: object
-      description: 'The mapping between a placeholder on a layout and an object ID for the placeholder on a created slide.
-
-        '
-      properties:
-        layoutPlaceholder:
-          $ref: '#/components/schemas/Placeholder'
-        layoutPlaceholderObjectId:
-          type: string
-          description: 'The object ID of the placeholder on a layout that will be applied to a slide.
-
-            '
-          example: '500123'
-        objectId:
-          type: string
-          description: 'A user-supplied object ID for the placeholder identified above that is to be created on the corresponding slide.
-
-            '
-          example: '500123'
     Shape:
       type: object
       description: 'A PageElement kind representing a generic shape that does not have a more specific classification.
@@ -1745,14 +551,340 @@ components:
           $ref: '#/components/schemas/ShapeProperties'
         placeholder:
           $ref: '#/components/schemas/Placeholder'
-    CreateVideoResponse:
+    Shadow:
       type: object
-      description: The result of creating a video.
+      description: The shadow properties of a page element.
+      properties:
+        type:
+          type: string
+          description: The type of the shadow.
+          enum:
+          - SHADOW_TYPE_UNSPECIFIED
+          - OUTER
+          example: SHADOW_TYPE_UNSPECIFIED
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        alignment:
+          type: string
+          description: The alignment point of the shadow.
+          enum:
+          - RECTANGLE_POSITION_UNSPECIFIED
+          - TOP_LEFT
+          - TOP_CENTER
+          - TOP_RIGHT
+          - LEFT_CENTER
+          - CENTER
+          - RIGHT_CENTER
+          - BOTTOM_LEFT
+          - BOTTOM_CENTER
+          - BOTTOM_RIGHT
+          example: RECTANGLE_POSITION_UNSPECIFIED
+        blurRadius:
+          $ref: '#/components/schemas/Dimension'
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: 'The alpha of the shadow''s color, from 0.0 to 1.0.
+
+            '
+          example: 42.5
+        rotateWithShape:
+          type: boolean
+          description: Whether the shadow should rotate with the shape.
+          example: true
+        propertyState:
+          type: string
+          description: The shadow property state.
+          enum:
+          - RENDERED
+          - NOT_RENDERED
+          - INHERIT
+          example: RENDERED
+    Line:
+      type: object
+      description: 'A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector.
+
+        '
+      properties:
+        lineCategory:
+          type: string
+          description: The category of the line.
+          enum:
+          - LINE_CATEGORY_UNSPECIFIED
+          - STRAIGHT
+          - BENT
+          - CURVED
+          example: LINE_CATEGORY_UNSPECIFIED
+        lineType:
+          type: string
+          description: The type of the line.
+          enum:
+          - TYPE_UNSPECIFIED
+          - STRAIGHT_CONNECTOR_1
+          - BENT_CONNECTOR_2
+          - BENT_CONNECTOR_3
+          - BENT_CONNECTOR_4
+          - BENT_CONNECTOR_5
+          - CURVED_CONNECTOR_2
+          - CURVED_CONNECTOR_3
+          - CURVED_CONNECTOR_4
+          - CURVED_CONNECTOR_5
+          - STRAIGHT_LINE
+          example: TYPE_UNSPECIFIED
+        lineProperties:
+          $ref: '#/components/schemas/LineProperties'
+    DeleteParagraphBulletsRequest:
+      type: object
+      description: Deletes bullets from all of the paragraphs that overlap with a text range.
       properties:
         objectId:
           type: string
-          description: The object ID of the created video.
+          description: The object ID of the shape or table.
           example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+    SlideProperties:
+      type: object
+      description: 'The properties of a Page that are only relevant for pages with pageType SLIDE.
+
+        '
+      properties:
+        layoutObjectId:
+          type: string
+          description: 'The object ID of the layout that this slide is based on.
+
+            '
+          example: '500123'
+        masterObjectId:
+          type: string
+          description: 'The object ID of the master that this slide is based on.
+
+            '
+          example: '500123'
+        notesPage:
+          $ref: '#/components/schemas/Page'
+        isSkipped:
+          type: boolean
+          description: Whether the slide is skipped in the presentation mode.
+          example: true
+    Group:
+      type: object
+      description: 'A PageElement kind representing a joined collection of PageElements.
+
+        '
+      properties:
+        children:
+          type: array
+          description: The collection of elements in the group.
+          items:
+            $ref: '#/components/schemas/PageElement'
+          example: []
+    ColorScheme:
+      type: object
+      description: 'The palette of predefined colors for a page.
+
+        '
+      properties:
+        colors:
+          type: array
+          description: The ThemeColorType and corresponding concrete color pairs.
+          items:
+            $ref: '#/components/schemas/ThemeColorPair'
+          example: []
+    TableCellProperties:
+      type: object
+      description: The properties of a TableCell.
+      properties:
+        tableCellBackgroundFill:
+          $ref: '#/components/schemas/TableCellBackgroundFill'
+        contentAlignment:
+          type: string
+          description: The alignment of content within the table cell.
+          enum:
+          - CONTENT_ALIGNMENT_UNSPECIFIED
+          - CONTENT_ALIGNMENT_UNSUPPORTED
+          - TOP
+          - MIDDLE
+          - BOTTOM
+          example: CONTENT_ALIGNMENT_UNSPECIFIED
+    DeleteTableRowRequest:
+      type: object
+      description: Deletes a row from a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to delete rows from.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+    UnmergeTableCellsRequest:
+      type: object
+      description: Unmerges cells in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+          example: '500123'
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+    DuplicateObjectRequest:
+      type: object
+      description: 'Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created immediately following the specified slide.
+
+        '
+      properties:
+        objectId:
+          type: string
+          description: The ID of the object to duplicate.
+          example: '500123'
+        objectIds:
+          type: object
+          description: 'The object being duplicated may contain other objects. This defines how the IDs of duplicated objects are generated.
+
+            '
+          additionalProperties:
+            type: string
+          example: example_value
+    TableBorderFill:
+      type: object
+      description: The fill of a table border.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+    LayoutProperties:
+      type: object
+      description: 'The properties of a Page that are only relevant for pages with pageType LAYOUT.
+
+        '
+      properties:
+        masterObjectId:
+          type: string
+          description: 'The object ID of the master that this layout is based on.
+
+            '
+          example: '500123'
+        name:
+          type: string
+          description: The name of the layout.
+          example: Example Title
+        displayName:
+          type: string
+          description: The human-readable name of the layout.
+          example: example_value
+    Response:
+      type: object
+      description: A single response from an update.
+      properties:
+        createSlide:
+          $ref: '#/components/schemas/CreateSlideResponse'
+        createShape:
+          $ref: '#/components/schemas/CreateShapeResponse'
+        createTable:
+          $ref: '#/components/schemas/CreateTableResponse'
+        createImage:
+          $ref: '#/components/schemas/CreateImageResponse'
+        createVideo:
+          $ref: '#/components/schemas/CreateVideoResponse'
+        createSheetsChart:
+          $ref: '#/components/schemas/CreateSheetsChartResponse'
+        createLine:
+          $ref: '#/components/schemas/CreateLineResponse'
+        replaceAllText:
+          $ref: '#/components/schemas/ReplaceAllTextResponse'
+        replaceAllShapesWithImage:
+          $ref: '#/components/schemas/ReplaceAllShapesWithImageResponse'
+        replaceAllShapesWithSheetsChart:
+          $ref: '#/components/schemas/ReplaceAllShapesWithSheetsChartResponse'
+        duplicateObject:
+          $ref: '#/components/schemas/DuplicateObjectResponse'
+        groupObjects:
+          $ref: '#/components/schemas/GroupObjectsResponse'
+    ParagraphStyle:
+      type: object
+      description: 'Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent.
+
+        '
+      properties:
+        lineSpacing:
+          type: number
+          description: 'The amount of space between lines, as a percentage of normal, where normal is represented as 100.0.
+
+            '
+          example: 42.5
+        alignment:
+          type: string
+          description: The text alignment for this paragraph.
+          enum:
+          - ALIGNMENT_UNSPECIFIED
+          - START
+          - CENTER
+          - END
+          - JUSTIFIED
+          example: ALIGNMENT_UNSPECIFIED
+        indentStart:
+          $ref: '#/components/schemas/Dimension'
+        indentEnd:
+          $ref: '#/components/schemas/Dimension'
+        indentFirstLine:
+          $ref: '#/components/schemas/Dimension'
+        direction:
+          type: string
+          description: The text direction of this paragraph.
+          enum:
+          - TEXT_DIRECTION_UNSPECIFIED
+          - LEFT_TO_RIGHT
+          - RIGHT_TO_LEFT
+          example: TEXT_DIRECTION_UNSPECIFIED
+        spacingMode:
+          type: string
+          description: The spacing mode for the paragraph.
+          enum:
+          - SPACING_MODE_UNSPECIFIED
+          - NEVER_COLLAPSE
+          - COLLAPSE_LISTS
+          example: SPACING_MODE_UNSPECIFIED
+        spaceAbove:
+          $ref: '#/components/schemas/Dimension'
+        spaceBelow:
+          $ref: '#/components/schemas/Dimension'
+    Image:
+      type: object
+      description: 'A PageElement kind representing an image.
+
+        '
+      properties:
+        contentUrl:
+          type: string
+          description: 'An URL to an image with a default lifetime of 30 minutes. This URL is tagged with the account of the requester.
+
+            '
+          readOnly: true
+          example: https://www.example.com
+        sourceUrl:
+          type: string
+          description: 'The source URL is the URL used to insert the image. The source URL can be empty.
+
+            '
+          example: https://www.example.com
+        imageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+        placeholder:
+          $ref: '#/components/schemas/Placeholder'
+    SolidFill:
+      type: object
+      description: A solid color fill.
+      properties:
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: 'The fraction of this color that should be applied to the pixel. The final pixel color is defined by the equation pixel_color = alpha * this_color + (1.0 - alpha) * pixel_color. Value is in [0.0, 1.0].
+
+            '
+          example: 42.5
     Bullet:
       type: object
       description: Describes the bullet of a paragraph.
@@ -1771,46 +903,325 @@ components:
           example: example_value
         bulletStyle:
           $ref: '#/components/schemas/TextStyle'
-    Table:
+    TableBorderCell:
       type: object
-      description: 'A PageElement kind representing a table.
+      description: The properties of each border cell.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        tableBorderProperties:
+          $ref: '#/components/schemas/TableBorderProperties'
+    CreateVideoResponse:
+      type: object
+      description: The result of creating a video.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created video.
+          example: '500123'
+    PageBackgroundFill:
+      type: object
+      description: The background fill of a page.
+      properties:
+        propertyState:
+          type: string
+          description: The background fill property state.
+          enum:
+          - RENDERED
+          - NOT_RENDERED
+          - INHERIT
+          example: RENDERED
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+        stretchedPictureFill:
+          $ref: '#/components/schemas/StretchedPictureFill'
+    TableRange:
+      type: object
+      description: A table range represents a reference to a subset of a table.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        rowSpan:
+          type: integer
+          description: The row span of the table range.
+          example: 10
+        columnSpan:
+          type: integer
+          description: The column span of the table range.
+          example: 10
+    CreateSlideResponse:
+      type: object
+      description: The result of creating a slide.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created slide.
+          example: '500123'
+    NotesProperties:
+      type: object
+      description: 'The properties of a Page that are only relevant for pages with pageType NOTES.
 
         '
       properties:
-        rows:
-          type: integer
-          description: Number of rows in the table.
-          example: 10
-        columns:
-          type: integer
-          description: Number of columns in the table.
-          example: 10
-        tableRows:
+        speakerNotesObjectId:
+          type: string
+          description: 'The object ID of the shape on this notes page that contains the speaker notes for the corresponding slide.
+
+            '
+          example: '500123'
+    ReplaceAllShapesWithImageRequest:
+      type: object
+      description: 'Replaces all shapes that match the given criteria with the provided image.
+
+        '
+      properties:
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        imageUrl:
+          type: string
+          description: The image URL.
+          example: https://www.example.com
+        imageReplaceMethod:
+          type: string
+          description: The image replace method.
+          enum:
+          - IMAGE_REPLACE_METHOD_UNSPECIFIED
+          - CENTER_INSIDE
+          - CENTER_CROP
+          example: IMAGE_REPLACE_METHOD_UNSPECIFIED
+        pageObjectIds:
           type: array
-          description: 'Properties and contents of each row. Cells that span multiple rows are contained in only one of these rows and have a rowSpan greater than 1.
+          description: If non-empty, limits to the given pages.
+          items:
+            type: string
+          example: []
+    OptionalColor:
+      type: object
+      description: 'A color that can either be fully opaque or fully transparent.
+
+        '
+      properties:
+        opaqueColor:
+          $ref: '#/components/schemas/OpaqueColor'
+    Page:
+      type: object
+      description: A page in a presentation.
+      properties:
+        objectId:
+          type: string
+          description: 'The object ID for this page. Object IDs used by Page and PageElement share the same namespace.
+
+            '
+          example: '500123'
+        pageType:
+          type: string
+          description: The type of the page.
+          enum:
+          - SLIDE
+          - MASTER
+          - LAYOUT
+          - NOTES
+          - NOTES_MASTER
+          example: SLIDE
+        pageElements:
+          type: array
+          description: The page elements rendered on the page.
+          items:
+            $ref: '#/components/schemas/PageElement'
+          example: []
+        revisionId:
+          type: string
+          description: 'Output only. The revision ID of the presentation containing this page. Can be used in update requests to assert the presentation revision has not changed since the last read operation.
+
+            '
+          readOnly: true
+          example: '500123'
+        pageProperties:
+          $ref: '#/components/schemas/PageProperties'
+        slideProperties:
+          $ref: '#/components/schemas/SlideProperties'
+        layoutProperties:
+          $ref: '#/components/schemas/LayoutProperties'
+        notesProperties:
+          $ref: '#/components/schemas/NotesProperties'
+        masterProperties:
+          $ref: '#/components/schemas/MasterProperties'
+    ParagraphMarker:
+      type: object
+      description: 'A TextElement kind that represents the beginning of a new paragraph.
+
+        '
+      properties:
+        style:
+          $ref: '#/components/schemas/ParagraphStyle'
+        bullet:
+          $ref: '#/components/schemas/Bullet'
+    TableRowProperties:
+      type: object
+      description: Properties of each row in a table.
+      properties:
+        minRowHeight:
+          $ref: '#/components/schemas/Dimension'
+    CreateSheetsChartResponse:
+      type: object
+      description: The result of creating a sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created chart.
+          example: '500123'
+    ThemeColorPair:
+      type: object
+      description: A pair mapping a theme color type to the concrete color it represents.
+      properties:
+        type:
+          type: string
+          description: The type of the theme color.
+          enum:
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - DARK1
+          - LIGHT1
+          - DARK2
+          - LIGHT2
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - HYPERLINK
+          - FOLLOWED_HYPERLINK
+          - TEXT1
+          - BACKGROUND1
+          - TEXT2
+          - BACKGROUND2
+          example: THEME_COLOR_TYPE_UNSPECIFIED
+        color:
+          $ref: '#/components/schemas/RgbColor'
+    MergeTableCellsRequest:
+      type: object
+      description: Merges cells in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+          example: '500123'
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+    ColorStop:
+      type: object
+      description: A color and position in a gradient band.
+      properties:
+        color:
+          $ref: '#/components/schemas/OpaqueColor'
+        alpha:
+          type: number
+          description: 'The alpha value of this color in the gradient band. Defaults to 1.0, fully opaque.
+
+            '
+          example: 42.5
+        position:
+          type: number
+          description: 'The relative position of the color stop in the gradient band measured in percentage.
+
+            '
+          example: 42.5
+    TableBorderProperties:
+      type: object
+      description: The border styling properties of a TableBorderCell.
+      properties:
+        tableBorderFill:
+          $ref: '#/components/schemas/TableBorderFill'
+        weight:
+          $ref: '#/components/schemas/Dimension'
+        dashStyle:
+          type: string
+          description: The dash style of the border.
+          enum:
+          - DASH_STYLE_UNSPECIFIED
+          - SOLID
+          - DOT
+          - DASH
+          - DASH_DOT
+          - LONG_DASH
+          - LONG_DASH_DOT
+          example: DASH_STYLE_UNSPECIFIED
+    UpdateVideoPropertiesRequest:
+      type: object
+      description: Update the properties of a Video.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the video.
+          example: '500123'
+        videoProperties:
+          $ref: '#/components/schemas/VideoProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    CreateSlideRequest:
+      type: object
+      description: Creates a new slide.
+      properties:
+        objectId:
+          type: string
+          description: 'A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in the presentation.
+
+            '
+          example: '500123'
+        insertionIndex:
+          type: integer
+          description: 'The optional zero-based index indicating where in the presentation to insert the slide.
+
+            '
+          example: 10
+        slideLayoutReference:
+          $ref: '#/components/schemas/LayoutReference'
+        placeholderIdMappings:
+          type: array
+          description: 'An optional list of object ID mappings from the placeholder(s) on the layout to the placeholders that are created on the new slide.
 
             '
           items:
-            $ref: '#/components/schemas/TableRow'
+            $ref: '#/components/schemas/LayoutPlaceholderIdMapping'
           example: []
-        tableColumns:
+    GroupObjectsRequest:
+      type: object
+      description: Groups objects to create an object group.
+      properties:
+        groupObjectId:
+          type: string
+          description: A user-supplied object ID for the group to be created.
+          example: '500123'
+        childrenObjectIds:
           type: array
-          description: Properties of each column.
+          description: The object IDs of the objects to group.
           items:
-            $ref: '#/components/schemas/TableColumnProperties'
+            type: string
           example: []
-        horizontalBorderRows:
-          type: array
-          description: Properties of horizontal cell borders.
-          items:
-            $ref: '#/components/schemas/TableBorderRow'
-          example: []
-        verticalBorderRows:
-          type: array
-          description: Properties of vertical cell borders.
-          items:
-            $ref: '#/components/schemas/TableBorderRow'
-          example: []
+    RerouteLineRequest:
+      type: object
+      description: 'Reroutes a line such that it is connected at the two closest connection sites on the connected page elements.
+
+        '
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line to reroute.
+          example: '500123'
+    PageElementProperties:
+      type: object
+      description: Common properties for a page element.
+      properties:
+        pageObjectId:
+          type: string
+          description: The object ID of the page where the element is located.
+          example: '500123'
+        size:
+          $ref: '#/components/schemas/Size'
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
     MasterProperties:
       type: object
       description: 'The properties of a Page that are only relevant for pages with pageType MASTER.
@@ -1821,73 +1232,9 @@ components:
           type: string
           description: The human-readable name of the master.
           example: example_value
-    PageElement:
+    CreateShapeRequest:
       type: object
-      description: A visual element rendered on a page.
-      properties:
-        objectId:
-          type: string
-          description: The object ID for this page element.
-          example: '500123'
-        size:
-          $ref: '#/components/schemas/Size'
-        transform:
-          $ref: '#/components/schemas/AffineTransform'
-        title:
-          type: string
-          description: The title of the page element for accessibility.
-          example: Example Title
-        description:
-          type: string
-          description: The description of the page element for accessibility.
-          example: A sample description.
-        shape:
-          $ref: '#/components/schemas/Shape'
-        image:
-          $ref: '#/components/schemas/Image'
-        video:
-          $ref: '#/components/schemas/Video'
-        line:
-          $ref: '#/components/schemas/Line'
-        table:
-          $ref: '#/components/schemas/Table'
-        wordArt:
-          $ref: '#/components/schemas/WordArt'
-        sheetsChart:
-          $ref: '#/components/schemas/SheetsChart'
-        elementGroup:
-          $ref: '#/components/schemas/Group'
-        speakerSpotlight:
-          $ref: '#/components/schemas/SpeakerSpotlight'
-    ShapeProperties:
-      type: object
-      description: 'The properties of a Shape. If the shape is a placeholder shape, then these properties may be inherited from its parent placeholder shape.
-
-        '
-      properties:
-        shapeBackgroundFill:
-          $ref: '#/components/schemas/ShapeBackgroundFill'
-        outline:
-          $ref: '#/components/schemas/Outline'
-        shadow:
-          $ref: '#/components/schemas/Shadow'
-        link:
-          $ref: '#/components/schemas/Link'
-        contentAlignment:
-          type: string
-          description: The alignment of the content in the shape.
-          enum:
-          - CONTENT_ALIGNMENT_UNSPECIFIED
-          - CONTENT_ALIGNMENT_UNSUPPORTED
-          - TOP
-          - MIDDLE
-          - BOTTOM
-          example: CONTENT_ALIGNMENT_UNSPECIFIED
-        autofit:
-          $ref: '#/components/schemas/Autofit'
-    CreateSheetsChartRequest:
-      type: object
-      description: Creates an embedded Google Sheets chart.
+      description: Creates a new shape.
       properties:
         objectId:
           type: string
@@ -1895,21 +1242,77 @@ components:
           example: '500123'
         elementProperties:
           $ref: '#/components/schemas/PageElementProperties'
-        spreadsheetId:
+        shapeType:
           type: string
-          description: The ID of the Google Sheets spreadsheet that contains the chart.
-          example: '500123'
-        chartId:
-          type: integer
-          description: The ID of the specific chart in the Google Sheets spreadsheet.
-          example: '500123'
-        linkingMode:
+          description: The shape type.
+          example: example_value
+    Dimension:
+      type: object
+      description: A magnitude in a single direction in the specified units.
+      properties:
+        magnitude:
+          type: number
+          description: The magnitude.
+          example: 42.5
+        unit:
           type: string
-          description: The mode with which the chart is linked to the source spreadsheet.
+          description: The units for the magnitude.
           enum:
-          - NOT_LINKED_IMAGE
-          - LINKED
-          example: NOT_LINKED_IMAGE
+          - UNIT_UNSPECIFIED
+          - EMU
+          - PT
+          example: UNIT_UNSPECIFIED
+    Range:
+      type: object
+      description: Specifies a contiguous range of an indexed collection.
+      properties:
+        startIndex:
+          type: integer
+          description: The optional zero-based start index of the collection.
+          example: 10
+        endIndex:
+          type: integer
+          description: The optional zero-based end index of the collection.
+          example: 10
+        type:
+          type: string
+          description: The type of range.
+          enum:
+          - RANGE_TYPE_UNSPECIFIED
+          - FIXED_RANGE
+          - FROM_START_INDEX
+          - ALL
+          example: RANGE_TYPE_UNSPECIFIED
+    ReplaceAllShapesWithImageResponse:
+      type: object
+      description: The result of replacing shapes with an image.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of shapes replaced.
+          example: 10
+    UpdateTableCellPropertiesRequest:
+      type: object
+      description: Update the properties of a TableCell.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+          example: '500123'
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+        tableCellProperties:
+          $ref: '#/components/schemas/TableCellProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    OutlineFill:
+      type: object
+      description: The fill of the outline.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
     CreateTableRequest:
       type: object
       description: Creates a new table.
@@ -1928,54 +1331,125 @@ components:
           type: integer
           description: Number of columns in the table.
           example: 10
-    PageProperties:
+    Video:
       type: object
-      description: The properties of a Page.
+      description: 'A PageElement kind representing a video.
+
+        '
       properties:
-        pageBackgroundFill:
-          $ref: '#/components/schemas/PageBackgroundFill'
-        colorScheme:
-          $ref: '#/components/schemas/ColorScheme'
-    WordArt:
-      type: object
-      description: A PageElement kind representing word art.
-      properties:
-        renderedText:
+        url:
           type: string
-          description: The text rendered as word art.
-          example: example_value
-    CreateShapeResponse:
+          description: 'An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change.
+
+            '
+          example: https://www.example.com
+        source:
+          type: string
+          description: The video source.
+          enum:
+          - SOURCE_UNSPECIFIED
+          - YOUTUBE
+          - DRIVE
+          - GOOGLE_MEET
+          example: SOURCE_UNSPECIFIED
+        id:
+          type: string
+          description: 'The video source''s unique identifier for this video.
+
+            '
+          example: abc123
+        videoProperties:
+          $ref: '#/components/schemas/VideoProperties'
+    SheetsChartProperties:
       type: object
-      description: The result of creating a shape.
+      description: The properties of a SheetsChart.
+      properties:
+        chartImageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+    UpdatePageElementAltTextRequest:
+      type: object
+      description: Updates the alt text title and/or description of a page element.
       properties:
         objectId:
           type: string
-          description: The object ID of the created shape.
+          description: The object ID of the page element.
           example: '500123'
-    TableRange:
+        title:
+          type: string
+          description: The updated alt text title of the page element.
+          example: Example Title
+        description:
+          type: string
+          description: The updated alt text description of the page element.
+          example: A sample description.
+    ReplaceAllTextRequest:
       type: object
-      description: A table range represents a reference to a subset of a table.
+      description: 'Replaces all instances of text matching a criteria with replace text.
+
+        '
       properties:
-        location:
-          $ref: '#/components/schemas/TableCellLocation'
-        rowSpan:
-          type: integer
-          description: The row span of the table range.
-          example: 10
-        columnSpan:
-          type: integer
-          description: The column span of the table range.
-          example: 10
-    TableBorderRow:
-      type: object
-      description: Contents of each border row in a table.
-      properties:
-        tableBorderCells:
+        replaceText:
+          type: string
+          description: The text that will replace the matched text.
+          example: example_value
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        pageObjectIds:
           type: array
-          description: Properties of each border cell.
+          description: 'If non-empty, limits the matches to page elements only on the given pages.
+
+            '
           items:
-            $ref: '#/components/schemas/TableBorderCell'
+            type: string
           example: []
+    ImageProperties:
+      type: object
+      description: The properties of an Image.
+      properties:
+        cropProperties:
+          $ref: '#/components/schemas/CropProperties'
+        transparency:
+          type: number
+          description: 'The transparency effect of the image. The value should be in the interval [0.0, 1.0], where 0 means no effect and 1 means completely transparent.
+
+            '
+          example: 42.5
+        brightness:
+          type: number
+          description: 'The brightness effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+
+            '
+          example: 42.5
+        contrast:
+          type: number
+          description: 'The contrast effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+
+            '
+          example: 42.5
+        recolor:
+          $ref: '#/components/schemas/Recolor'
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+        link:
+          $ref: '#/components/schemas/Link'
+    CreateImageRequest:
+      type: object
+      description: Creates an image.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+          example: '500123'
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        url:
+          type: string
+          description: 'The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation.
+
+            '
+          example: https://www.example.com
     Autofit:
       type: object
       description: The autofit properties of a Shape.
@@ -1995,26 +1469,110 @@ components:
 
             '
           example: 42.5
-    ReplaceImageRequest:
+    List:
       type: object
-      description: Replaces an existing image with a new image.
+      description: A list describes the look and feel of bullets belonging to paragraphs.
       properties:
-        imageObjectId:
+        listId:
           type: string
-          description: The ID of the existing image that will be replaced.
+          description: The ID of the list.
           example: '500123'
-        url:
+        nestingLevel:
+          type: object
+          description: 'A map of nesting levels to the properties of bullets at the associated level.
+
+            '
+          additionalProperties:
+            $ref: '#/components/schemas/NestingLevel'
+          example: example_value
+    TextElement:
+      type: object
+      description: 'A TextElement describes the content of a range of indices in the text content of a Shape or TableCell.
+
+        '
+      properties:
+        startIndex:
+          type: integer
+          description: 'The zero-based start index of this text element, in Unicode code units of the UTF-16 encoding.
+
+            '
+          example: 10
+        endIndex:
+          type: integer
+          description: 'The zero-based end index of this text element, exclusive, in Unicode code units of the UTF-16 encoding.
+
+            '
+          example: 10
+        paragraphMarker:
+          $ref: '#/components/schemas/ParagraphMarker'
+        textRun:
+          $ref: '#/components/schemas/TextRun'
+        autoText:
+          $ref: '#/components/schemas/AutoText'
+    UpdateTableColumnPropertiesRequest:
+      type: object
+      description: Updates the properties of a Table column.
+      properties:
+        objectId:
           type: string
-          description: The URL of the new image.
-          example: https://www.example.com
-        imageReplaceMethod:
+          description: The object ID of the table.
+          example: '500123'
+        columnIndices:
+          type: array
+          description: The list of zero-based indices specifying which columns to update.
+          items:
+            type: integer
+          example: []
+        tableColumnProperties:
+          $ref: '#/components/schemas/TableColumnProperties'
+        fields:
           type: string
-          description: The replace method.
-          enum:
-          - IMAGE_REPLACE_METHOD_UNSPECIFIED
-          - CENTER_INSIDE
-          - CENTER_CROP
-          example: IMAGE_REPLACE_METHOD_UNSPECIFIED
+          description: The fields that should be updated.
+          example: example_value
+    CropProperties:
+      type: object
+      description: 'The crop properties of an object enclosed in a container.
+
+        '
+      properties:
+        leftOffset:
+          type: number
+          description: 'The offset specifies the left edge of the crop rectangle that is located to the right of the original bounding rectangle left edge, relative to the object''s original width.
+
+            '
+          example: 42.5
+        rightOffset:
+          type: number
+          description: 'The offset specifies how far inward the right edge of the crop rectangle is from the right edge of the original bounding rectangle.
+
+            '
+          example: 42.5
+        topOffset:
+          type: number
+          description: 'The offset specifies how far inward the top edge of the crop rectangle is from the top edge of the original bounding rectangle.
+
+            '
+          example: 42.5
+        bottomOffset:
+          type: number
+          description: 'The offset specifies how far inward the bottom edge of the crop rectangle is from the bottom edge of the original bounding rectangle.
+
+            '
+          example: 42.5
+        angle:
+          type: number
+          description: 'The rotation angle of the crop window around its center, in radians.
+
+            '
+          example: 42.5
+    DuplicateObjectResponse:
+      type: object
+      description: The response of duplicating an object.
+      properties:
+        objectId:
+          type: string
+          description: The ID of the new duplicate object.
+          example: '500123'
     CreateLineRequest:
       type: object
       description: Creates a line.
@@ -2042,134 +1600,6 @@ components:
           - BENT
           - CURVED
           example: LINE_CATEGORY_UNSPECIFIED
-    SheetsChart:
-      type: object
-      description: 'A PageElement kind representing a linked chart embedded from Google Sheets.
-
-        '
-      properties:
-        spreadsheetId:
-          type: string
-          description: The ID of the Google Sheets spreadsheet that contains the source chart.
-          example: '500123'
-        chartId:
-          type: integer
-          description: The ID of the specific chart in the Google Sheets spreadsheet.
-          example: '500123'
-        contentUrl:
-          type: string
-          description: 'The URL of an image of the embedded chart, with a default lifetime of 30 minutes.
-
-            '
-          readOnly: true
-          example: https://www.example.com
-        sheetsChartProperties:
-          $ref: '#/components/schemas/SheetsChartProperties'
-    CreateTableResponse:
-      type: object
-      description: The result of creating a table.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the created table.
-          example: '500123'
-    VideoProperties:
-      type: object
-      description: The properties of a Video.
-      properties:
-        outline:
-          $ref: '#/components/schemas/Outline'
-        autoPlay:
-          type: boolean
-          description: Whether to enable video autoplay when the page is displayed.
-          example: true
-        start:
-          type: integer
-          description: The time at which to start playback, measured in seconds from the beginning.
-          example: 10
-        end:
-          type: integer
-          description: The time at which to end playback, measured in seconds from the beginning.
-          example: 10
-        mute:
-          type: boolean
-          description: Whether to mute the audio during video playback.
-          example: true
-    Link:
-      type: object
-      description: A hypertext link.
-      properties:
-        url:
-          type: string
-          description: If set, indicates this is a link to the external web page at this URL.
-          example: https://www.example.com
-        relativeLink:
-          type: string
-          description: 'If set, indicates this is a link to a slide in this presentation, addressed by its position.
-
-            '
-          enum:
-          - RELATIVE_SLIDE_LINK_UNSPECIFIED
-          - NEXT_SLIDE
-          - PREVIOUS_SLIDE
-          - FIRST_SLIDE
-          - LAST_SLIDE
-          example: RELATIVE_SLIDE_LINK_UNSPECIFIED
-        pageObjectId:
-          type: string
-          description: 'If set, indicates this is a link to the specific page in this presentation with this ID.
-
-            '
-          example: '500123'
-        slideIndex:
-          type: integer
-          description: 'If set, indicates this is a link to the slide at this zero-based index in the presentation.
-
-            '
-          example: 10
-    UpdateLineCategoryRequest:
-      type: object
-      description: Updates the category of a line.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the line.
-          example: '500123'
-        lineCategory:
-          type: string
-          description: The line category to update to.
-          enum:
-          - LINE_CATEGORY_UNSPECIFIED
-          - STRAIGHT
-          - BENT
-          - CURVED
-          example: LINE_CATEGORY_UNSPECIFIED
-    TableCell:
-      type: object
-      description: Properties and contents of each table cell.
-      properties:
-        location:
-          $ref: '#/components/schemas/TableCellLocation'
-        rowSpan:
-          type: integer
-          description: Row span of the cell.
-          example: 10
-        columnSpan:
-          type: integer
-          description: Column span of the cell.
-          example: 10
-        text:
-          $ref: '#/components/schemas/TextContent'
-        tableCellProperties:
-          $ref: '#/components/schemas/TableCellProperties'
-    Size:
-      type: object
-      description: A width and height.
-      properties:
-        width:
-          $ref: '#/components/schemas/Dimension'
-        height:
-          $ref: '#/components/schemas/Dimension'
     Request:
       type: object
       description: A single kind of update to apply to a presentation.
@@ -2262,80 +1692,6 @@ components:
           $ref: '#/components/schemas/UnmergeTableCellsRequest'
         refreshSheetsChart:
           $ref: '#/components/schemas/RefreshSheetsChartRequest'
-    PageElementProperties:
-      type: object
-      description: Common properties for a page element.
-      properties:
-        pageObjectId:
-          type: string
-          description: The object ID of the page where the element is located.
-          example: '500123'
-        size:
-          $ref: '#/components/schemas/Size'
-        transform:
-          $ref: '#/components/schemas/AffineTransform'
-    CropProperties:
-      type: object
-      description: 'The crop properties of an object enclosed in a container.
-
-        '
-      properties:
-        leftOffset:
-          type: number
-          description: 'The offset specifies the left edge of the crop rectangle that is located to the right of the original bounding rectangle left edge, relative to the object''s original width.
-
-            '
-          example: 42.5
-        rightOffset:
-          type: number
-          description: 'The offset specifies how far inward the right edge of the crop rectangle is from the right edge of the original bounding rectangle.
-
-            '
-          example: 42.5
-        topOffset:
-          type: number
-          description: 'The offset specifies how far inward the top edge of the crop rectangle is from the top edge of the original bounding rectangle.
-
-            '
-          example: 42.5
-        bottomOffset:
-          type: number
-          description: 'The offset specifies how far inward the bottom edge of the crop rectangle is from the bottom edge of the original bounding rectangle.
-
-            '
-          example: 42.5
-        angle:
-          type: number
-          description: 'The rotation angle of the crop window around its center, in radians.
-
-            '
-          example: 42.5
-    ParagraphMarker:
-      type: object
-      description: 'A TextElement kind that represents the beginning of a new paragraph.
-
-        '
-      properties:
-        style:
-          $ref: '#/components/schemas/ParagraphStyle'
-        bullet:
-          $ref: '#/components/schemas/Bullet'
-    ShapeBackgroundFill:
-      type: object
-      description: The background fill of a shape.
-      properties:
-        propertyState:
-          type: string
-          description: 'The background fill property state.
-
-            '
-          enum:
-          - RENDERED
-          - NOT_RENDERED
-          - INHERIT
-          example: RENDERED
-        solidFill:
-          $ref: '#/components/schemas/SolidFill'
     UpdateShapePropertiesRequest:
       type: object
       description: Update the properties of a Shape.
@@ -2352,659 +1708,24 @@ components:
 
             '
           example: example_value
-    ReplaceAllShapesWithSheetsChartRequest:
+    BatchUpdatePresentationResponse:
       type: object
-      description: 'Replaces all shapes that match the given criteria with the provided Google Sheets chart.
-
-        '
+      description: Response message from a BatchUpdatePresentation request.
       properties:
-        containsText:
-          $ref: '#/components/schemas/SubstringMatchCriteria'
-        spreadsheetId:
+        presentationId:
           type: string
-          description: The ID of the Google Sheets spreadsheet.
+          description: The presentation the updates were applied to.
           example: '500123'
-        chartId:
-          type: integer
-          description: The ID of the specific chart in the Google Sheets spreadsheet.
-          example: '500123'
-        linkingMode:
-          type: string
-          description: The mode with which the chart is linked to the source spreadsheet.
-          enum:
-          - NOT_LINKED_IMAGE
-          - LINKED
-          example: NOT_LINKED_IMAGE
-        pageObjectIds:
+        replies:
           type: array
-          description: If non-empty, limits to the given pages.
-          items:
-            type: string
-          example: []
-    LayoutReference:
-      type: object
-      description: Slide layout reference.
-      properties:
-        predefinedLayout:
-          type: string
-          description: Predefined layout.
-          enum:
-          - PREDEFINED_LAYOUT_UNSPECIFIED
-          - BLANK
-          - CAPTION_ONLY
-          - TITLE
-          - TITLE_AND_BODY
-          - TITLE_AND_TWO_COLUMNS
-          - TITLE_ONLY
-          - SECTION_HEADER
-          - SECTION_TITLE_AND_DESCRIPTION
-          - ONE_COLUMN_TEXT
-          - MAIN_POINT
-          - BIG_NUMBER
-          example: PREDEFINED_LAYOUT_UNSPECIFIED
-        layoutId:
-          type: string
-          description: Layout ID referring to an existing layout in the presentation.
-          example: '500123'
-    ParagraphStyle:
-      type: object
-      description: 'Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent.
-
-        '
-      properties:
-        lineSpacing:
-          type: number
-          description: 'The amount of space between lines, as a percentage of normal, where normal is represented as 100.0.
-
-            '
-          example: 42.5
-        alignment:
-          type: string
-          description: The text alignment for this paragraph.
-          enum:
-          - ALIGNMENT_UNSPECIFIED
-          - START
-          - CENTER
-          - END
-          - JUSTIFIED
-          example: ALIGNMENT_UNSPECIFIED
-        indentStart:
-          $ref: '#/components/schemas/Dimension'
-        indentEnd:
-          $ref: '#/components/schemas/Dimension'
-        indentFirstLine:
-          $ref: '#/components/schemas/Dimension'
-        direction:
-          type: string
-          description: The text direction of this paragraph.
-          enum:
-          - TEXT_DIRECTION_UNSPECIFIED
-          - LEFT_TO_RIGHT
-          - RIGHT_TO_LEFT
-          example: TEXT_DIRECTION_UNSPECIFIED
-        spacingMode:
-          type: string
-          description: The spacing mode for the paragraph.
-          enum:
-          - SPACING_MODE_UNSPECIFIED
-          - NEVER_COLLAPSE
-          - COLLAPSE_LISTS
-          example: SPACING_MODE_UNSPECIFIED
-        spaceAbove:
-          $ref: '#/components/schemas/Dimension'
-        spaceBelow:
-          $ref: '#/components/schemas/Dimension'
-    UpdatePageElementsZOrderRequest:
-      type: object
-      description: Updates the Z-order of page elements.
-      properties:
-        pageElementObjectIds:
-          type: array
-          description: The object IDs of the page elements to update.
-          items:
-            type: string
-          example: []
-        operation:
-          type: string
-          description: The Z-order operation to apply on the page elements.
-          enum:
-          - Z_ORDER_OPERATION_UNSPECIFIED
-          - BRING_TO_FRONT
-          - BRING_FORWARD
-          - SEND_BACKWARD
-          - SEND_TO_BACK
-          example: Z_ORDER_OPERATION_UNSPECIFIED
-    ErrorResponse:
-      type: object
-      description: An error response from the Google Slides API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable error message.
-            status:
-              type: string
-              description: The status code string.
-            details:
-              type: array
-              description: A list of messages carrying error details.
-              items:
-                type: object
-                additionalProperties: true
-          example: example_value
-    GroupObjectsRequest:
-      type: object
-      description: Groups objects to create an object group.
-      properties:
-        groupObjectId:
-          type: string
-          description: A user-supplied object ID for the group to be created.
-          example: '500123'
-        childrenObjectIds:
-          type: array
-          description: The object IDs of the objects to group.
-          items:
-            type: string
-          example: []
-    UpdatePageElementAltTextRequest:
-      type: object
-      description: Updates the alt text title and/or description of a page element.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the page element.
-          example: '500123'
-        title:
-          type: string
-          description: The updated alt text title of the page element.
-          example: Example Title
-        description:
-          type: string
-          description: The updated alt text description of the page element.
-          example: A sample description.
-    ColorScheme:
-      type: object
-      description: 'The palette of predefined colors for a page.
-
-        '
-      properties:
-        colors:
-          type: array
-          description: The ThemeColorType and corresponding concrete color pairs.
-          items:
-            $ref: '#/components/schemas/ThemeColorPair'
-          example: []
-    DeleteTableRowRequest:
-      type: object
-      description: Deletes a row from a table.
-      properties:
-        tableObjectId:
-          type: string
-          description: The table to delete rows from.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-    UpdateSlidePropertiesRequest:
-      type: object
-      description: Updates the properties of a Slide.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the slide.
-          example: '500123'
-        slideProperties:
-          $ref: '#/components/schemas/SlideProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    UpdateTableCellPropertiesRequest:
-      type: object
-      description: Update the properties of a TableCell.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        tableRange:
-          $ref: '#/components/schemas/TableRange'
-        tableCellProperties:
-          $ref: '#/components/schemas/TableCellProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    CreateSlideRequest:
-      type: object
-      description: Creates a new slide.
-      properties:
-        objectId:
-          type: string
-          description: 'A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in the presentation.
-
-            '
-          example: '500123'
-        insertionIndex:
-          type: integer
-          description: 'The optional zero-based index indicating where in the presentation to insert the slide.
-
-            '
-          example: 10
-        slideLayoutReference:
-          $ref: '#/components/schemas/LayoutReference'
-        placeholderIdMappings:
-          type: array
-          description: 'An optional list of object ID mappings from the placeholder(s) on the layout to the placeholders that are created on the new slide.
+          description: 'The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty.
 
             '
           items:
-            $ref: '#/components/schemas/LayoutPlaceholderIdMapping'
+            $ref: '#/components/schemas/Response'
           example: []
-    CreateParagraphBulletsRequest:
-      type: object
-      description: Creates bullets for all of the paragraphs that overlap with a text range.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        textRange:
-          $ref: '#/components/schemas/Range'
-        bulletPreset:
-          type: string
-          description: The kinds of bullet glyphs to be used.
-          enum:
-          - BULLET_DISC_CIRCLE_SQUARE
-          - BULLET_DIAMONDX_ARROW3D_SQUARE
-          - BULLET_CHECKBOX
-          - BULLET_ARROW_DIAMOND_DISC
-          - BULLET_STAR_CIRCLE_SQUARE
-          - BULLET_ARROW3D_CIRCLE_SQUARE
-          - BULLET_LEFTTRIANGLE_DIAMOND_DISC
-          - BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE
-          - BULLET_DIAMOND_CIRCLE_SQUARE
-          - NUMBERED_DECIMAL_ALPHA_ROMAN
-          - NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS
-          - NUMBERED_DECIMAL_NESTED
-          - NUMBERED_UPPERALPHA_ALPHA_ROMAN
-          - NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL
-          - NUMBERED_ZERODIGIT_ALPHA_ROMAN
-          example: BULLET_DISC_CIRCLE_SQUARE
-    TableRow:
-      type: object
-      description: Properties and contents of each row in a table.
-      properties:
-        rowHeight:
-          $ref: '#/components/schemas/Dimension'
-        tableCells:
-          type: array
-          description: 'Properties and contents of each cell. Cells that span multiple columns are represented only once with a columnSpan greater than 1.
-
-            '
-          items:
-            $ref: '#/components/schemas/TableCell'
-          example: []
-        tableRowProperties:
-          $ref: '#/components/schemas/TableRowProperties'
-    MergeTableCellsRequest:
-      type: object
-      description: Merges cells in a Table.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        tableRange:
-          $ref: '#/components/schemas/TableRange'
-    TableCellLocation:
-      type: object
-      description: A location of a single table cell within a table.
-      properties:
-        rowIndex:
-          type: integer
-          description: The 0-based row index.
-          example: 10
-        columnIndex:
-          type: integer
-          description: The 0-based column index.
-          example: 10
-    TableColumnProperties:
-      type: object
-      description: Properties of each column in a table.
-      properties:
-        columnWidth:
-          $ref: '#/components/schemas/Dimension'
-    Recolor:
-      type: object
-      description: 'A recolor effect applied on an image.
-
-        '
-      properties:
-        recolorStops:
-          type: array
-          description: The recolor effect is represented by a gradient.
-          items:
-            $ref: '#/components/schemas/ColorStop'
-          example: []
-        name:
-          type: string
-          description: The name of the recolor effect.
-          enum:
-          - NONE
-          - LIGHT1
-          - LIGHT2
-          - LIGHT3
-          - LIGHT4
-          - LIGHT5
-          - LIGHT6
-          - LIGHT7
-          - LIGHT8
-          - LIGHT9
-          - LIGHT10
-          - DARK1
-          - DARK2
-          - DARK3
-          - DARK4
-          - DARK5
-          - DARK6
-          - DARK7
-          - DARK8
-          - DARK9
-          - DARK10
-          - GRAYSCALE
-          - NEGATIVE
-          - SEPIA
-          - CUSTOM
-          example: NONE
-    InsertTextRequest:
-      type: object
-      description: Inserts text into a shape or a table cell.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table cell.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        text:
-          type: string
-          description: 'The text to be inserted. Inserting a newline character will implicitly create a new ParagraphMarker.
-
-            '
-          example: example_value
-        insertionIndex:
-          type: integer
-          description: 'The index where the text will be inserted, in Unicode code units of the UTF-16 encoding.
-
-            '
-          example: 10
-    RerouteLineRequest:
-      type: object
-      description: 'Reroutes a line such that it is connected at the two closest connection sites on the connected page elements.
-
-        '
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the line to reroute.
-          example: '500123'
-    Video:
-      type: object
-      description: 'A PageElement kind representing a video.
-
-        '
-      properties:
-        url:
-          type: string
-          description: 'An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change.
-
-            '
-          example: https://www.example.com
-        source:
-          type: string
-          description: The video source.
-          enum:
-          - SOURCE_UNSPECIFIED
-          - YOUTUBE
-          - DRIVE
-          - GOOGLE_MEET
-          example: SOURCE_UNSPECIFIED
-        id:
-          type: string
-          description: 'The video source''s unique identifier for this video.
-
-            '
-          example: abc123
-        videoProperties:
-          $ref: '#/components/schemas/VideoProperties'
-    DeleteObjectRequest:
-      type: object
-      description: 'Deletes an object, either pages or page elements, from the presentation.
-
-        '
-      properties:
-        objectId:
-          type: string
-          description: 'The object ID of the page or page element to delete.
-
-            '
-          example: '500123'
-    TableRowProperties:
-      type: object
-      description: Properties of each row in a table.
-      properties:
-        minRowHeight:
-          $ref: '#/components/schemas/Dimension'
-    Range:
-      type: object
-      description: Specifies a contiguous range of an indexed collection.
-      properties:
-        startIndex:
-          type: integer
-          description: The optional zero-based start index of the collection.
-          example: 10
-        endIndex:
-          type: integer
-          description: The optional zero-based end index of the collection.
-          example: 10
-        type:
-          type: string
-          description: The type of range.
-          enum:
-          - RANGE_TYPE_UNSPECIFIED
-          - FIXED_RANGE
-          - FROM_START_INDEX
-          - ALL
-          example: RANGE_TYPE_UNSPECIFIED
-    Outline:
-      type: object
-      description: The outline of a PageElement.
-      properties:
-        outlineFill:
-          $ref: '#/components/schemas/OutlineFill'
-        weight:
-          $ref: '#/components/schemas/Dimension'
-        dashStyle:
-          type: string
-          description: The dash style of the outline.
-          enum:
-          - DASH_STYLE_UNSPECIFIED
-          - SOLID
-          - DOT
-          - DASH
-          - DASH_DOT
-          - LONG_DASH
-          - LONG_DASH_DOT
-          example: DASH_STYLE_UNSPECIFIED
-        propertyState:
-          type: string
-          description: The outline property state.
-          enum:
-          - RENDERED
-          - NOT_RENDERED
-          - INHERIT
-          example: RENDERED
-    WeightedFontFamily:
-      type: object
-      description: Represents a font family and weight of text.
-      properties:
-        fontFamily:
-          type: string
-          description: The font family of the text.
-          example: example_value
-        weight:
-          type: integer
-          description: 'The weight of the font. This field can have any value that is a multiple of 100 between 100 and 900, inclusive.
-
-            '
-          example: 10
-    CreateSlideResponse:
-      type: object
-      description: The result of creating a slide.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the created slide.
-          example: '500123'
-    UpdateImagePropertiesRequest:
-      type: object
-      description: Update the properties of an Image.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the image.
-          example: '500123'
-        imageProperties:
-          $ref: '#/components/schemas/ImageProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    DeleteParagraphBulletsRequest:
-      type: object
-      description: Deletes bullets from all of the paragraphs that overlap with a text range.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the shape or table.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        textRange:
-          $ref: '#/components/schemas/Range'
-    UpdateVideoPropertiesRequest:
-      type: object
-      description: Update the properties of a Video.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the video.
-          example: '500123'
-        videoProperties:
-          $ref: '#/components/schemas/VideoProperties'
-        fields:
-          type: string
-          description: The fields that should be updated.
-          example: example_value
-    DuplicateObjectResponse:
-      type: object
-      description: The response of duplicating an object.
-      properties:
-        objectId:
-          type: string
-          description: The ID of the new duplicate object.
-          example: '500123'
-    CreateLineResponse:
-      type: object
-      description: The result of creating a line.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the created line.
-          example: '500123'
-    InsertTableColumnsRequest:
-      type: object
-      description: Inserts columns into a table.
-      properties:
-        tableObjectId:
-          type: string
-          description: The table to insert columns into.
-          example: '500123'
-        cellLocation:
-          $ref: '#/components/schemas/TableCellLocation'
-        insertRight:
-          type: boolean
-          description: Whether to insert new columns to the right of the reference cell location.
-          example: true
-        number:
-          type: integer
-          description: The number of columns to be inserted.
-          example: 10
-    UnmergeTableCellsRequest:
-      type: object
-      description: Unmerges cells in a Table.
-      properties:
-        objectId:
-          type: string
-          description: The object ID of the table.
-          example: '500123'
-        tableRange:
-          $ref: '#/components/schemas/TableRange'
-    NestingLevel:
-      type: object
-      description: 'Contains properties describing the look and feel of a list bullet at a given level of nesting.
-
-        '
-      properties:
-        bulletStyle:
-          $ref: '#/components/schemas/TextStyle'
-    Group:
-      type: object
-      description: 'A PageElement kind representing a joined collection of PageElements.
-
-        '
-      properties:
-        children:
-          type: array
-          description: The collection of elements in the group.
-          items:
-            $ref: '#/components/schemas/PageElement'
-          example: []
-    OpaqueColor:
-      type: object
-      description: A themeable solid color value.
-      properties:
-        rgbColor:
-          $ref: '#/components/schemas/RgbColor'
-        themeColor:
-          type: string
-          description: An opaque theme color.
-          enum:
-          - THEME_COLOR_TYPE_UNSPECIFIED
-          - DARK1
-          - LIGHT1
-          - DARK2
-          - LIGHT2
-          - ACCENT1
-          - ACCENT2
-          - ACCENT3
-          - ACCENT4
-          - ACCENT5
-          - ACCENT6
-          - HYPERLINK
-          - FOLLOWED_HYPERLINK
-          - TEXT1
-          - BACKGROUND1
-          - TEXT2
-          - BACKGROUND2
-          example: THEME_COLOR_TYPE_UNSPECIFIED
+        writeControl:
+          $ref: '#/components/schemas/WriteControl'
     TextStyle:
       type: object
       description: 'Represents the styling that can be applied to a TextRun. If this text is contained in a shape with a parent placeholder, then these text styles may be inherited from the parent.
@@ -3054,25 +1775,856 @@ components:
           example: true
         weightedFontFamily:
           $ref: '#/components/schemas/WeightedFontFamily'
-    CreateSheetsChartResponse:
+    LineFill:
       type: object
-      description: The result of creating a sheets chart.
+      description: The fill of a line.
+      properties:
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+    DeleteTextRequest:
+      type: object
+      description: Deletes text from a shape or a table cell.
       properties:
         objectId:
           type: string
-          description: The object ID of the created chart.
+          description: The object ID of the shape or table where the text will be deleted.
           example: '500123'
-    TableBorderProperties:
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+    UpdatePageElementsZOrderRequest:
       type: object
-      description: The border styling properties of a TableBorderCell.
+      description: Updates the Z-order of page elements.
       properties:
-        tableBorderFill:
-          $ref: '#/components/schemas/TableBorderFill'
+        pageElementObjectIds:
+          type: array
+          description: The object IDs of the page elements to update.
+          items:
+            type: string
+          example: []
+        operation:
+          type: string
+          description: The Z-order operation to apply on the page elements.
+          enum:
+          - Z_ORDER_OPERATION_UNSPECIFIED
+          - BRING_TO_FRONT
+          - BRING_FORWARD
+          - SEND_BACKWARD
+          - SEND_TO_BACK
+          example: Z_ORDER_OPERATION_UNSPECIFIED
+    TextRun:
+      type: object
+      description: 'A TextElement kind that represents a run of text that all has the same styling.
+
+        '
+      properties:
+        content:
+          type: string
+          description: The text of this run.
+          example: example_value
+        style:
+          $ref: '#/components/schemas/TextStyle'
+    WordArt:
+      type: object
+      description: A PageElement kind representing word art.
+      properties:
+        renderedText:
+          type: string
+          description: The text rendered as word art.
+          example: example_value
+    RefreshSheetsChartRequest:
+      type: object
+      description: Refreshes an embedded Google Sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the chart to refresh.
+          example: '500123'
+    AffineTransform:
+      type: object
+      description: 'A 3x3 matrix that represents an affine transformation. The matrix maps a source coordinate (x, y) to a destination coordinate (x'', y'') according to matrix multiplication.
+
+        '
+      properties:
+        scaleX:
+          type: number
+          description: The X coordinate scaling element.
+          example: 42.5
+        scaleY:
+          type: number
+          description: The Y coordinate scaling element.
+          example: 42.5
+        shearX:
+          type: number
+          description: The X coordinate shearing element.
+          example: 42.5
+        shearY:
+          type: number
+          description: The Y coordinate shearing element.
+          example: 42.5
+        translateX:
+          type: number
+          description: The X coordinate translation element.
+          example: 42.5
+        translateY:
+          type: number
+          description: The Y coordinate translation element.
+          example: 42.5
+        unit:
+          type: string
+          description: The units for translate elements.
+          enum:
+          - UNIT_UNSPECIFIED
+          - EMU
+          - PT
+          example: UNIT_UNSPECIFIED
+    Table:
+      type: object
+      description: 'A PageElement kind representing a table.
+
+        '
+      properties:
+        rows:
+          type: integer
+          description: Number of rows in the table.
+          example: 10
+        columns:
+          type: integer
+          description: Number of columns in the table.
+          example: 10
+        tableRows:
+          type: array
+          description: 'Properties and contents of each row. Cells that span multiple rows are contained in only one of these rows and have a rowSpan greater than 1.
+
+            '
+          items:
+            $ref: '#/components/schemas/TableRow'
+          example: []
+        tableColumns:
+          type: array
+          description: Properties of each column.
+          items:
+            $ref: '#/components/schemas/TableColumnProperties'
+          example: []
+        horizontalBorderRows:
+          type: array
+          description: Properties of horizontal cell borders.
+          items:
+            $ref: '#/components/schemas/TableBorderRow'
+          example: []
+        verticalBorderRows:
+          type: array
+          description: Properties of vertical cell borders.
+          items:
+            $ref: '#/components/schemas/TableBorderRow'
+          example: []
+    Recolor:
+      type: object
+      description: 'A recolor effect applied on an image.
+
+        '
+      properties:
+        recolorStops:
+          type: array
+          description: The recolor effect is represented by a gradient.
+          items:
+            $ref: '#/components/schemas/ColorStop'
+          example: []
+        name:
+          type: string
+          description: The name of the recolor effect.
+          enum:
+          - NONE
+          - LIGHT1
+          - LIGHT2
+          - LIGHT3
+          - LIGHT4
+          - LIGHT5
+          - LIGHT6
+          - LIGHT7
+          - LIGHT8
+          - LIGHT9
+          - LIGHT10
+          - DARK1
+          - DARK2
+          - DARK3
+          - DARK4
+          - DARK5
+          - DARK6
+          - DARK7
+          - DARK8
+          - DARK9
+          - DARK10
+          - GRAYSCALE
+          - NEGATIVE
+          - SEPIA
+          - CUSTOM
+          example: NONE
+    CreateTableResponse:
+      type: object
+      description: The result of creating a table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created table.
+          example: '500123'
+    LayoutReference:
+      type: object
+      description: Slide layout reference.
+      properties:
+        predefinedLayout:
+          type: string
+          description: Predefined layout.
+          enum:
+          - PREDEFINED_LAYOUT_UNSPECIFIED
+          - BLANK
+          - CAPTION_ONLY
+          - TITLE
+          - TITLE_AND_BODY
+          - TITLE_AND_TWO_COLUMNS
+          - TITLE_ONLY
+          - SECTION_HEADER
+          - SECTION_TITLE_AND_DESCRIPTION
+          - ONE_COLUMN_TEXT
+          - MAIN_POINT
+          - BIG_NUMBER
+          example: PREDEFINED_LAYOUT_UNSPECIFIED
+        layoutId:
+          type: string
+          description: Layout ID referring to an existing layout in the presentation.
+          example: '500123'
+    ShapeProperties:
+      type: object
+      description: 'The properties of a Shape. If the shape is a placeholder shape, then these properties may be inherited from its parent placeholder shape.
+
+        '
+      properties:
+        shapeBackgroundFill:
+          $ref: '#/components/schemas/ShapeBackgroundFill'
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+        link:
+          $ref: '#/components/schemas/Link'
+        contentAlignment:
+          type: string
+          description: The alignment of the content in the shape.
+          enum:
+          - CONTENT_ALIGNMENT_UNSPECIFIED
+          - CONTENT_ALIGNMENT_UNSUPPORTED
+          - TOP
+          - MIDDLE
+          - BOTTOM
+          example: CONTENT_ALIGNMENT_UNSPECIFIED
+        autofit:
+          $ref: '#/components/schemas/Autofit'
+    CreateShapeResponse:
+      type: object
+      description: The result of creating a shape.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created shape.
+          example: '500123'
+    UpdatePageElementTransformRequest:
+      type: object
+      description: 'Updates the transform of a page element.
+
+        '
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the page element to update.
+          example: '500123'
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        applyMode:
+          type: string
+          description: The apply mode of the transform update.
+          enum:
+          - APPLY_MODE_UNSPECIFIED
+          - RELATIVE
+          - ABSOLUTE
+          example: APPLY_MODE_UNSPECIFIED
+    Size:
+      type: object
+      description: A width and height.
+      properties:
+        width:
+          $ref: '#/components/schemas/Dimension'
+        height:
+          $ref: '#/components/schemas/Dimension'
+    RgbColor:
+      type: object
+      description: An RGB color.
+      properties:
+        red:
+          type: number
+          description: The red component of the color, from 0.0 to 1.0.
+          example: 42.5
+        green:
+          type: number
+          description: The green component of the color, from 0.0 to 1.0.
+          example: 42.5
+        blue:
+          type: number
+          description: The blue component of the color, from 0.0 to 1.0.
+          example: 42.5
+    DeleteObjectRequest:
+      type: object
+      description: 'Deletes an object, either pages or page elements, from the presentation.
+
+        '
+      properties:
+        objectId:
+          type: string
+          description: 'The object ID of the page or page element to delete.
+
+            '
+          example: '500123'
+    TableBorderRow:
+      type: object
+      description: Contents of each border row in a table.
+      properties:
+        tableBorderCells:
+          type: array
+          description: Properties of each border cell.
+          items:
+            $ref: '#/components/schemas/TableBorderCell'
+          example: []
+    UpdateSlidePropertiesRequest:
+      type: object
+      description: Updates the properties of a Slide.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the slide.
+          example: '500123'
+        slideProperties:
+          $ref: '#/components/schemas/SlideProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    TableRow:
+      type: object
+      description: Properties and contents of each row in a table.
+      properties:
+        rowHeight:
+          $ref: '#/components/schemas/Dimension'
+        tableCells:
+          type: array
+          description: 'Properties and contents of each cell. Cells that span multiple columns are represented only once with a columnSpan greater than 1.
+
+            '
+          items:
+            $ref: '#/components/schemas/TableCell'
+          example: []
+        tableRowProperties:
+          $ref: '#/components/schemas/TableRowProperties'
+    UpdateParagraphStyleRequest:
+      type: object
+      description: Updates the styling of paragraphs within a Shape or Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        style:
+          $ref: '#/components/schemas/ParagraphStyle'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    CreateParagraphBulletsRequest:
+      type: object
+      description: Creates bullets for all of the paragraphs that overlap with a text range.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        bulletPreset:
+          type: string
+          description: The kinds of bullet glyphs to be used.
+          enum:
+          - BULLET_DISC_CIRCLE_SQUARE
+          - BULLET_DIAMONDX_ARROW3D_SQUARE
+          - BULLET_CHECKBOX
+          - BULLET_ARROW_DIAMOND_DISC
+          - BULLET_STAR_CIRCLE_SQUARE
+          - BULLET_ARROW3D_CIRCLE_SQUARE
+          - BULLET_LEFTTRIANGLE_DIAMOND_DISC
+          - BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE
+          - BULLET_DIAMOND_CIRCLE_SQUARE
+          - NUMBERED_DECIMAL_ALPHA_ROMAN
+          - NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS
+          - NUMBERED_DECIMAL_NESTED
+          - NUMBERED_UPPERALPHA_ALPHA_ROMAN
+          - NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL
+          - NUMBERED_ZERODIGIT_ALPHA_ROMAN
+          example: BULLET_DISC_CIRCLE_SQUARE
+    TableColumnProperties:
+      type: object
+      description: Properties of each column in a table.
+      properties:
+        columnWidth:
+          $ref: '#/components/schemas/Dimension'
+    Presentation:
+      type: object
+      description: A Google Slides presentation.
+      properties:
+        presentationId:
+          type: string
+          description: The ID of the presentation.
+          readOnly: true
+          example: '500123'
+        title:
+          type: string
+          description: The title of the presentation.
+          example: Example Title
+        pageSize:
+          $ref: '#/components/schemas/Size'
+        slides:
+          type: array
+          description: 'The slides in the presentation. A slide inherits properties from a slide layout.
+
+            '
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+          example: []
+        masters:
+          type: array
+          description: 'The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts.
+
+            '
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+          example: []
+        layouts:
+          type: array
+          description: 'The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout.
+
+            '
+          items:
+            $ref: '#/components/schemas/Page'
+          readOnly: true
+          example: []
+        locale:
+          type: string
+          description: 'The locale of the presentation as an IETF BCP 47 language tag.
+
+            '
+          example: example_value
+        revisionId:
+          type: string
+          description: 'Output only. The revision ID of the presentation. Can be used in update requests to assert that the presentation revision has not changed since the last read operation. Only populated if the user has edit access to the presentation. The revision ID is not a sequential number but an opaque string. The format may change over time. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users.
+
+            '
+          readOnly: true
+          example: '500123'
+        notesMaster:
+          $ref: '#/components/schemas/Page'
+          description: 'The notes master in the presentation. It serves as the template for the notes pages of all slides.
+
+            '
+          readOnly: true
+    UpdateSlidesPositionRequest:
+      type: object
+      description: Updates the position of slides in the presentation.
+      properties:
+        slideObjectIds:
+          type: array
+          description: The IDs of the slides in the presentation that should be moved.
+          items:
+            type: string
+          example: []
+        insertionIndex:
+          type: integer
+          description: 'The index where the slides should be inserted, based on the slide arrangement before the move takes place.
+
+            '
+          example: 10
+    Placeholder:
+      type: object
+      description: 'The placeholder information that uniquely identifies a placeholder shape.
+
+        '
+      properties:
+        type:
+          type: string
+          description: The type of the placeholder.
+          enum:
+          - NONE
+          - BODY
+          - CHART
+          - CLIP_ART
+          - CENTERED_TITLE
+          - DIAGRAM
+          - DATE_AND_TIME
+          - FOOTER
+          - HEADER
+          - MEDIA
+          - OBJECT
+          - PICTURE
+          - SLIDE_NUMBER
+          - SUBTITLE
+          - TABLE
+          - TITLE
+          - SLIDE_IMAGE
+          example: NONE
+        index:
+          type: integer
+          description: 'The index of the placeholder. If the same placeholder types are present in the same page, they would have different index values.
+
+            '
+          example: 10
+        parentObjectId:
+          type: string
+          description: 'The object ID of this shape''s parent placeholder.
+
+            '
+          example: '500123'
+    CreateLineResponse:
+      type: object
+      description: The result of creating a line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created line.
+          example: '500123'
+    LayoutPlaceholderIdMapping:
+      type: object
+      description: 'The mapping between a placeholder on a layout and an object ID for the placeholder on a created slide.
+
+        '
+      properties:
+        layoutPlaceholder:
+          $ref: '#/components/schemas/Placeholder'
+        layoutPlaceholderObjectId:
+          type: string
+          description: 'The object ID of the placeholder on a layout that will be applied to a slide.
+
+            '
+          example: '500123'
+        objectId:
+          type: string
+          description: 'A user-supplied object ID for the placeholder identified above that is to be created on the corresponding slide.
+
+            '
+          example: '500123'
+    CreateVideoRequest:
+      type: object
+      description: Creates a video.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+          example: '500123'
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        source:
+          type: string
+          description: The video source.
+          enum:
+          - SOURCE_UNSPECIFIED
+          - YOUTUBE
+          - DRIVE
+          - GOOGLE_MEET
+          example: SOURCE_UNSPECIFIED
+        id:
+          type: string
+          description: 'The video source''s unique identifier for this video.
+
+            '
+          example: abc123
+    ReplaceImageRequest:
+      type: object
+      description: Replaces an existing image with a new image.
+      properties:
+        imageObjectId:
+          type: string
+          description: The ID of the existing image that will be replaced.
+          example: '500123'
+        url:
+          type: string
+          description: The URL of the new image.
+          example: https://www.example.com
+        imageReplaceMethod:
+          type: string
+          description: The replace method.
+          enum:
+          - IMAGE_REPLACE_METHOD_UNSPECIFIED
+          - CENTER_INSIDE
+          - CENTER_CROP
+          example: IMAGE_REPLACE_METHOD_UNSPECIFIED
+    InsertTextRequest:
+      type: object
+      description: Inserts text into a shape or a table cell.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table cell.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        text:
+          type: string
+          description: 'The text to be inserted. Inserting a newline character will implicitly create a new ParagraphMarker.
+
+            '
+          example: example_value
+        insertionIndex:
+          type: integer
+          description: 'The index where the text will be inserted, in Unicode code units of the UTF-16 encoding.
+
+            '
+          example: 10
+    TableCell:
+      type: object
+      description: Properties and contents of each table cell.
+      properties:
+        location:
+          $ref: '#/components/schemas/TableCellLocation'
+        rowSpan:
+          type: integer
+          description: Row span of the cell.
+          example: 10
+        columnSpan:
+          type: integer
+          description: Column span of the cell.
+          example: 10
+        text:
+          $ref: '#/components/schemas/TextContent'
+        tableCellProperties:
+          $ref: '#/components/schemas/TableCellProperties'
+    ReplaceAllShapesWithSheetsChartRequest:
+      type: object
+      description: 'Replaces all shapes that match the given criteria with the provided Google Sheets chart.
+
+        '
+      properties:
+        containsText:
+          $ref: '#/components/schemas/SubstringMatchCriteria'
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet.
+          example: '500123'
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+          example: '500123'
+        linkingMode:
+          type: string
+          description: The mode with which the chart is linked to the source spreadsheet.
+          enum:
+          - NOT_LINKED_IMAGE
+          - LINKED
+          example: NOT_LINKED_IMAGE
+        pageObjectIds:
+          type: array
+          description: If non-empty, limits to the given pages.
+          items:
+            type: string
+          example: []
+    SpeakerSpotlightProperties:
+      type: object
+      description: The properties of a SpeakerSpotlight.
+      properties:
+        outline:
+          $ref: '#/components/schemas/Outline'
+        shadow:
+          $ref: '#/components/schemas/Shadow'
+    Link:
+      type: object
+      description: A hypertext link.
+      properties:
+        url:
+          type: string
+          description: If set, indicates this is a link to the external web page at this URL.
+          example: https://www.example.com
+        relativeLink:
+          type: string
+          description: 'If set, indicates this is a link to a slide in this presentation, addressed by its position.
+
+            '
+          enum:
+          - RELATIVE_SLIDE_LINK_UNSPECIFIED
+          - NEXT_SLIDE
+          - PREVIOUS_SLIDE
+          - FIRST_SLIDE
+          - LAST_SLIDE
+          example: RELATIVE_SLIDE_LINK_UNSPECIFIED
+        pageObjectId:
+          type: string
+          description: 'If set, indicates this is a link to the specific page in this presentation with this ID.
+
+            '
+          example: '500123'
+        slideIndex:
+          type: integer
+          description: 'If set, indicates this is a link to the slide at this zero-based index in the presentation.
+
+            '
+          example: 10
+    SheetsChart:
+      type: object
+      description: 'A PageElement kind representing a linked chart embedded from Google Sheets.
+
+        '
+      properties:
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet that contains the source chart.
+          example: '500123'
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+          example: '500123'
+        contentUrl:
+          type: string
+          description: 'The URL of an image of the embedded chart, with a default lifetime of 30 minutes.
+
+            '
+          readOnly: true
+          example: https://www.example.com
+        sheetsChartProperties:
+          $ref: '#/components/schemas/SheetsChartProperties'
+    UngroupObjectsRequest:
+      type: object
+      description: Ungroups objects, such as groups.
+      properties:
+        objectIds:
+          type: array
+          description: 'The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped.
+
+            '
+          items:
+            type: string
+          example: []
+    UpdateLinePropertiesRequest:
+      type: object
+      description: Updates the properties of a Line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line.
+          example: '500123'
+        lineProperties:
+          $ref: '#/components/schemas/LineProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    PageElement:
+      type: object
+      description: A visual element rendered on a page.
+      properties:
+        objectId:
+          type: string
+          description: The object ID for this page element.
+          example: '500123'
+        size:
+          $ref: '#/components/schemas/Size'
+        transform:
+          $ref: '#/components/schemas/AffineTransform'
+        title:
+          type: string
+          description: The title of the page element for accessibility.
+          example: Example Title
+        description:
+          type: string
+          description: The description of the page element for accessibility.
+          example: A sample description.
+        shape:
+          $ref: '#/components/schemas/Shape'
+        image:
+          $ref: '#/components/schemas/Image'
+        video:
+          $ref: '#/components/schemas/Video'
+        line:
+          $ref: '#/components/schemas/Line'
+        table:
+          $ref: '#/components/schemas/Table'
+        wordArt:
+          $ref: '#/components/schemas/WordArt'
+        sheetsChart:
+          $ref: '#/components/schemas/SheetsChart'
+        elementGroup:
+          $ref: '#/components/schemas/Group'
+        speakerSpotlight:
+          $ref: '#/components/schemas/SpeakerSpotlight'
+    ReplaceAllTextResponse:
+      type: object
+      description: The result of replacing text.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of occurrences changed by replacing all text.
+          example: 10
+    InsertTableColumnsRequest:
+      type: object
+      description: Inserts columns into a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to insert columns into.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        insertRight:
+          type: boolean
+          description: Whether to insert new columns to the right of the reference cell location.
+          example: true
+        number:
+          type: integer
+          description: The number of columns to be inserted.
+          example: 10
+    VideoProperties:
+      type: object
+      description: The properties of a Video.
+      properties:
+        outline:
+          $ref: '#/components/schemas/Outline'
+        autoPlay:
+          type: boolean
+          description: Whether to enable video autoplay when the page is displayed.
+          example: true
+        start:
+          type: integer
+          description: The time at which to start playback, measured in seconds from the beginning.
+          example: 10
+        end:
+          type: integer
+          description: The time at which to end playback, measured in seconds from the beginning.
+          example: 10
+        mute:
+          type: boolean
+          description: Whether to mute the audio during video playback.
+          example: true
+    Outline:
+      type: object
+      description: The outline of a PageElement.
+      properties:
+        outlineFill:
+          $ref: '#/components/schemas/OutlineFill'
         weight:
           $ref: '#/components/schemas/Dimension'
         dashStyle:
           type: string
-          description: The dash style of the border.
+          description: The dash style of the outline.
           enum:
           - DASH_STYLE_UNSPECIFIED
           - SOLID
@@ -3082,6 +2634,168 @@ components:
           - LONG_DASH
           - LONG_DASH_DOT
           example: DASH_STYLE_UNSPECIFIED
+        propertyState:
+          type: string
+          description: The outline property state.
+          enum:
+          - RENDERED
+          - NOT_RENDERED
+          - INHERIT
+          example: RENDERED
+    UpdateTableRowPropertiesRequest:
+      type: object
+      description: Updates the properties of a Table row.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+          example: '500123'
+        rowIndices:
+          type: array
+          description: The list of zero-based indices specifying which rows to update.
+          items:
+            type: integer
+          example: []
+        tableRowProperties:
+          $ref: '#/components/schemas/TableRowProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: An error response from the Google Slides API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status code string.
+            details:
+              type: array
+              description: A list of messages carrying error details.
+              items:
+                type: object
+                additionalProperties: true
+          example: example_value
+    UpdateLineCategoryRequest:
+      type: object
+      description: Updates the category of a line.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the line.
+          example: '500123'
+        lineCategory:
+          type: string
+          description: The line category to update to.
+          enum:
+          - LINE_CATEGORY_UNSPECIFIED
+          - STRAIGHT
+          - BENT
+          - CURVED
+          example: LINE_CATEGORY_UNSPECIFIED
+    WriteControl:
+      type: object
+      description: 'Provides control over how write requests are executed. When a write request is made, the requiredRevisionId can be specified to indicate that the write should only succeed if the presentation''s current revision matches the specified value.
+
+        '
+      properties:
+        requiredRevisionId:
+          type: string
+          description: 'The revision ID of the presentation required for the write request. If specified, the write request is only processed if the current revision ID of the presentation matches this value.
+
+            '
+          example: '500123'
+    CreateImageResponse:
+      type: object
+      description: The result of creating an image.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created image.
+          example: '500123'
+    UpdateTableBorderPropertiesRequest:
+      type: object
+      description: Updates the properties of the table borders in a Table.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the table.
+          example: '500123'
+        tableRange:
+          $ref: '#/components/schemas/TableRange'
+        tableBorderProperties:
+          $ref: '#/components/schemas/TableBorderProperties'
+        borderPosition:
+          type: string
+          description: The border position in the table range.
+          enum:
+          - ALL
+          - BOTTOM
+          - INNER
+          - INNER_HORIZONTAL
+          - INNER_VERTICAL
+          - LEFT
+          - OUTER
+          - RIGHT
+          - TOP
+          example: ALL
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    SubstringMatchCriteria:
+      type: object
+      description: 'A criteria that matches a specific string of text in a shape or table.
+
+        '
+      properties:
+        text:
+          type: string
+          description: The text to search for in the shape or table.
+          example: example_value
+        matchCase:
+          type: boolean
+          description: 'Indicates whether the search should respect case. True by default.
+
+            '
+          example: true
+    BatchUpdatePresentationRequest:
+      type: object
+      description: Request message for BatchUpdatePresentation.
+      properties:
+        requests:
+          type: array
+          description: A list of updates to apply to the presentation.
+          items:
+            $ref: '#/components/schemas/Request'
+          example: []
+        writeControl:
+          $ref: '#/components/schemas/WriteControl'
+    ReplaceAllShapesWithSheetsChartResponse:
+      type: object
+      description: The result of replacing shapes with a Sheets chart.
+      properties:
+        occurrencesChanged:
+          type: integer
+          description: The number of shapes replaced.
+          example: 10
+    PageProperties:
+      type: object
+      description: The properties of a Page.
+      properties:
+        pageBackgroundFill:
+          $ref: '#/components/schemas/PageBackgroundFill'
+        colorScheme:
+          $ref: '#/components/schemas/ColorScheme'
     DeleteTableColumnRequest:
       type: object
       description: Deletes a column from a table.
@@ -3092,6 +2806,284 @@ components:
           example: '500123'
         cellLocation:
           $ref: '#/components/schemas/TableCellLocation'
+    WeightedFontFamily:
+      type: object
+      description: Represents a font family and weight of text.
+      properties:
+        fontFamily:
+          type: string
+          description: The font family of the text.
+          example: example_value
+        weight:
+          type: integer
+          description: 'The weight of the font. This field can have any value that is a multiple of 100 between 100 and 900, inclusive.
+
+            '
+          example: 10
+    SpeakerSpotlight:
+      type: object
+      description: 'A PageElement kind representing a speaker spotlight.
+
+        '
+      properties:
+        speakerSpotlightProperties:
+          $ref: '#/components/schemas/SpeakerSpotlightProperties'
+    CreateSheetsChartRequest:
+      type: object
+      description: Creates an embedded Google Sheets chart.
+      properties:
+        objectId:
+          type: string
+          description: A user-supplied object ID.
+          example: '500123'
+        elementProperties:
+          $ref: '#/components/schemas/PageElementProperties'
+        spreadsheetId:
+          type: string
+          description: The ID of the Google Sheets spreadsheet that contains the chart.
+          example: '500123'
+        chartId:
+          type: integer
+          description: The ID of the specific chart in the Google Sheets spreadsheet.
+          example: '500123'
+        linkingMode:
+          type: string
+          description: The mode with which the chart is linked to the source spreadsheet.
+          enum:
+          - NOT_LINKED_IMAGE
+          - LINKED
+          example: NOT_LINKED_IMAGE
+    GroupObjectsResponse:
+      type: object
+      description: The result of grouping objects.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the created group.
+          example: '500123'
+    StretchedPictureFill:
+      type: object
+      description: The stretched picture fill of a page background.
+      properties:
+        contentUrl:
+          type: string
+          description: 'Reading the contentUrl returns the content of the picture. The URL has a default lifetime of 30 minutes.
+
+            '
+          readOnly: true
+          example: https://www.example.com
+        size:
+          $ref: '#/components/schemas/Size'
+    ShapeBackgroundFill:
+      type: object
+      description: The background fill of a shape.
+      properties:
+        propertyState:
+          type: string
+          description: 'The background fill property state.
+
+            '
+          enum:
+          - RENDERED
+          - NOT_RENDERED
+          - INHERIT
+          example: RENDERED
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+    InsertTableRowsRequest:
+      type: object
+      description: Inserts rows into a table.
+      properties:
+        tableObjectId:
+          type: string
+          description: The table to insert rows into.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        insertBelow:
+          type: boolean
+          description: Whether to insert new rows below the reference cell location.
+          example: true
+        number:
+          type: integer
+          description: The number of rows to be inserted.
+          example: 10
+    TableCellBackgroundFill:
+      type: object
+      description: The table cell background fill.
+      properties:
+        propertyState:
+          type: string
+          description: The background fill property state.
+          enum:
+          - RENDERED
+          - NOT_RENDERED
+          - INHERIT
+          example: RENDERED
+        solidFill:
+          $ref: '#/components/schemas/SolidFill'
+    TextContent:
+      type: object
+      description: 'The general text content. The text must reside in a compatible shape (e.g., text box or rectangle) or a table cell in a page.
+
+        '
+      properties:
+        textElements:
+          type: array
+          description: The text contents broken down into text elements.
+          items:
+            $ref: '#/components/schemas/TextElement'
+          example: []
+        lists:
+          type: object
+          description: 'The bulleted lists contained in this text, keyed by list ID.
+
+            '
+          additionalProperties:
+            $ref: '#/components/schemas/List'
+          example: example_value
+    OpaqueColor:
+      type: object
+      description: A themeable solid color value.
+      properties:
+        rgbColor:
+          $ref: '#/components/schemas/RgbColor'
+        themeColor:
+          type: string
+          description: An opaque theme color.
+          enum:
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - DARK1
+          - LIGHT1
+          - DARK2
+          - LIGHT2
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - HYPERLINK
+          - FOLLOWED_HYPERLINK
+          - TEXT1
+          - BACKGROUND1
+          - TEXT2
+          - BACKGROUND2
+          example: THEME_COLOR_TYPE_UNSPECIFIED
+    LineProperties:
+      type: object
+      description: The properties of a Line.
+      properties:
+        lineFill:
+          $ref: '#/components/schemas/LineFill'
+        weight:
+          $ref: '#/components/schemas/Dimension'
+        dashStyle:
+          type: string
+          description: The dash style of the line.
+          enum:
+          - DASH_STYLE_UNSPECIFIED
+          - SOLID
+          - DOT
+          - DASH
+          - DASH_DOT
+          - LONG_DASH
+          - LONG_DASH_DOT
+          example: DASH_STYLE_UNSPECIFIED
+        startArrow:
+          type: string
+          description: The style of the arrow at the beginning of the line.
+          enum:
+          - ARROW_STYLE_UNSPECIFIED
+          - NONE
+          - STEALTH_ARROW
+          - FILL_ARROW
+          - FILL_CIRCLE
+          - FILL_SQUARE
+          - FILL_DIAMOND
+          - OPEN_ARROW
+          - OPEN_CIRCLE
+          - OPEN_SQUARE
+          - OPEN_DIAMOND
+          example: ARROW_STYLE_UNSPECIFIED
+        endArrow:
+          type: string
+          description: The style of the arrow at the end of the line.
+          enum:
+          - ARROW_STYLE_UNSPECIFIED
+          - NONE
+          - STEALTH_ARROW
+          - FILL_ARROW
+          - FILL_CIRCLE
+          - FILL_SQUARE
+          - FILL_DIAMOND
+          - OPEN_ARROW
+          - OPEN_CIRCLE
+          - OPEN_SQUARE
+          - OPEN_DIAMOND
+          example: ARROW_STYLE_UNSPECIFIED
+        startConnection:
+          $ref: '#/components/schemas/LineConnection'
+        endConnection:
+          $ref: '#/components/schemas/LineConnection'
+        link:
+          $ref: '#/components/schemas/Link'
+    UpdateImagePropertiesRequest:
+      type: object
+      description: Update the properties of an Image.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the image.
+          example: '500123'
+        imageProperties:
+          $ref: '#/components/schemas/ImageProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    UpdateTextStyleRequest:
+      type: object
+      description: 'Update the styling of text in a Shape or Table.
+
+        '
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the shape or table with the text to be styled.
+          example: '500123'
+        cellLocation:
+          $ref: '#/components/schemas/TableCellLocation'
+        style:
+          $ref: '#/components/schemas/TextStyle'
+        textRange:
+          $ref: '#/components/schemas/Range'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    UpdatePagePropertiesRequest:
+      type: object
+      description: Updates the properties of a Page.
+      properties:
+        objectId:
+          type: string
+          description: The object ID of the page the update is applied to.
+          example: '500123'
+        pageProperties:
+          $ref: '#/components/schemas/PageProperties'
+        fields:
+          type: string
+          description: The fields that should be updated.
+          example: example_value
+    NestingLevel:
+      type: object
+      description: 'Contains properties describing the look and feel of a list bullet at a given level of nesting.
+
+        '
+      properties:
+        bulletStyle:
+          $ref: '#/components/schemas/TextStyle'
   parameters:
     PresentationId:
       name: presentationId
